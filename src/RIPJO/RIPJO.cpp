@@ -42,9 +42,8 @@ void RIPJO::RIPJO::gameLoop(void)
 
 void RIPJO::RIPJO::keyHandling(void)
 {
-    if (IsMouseButtonPressed(KEY_A)) {
-        std::cerr << "[DEBUG] Mouse Button Left Pressed" << std::endl;
-        for (auto bounds : _bounds) {
+    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        for (auto &bounds : _bounds) {
             if (GetRayCollisionBox(GetScreenToWorldRay(GetMousePosition(), _camera), bounds.second.first).hit)
                 bounds.second.second = !bounds.second.second;
             else
@@ -55,13 +54,13 @@ void RIPJO::RIPJO::keyHandling(void)
 
 void RIPJO::RIPJO::displayModels(void)
 {
-    for (auto model : _models)
+    for (const auto &model : _models)
         DrawModel(model.second, {0., 0., 0.}, 1.0f, WHITE); 
 }
 
 void RIPJO::RIPJO::displayBounds(void)
 {
-    for (auto bounds : _bounds)
+    for (const auto &bounds : _bounds)
         if (bounds.second.second)
             DrawBoundingBox(bounds.second.first, GREEN);
 }
@@ -71,7 +70,7 @@ void RIPJO::RIPJO::displayBounds(void)
 void RIPJO::RIPJO::setWindow(void)
 {
     // INFO: this part setups the window info
-    InitWindow(GetMonitorWidth(0), GetMonitorWidth(0), "RIP JO 2024");
+    InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "RIP JO 2024");
     SetTargetFPS(60);
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
