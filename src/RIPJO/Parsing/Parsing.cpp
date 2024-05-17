@@ -21,7 +21,8 @@ bool RIPJO::Parsing::initialize(const std::string &filename) {
         std::cerr << "Unable to open configuration file: " << filename << std::endl;
         return false;
     } catch (const libconfig::ParseException &pex) {
-        std::cerr << "Parse error in configuration file: " << filename << " at " << pex.getLine() << " - " << pex.getError() << std::endl;
+        std::cerr << "Parse error in configuration file: " << filename << " at "
+        << pex.getLine() << " - " << pex.getError() << std::endl;
         return false;
     }
     return true;
@@ -50,20 +51,4 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict) {
     } catch (const libconfig::SettingTypeException &tex) {
         std::cerr << "Type error in configuration file." << std::endl;
     }
-}
-
-std::string RIPJO::Parsing::getName() const {
-    return _name;
-}
-
-std::vector<int> RIPJO::Parsing::getIndexDistricts() const {
-    return _indexDistricts;
-}
-
-int RIPJO::Parsing::getInfluenceCoast() const {
-    return _influenceCoast;
-}
-
-int RIPJO::Parsing::getUnrestGain() const {
-    return _unrestGain;
 }

@@ -15,7 +15,7 @@ FLAGS       =   -W -Wall -Wextra -g -std=c++20
 
 COMMON_LIBS =   -lraylib -lm -lpthread -ldl
 
-LINUX_LIBS  =   -lGL -lrt -lX11
+LINUX_LIBS  =   -lGL -lrt -lX11 -lconfig++
 
 MACOS_LIBS  =   -framework OpenGL -framework CoreFoundation
 
