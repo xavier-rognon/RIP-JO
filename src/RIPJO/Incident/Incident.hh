@@ -6,15 +6,16 @@
 */
 
 #pragma once
-#include "IIncident.hh"
+#include <iostream>
+#include <vector>
 
 namespace RIPJO {
 
-    class AIncident : public IIncident {
+    class Incident {
     public:
-        AIncident(std::string name, std::vector<std::size_t> targets,
+        Incident(std::string name, std::vector<std::size_t> targets,
                   std::size_t influenceCost, std::size_t unrestGain);
-        ~AIncident() = default;
+        ~Incident() = default;
 
         
     protected:

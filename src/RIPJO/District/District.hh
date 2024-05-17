@@ -6,18 +6,17 @@
 */
 
 #pragma once
+#include "../Incident/Incident.hh"
 
 namespace RIPJO {
 
     class District {
+    public:
+        District();
+        ~District() = default;
 
-        public:
-            District();
-            ~District() = default;
-
-        protected:
-
-        private:
-
+        
+    private:
+        std::vector<RIPJO::Incident> _incidentList;
     };
 }
