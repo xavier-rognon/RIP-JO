@@ -6,8 +6,12 @@
 */
 
 #pragma once
+
 #include <iostream>
 #include <vector>
+#include <thread>
+#include <mutex>
+#include "../Player/Player.hh"
 
 namespace RIPJO {
 
@@ -16,6 +20,9 @@ namespace RIPJO {
         Incident(std::string name, std::vector<int> targets,
                   std::size_t influenceCost, std::size_t unrestGain);
         ~Incident() = default;
+
+        int executeIncident(std::mutex &mutex, std::size_t &influence,
+                            std::size_t &unrest) const;
 
         std::string getName() const;
         void setName(std::string);

@@ -13,6 +13,14 @@ RIPJO::Incident::Incident(std::string name, std::vector<int> targets,
     _unrestGain(unrestGain)
 {}
 
+int RIPJO::Incident::executeIncident(std::mutex &mutex, std::size_t &influence,
+                                     std::size_t &unrest) const
+{
+    std::unique_lock<std::mutex> lock(mutex);
+    influence -= _influenceCost;
+    unrest += _unrestGain;
+}
+
 std::string RIPJO::Incident::getName() const
 {
     return _name;
