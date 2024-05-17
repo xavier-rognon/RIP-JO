@@ -5,3 +5,15 @@ Champs-mars :
             { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 1; unrestGain = 4; name = "Alien invasion" }
         );
 };
+
+Champs-elysee :
+{
+        event = (
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 1; unrestGain = 4; name = "Alien invasion" }
+        );
+};

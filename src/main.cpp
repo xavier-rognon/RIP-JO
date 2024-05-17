@@ -22,5 +22,6 @@ int main() {
     // std::cout << "Player influence after 5 seconds: " << player.getInfluence() << std::endl;
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars");
+    parser.parseDistrict("Champs-elysee");
     return 0;
 }

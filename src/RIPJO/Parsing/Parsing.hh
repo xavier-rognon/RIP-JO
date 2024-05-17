@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <cstddef>
 #include <libconfig.h++>
 #include <vector>
 #include <string>
@@ -21,6 +22,10 @@ namespace RIPJO {
 
             bool initialize(const std::string &filename);
             void parseDistrict(const std::string &nameDistrict);
+            std::string getName() const;
+            int getUnrestGain() const;
+            int getInfluenceCoast() const;
+            std::vector<int> getIndexDistricts() const;
 
         protected:
 

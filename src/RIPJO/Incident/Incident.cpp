@@ -7,7 +7,7 @@
 
 #include "Incident.hh"
 
-RIPJO::Incident::Incident(std::string name, std::vector<std::size_t> targets,
+RIPJO::Incident::Incident(std::string name, std::vector<int> targets,
                           std::size_t influenceCost, std::size_t unrestGain):
     _name(name), _targetDistricts(targets), _influenceCost(influenceCost),
     _unrestGain(unrestGain)
@@ -23,12 +23,12 @@ void RIPJO::Incident::setName(std::string name)
     _name = name;
 }
 
-std::vector<std::size_t> RIPJO::Incident::getTargetDistricts() const
+std::vector<int> RIPJO::Incident::getTargetDistricts() const
 {
     return _targetDistricts;
 }
 
-void RIPJO::Incident::setTargetDistricts(const std::vector<std::size_t> &targetDistricts)
+void RIPJO::Incident::setTargetDistricts(const std::vector<int> &targetDistricts)
 {
     _targetDistricts = targetDistricts;
 }
