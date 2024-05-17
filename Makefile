@@ -5,25 +5,43 @@
 ## Makefile
 ##
 
-SRC			=	$(shell find . -name "*.cpp" -type f)
+SRC         =   $(shell find . -name "*.cpp" -type f)
 
-OBJ			=	$(SRC:.cpp=.o)
+OBJ         =   $(SRC:.cpp=.o)
 
-NAME		=	RIP-JO
+NAME        =   RIP-JO
 
-FLAGS		=	-W -Wall -Wextra -g -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
+FLAGS       =   -W -Wall -Wextra -g -std=c++20
 
-CXXFLAGS 	+=	$(FLAGS)
+COMMON_LIBS =   -lraylib -lm -lpthread -ldl
 
-$(NAME):	$(OBJ)
-	g++ -o $(NAME) $(OBJ) $(FLAGS)
+LINUX_LIBS  =   -lGL -lrt -lX11
 
-all:		$(NAME)
+MACOS_LIBS  =   -framework OpenGL -framework CoreFoundation
+
+MACOS_INCLUDE_PATH = -I/opt/homebrew/opt/raylib/include
+MACOS_LIB_PATH = -L/opt/homebrew/opt/raylib/lib
+
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S), Linux)
+    LIBS = $(COMMON_LIBS) $(LINUX_LIBS)
+else ifeq ($(UNAME_S), Darwin)
+    LIBS = $(COMMON_LIBS) $(MACOS_LIBS)
+    CXXFLAGS += $(MACOS_INCLUDE_PATH) $(MACOS_LIB_PATH)
+endif
+
+CXXFLAGS    +=  $(FLAGS)
+
+$(NAME):    $(OBJ)
+	g++ -o $(NAME) $(OBJ) $(CXXFLAGS) $(LIBS)
+
+all:        $(NAME)
 
 clean:
 	rm -f $(OBJ)
 
-fclean: 	clean
+fclean:     clean
 	rm -f $(NAME)
 
-re:    		fclean all
+re:         fclean all
