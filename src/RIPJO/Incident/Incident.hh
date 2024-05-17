@@ -17,7 +17,15 @@ namespace RIPJO {
                   std::size_t influenceCost, std::size_t unrestGain);
         ~Incident() = default;
 
-        
+        std::string getName() const;
+        void setName(std::string);
+        std::vector<std::size_t> getTargetDistricts() const;
+        void setTargetDistricts(const std::vector<std::size_t> &);
+        std::size_t getInfluenceCost() const;
+        void setInfluenceCost(std::size_t);
+        std::size_t getUnrestGain() const;
+        void setUnrestGain(std::size_t);
+
     protected:
         std::string _name;
         std::vector<std::size_t> _targetDistricts;
