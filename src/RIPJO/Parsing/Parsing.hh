@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "../Overview/Overview.hh"
+
 #include <cstddef>
 #include <libconfig.h++>
 #include <vector>
@@ -21,7 +23,7 @@ namespace RIPJO {
             ~Parsing() = default;
 
             bool initialize(const std::string &filename);
-            void parseDistrict(const std::string &nameDistrict);
+            void parseDistrict(const std::string &nameDistrict, RIPJO::Overview &overview);
 
         protected:
 

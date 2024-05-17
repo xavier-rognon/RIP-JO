@@ -6,6 +6,7 @@
 */
 
 #include "District.hh"
+#include <cstddef>
 #include <vector>
 
 RIPJO::District::District(const std::string &name):
@@ -13,10 +14,13 @@ RIPJO::District::District(const std::string &name):
 {
 }
 
+RIPJO::District::District()
+{
+}
+
 void RIPJO::District::addIncident(RIPJO::Incident incident)
 {
     _incidentList.push_back(incident);
-    std::cout << _name << " " << _incidentList.size() << std::endl;
 }
 
 std::string RIPJO::District::getName() const

@@ -7,11 +7,13 @@
 
 #pragma once
 #include "../Incident/Incident.hh"
+#include <cstddef>
 
 namespace RIPJO {
 
     class District {
     public:
+        District();
         District(const std::string &name);
         ~District() = default;
 

@@ -28,7 +28,7 @@ bool RIPJO::Parsing::initialize(const std::string &filename) {
     return true;
 }
 
-void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict) {
+void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overview &overview) {
     try {
         const libconfig::Setting &root = cfg.getRoot();
         const libconfig::Setting &district = root[nameDistrict.c_str()];
@@ -46,6 +46,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict) {
             RIPJO::Incident incident(_name, _indexDistricts, _influenceCoast, _unrestGain);
             District.addIncident(incident);
         }
+        overview.addDistrict(District);
     } catch (const libconfig::SettingNotFoundException &nfex) {
         std::cerr << "Missing setting in configuration file." << std::endl;
     } catch (const libconfig::SettingTypeException &tex) {
