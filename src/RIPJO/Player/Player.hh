@@ -8,6 +8,7 @@
 #pragma once
 
 #include <iostream>
+#include <thread>
 
 namespace RIPJO {
     class Player {

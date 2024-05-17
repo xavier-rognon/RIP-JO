@@ -2,15 +2,21 @@
 ** EPITECH PROJECT, 2024
 ** RIP-JO
 ** File description:
-** main
+** main.cpp
 */
 
-#include <raylib.h>
+#include <iostream>
+#include <thread>
+#include <chrono>
+#include "RIPJO/Player/Player.hh"
+#include "RIPJO/Time/Time.hh"
+#include "unistd.h"
 
-#include "RIPJO/RIPJO.hh"
+int main() {
+    RIPJO::Player player;
+    RIPJO::Time time(player);
 
-int main(void)
-{
-    RIPJO::RIPJO game;
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::cout << "Player influence after 5 seconds: " << player.getInfluence() << std::endl;
     return 0;
 }

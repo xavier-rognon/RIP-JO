@@ -7,17 +7,21 @@
 
 #pragma once
 
+#include <mutex>
+#include <thread>
+#include "../Player/Player.hh"
+
 namespace RIPJO {
-
     class Time {
-
         public:
-            Time();
-            ~Time() = default;
-
-        protected:
+            Time(Player& player);
+            ~Time();
+            void addInfluencePeriodically();
 
         private:
-
+            std::thread _influenceThread;
+            std::mutex _mutex;
+            Player &_player;
+            bool _running;
     };
 }
