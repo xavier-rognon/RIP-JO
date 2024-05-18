@@ -9,15 +9,16 @@
 #include "../District/District.hh"
 #include <cmath>
 #include <iostream>
+#include <memory>
 
 RIPJO::Overview::Overview():
-    _player(RIPJO::Player()), _time(RIPJO::Time(_player))
+    _player(std::shared_ptr<RIPJO::Player> (new Player())), _time(RIPJO::Time(_player))
 {
 
 }
 
 RIPJO::Overview::Overview(const std::string &path):
-    _player(RIPJO::Player(path)), _time(RIPJO::Time(_player))
+    _player(std::shared_ptr<RIPJO::Player> (new Player(path))), _time(RIPJO::Time(_player))
 {
 }
 
