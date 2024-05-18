@@ -25,6 +25,7 @@ namespace RIPJO {
 
             bool initialize(const std::string &filename);
             void parseDistrict(const std::string &nameDistrict, RIPJO::Overview &overview);
+            void parseSave(const std::string &nameDistrict, RIPJO::Overview &overview);
 
         protected:
 

@@ -23,6 +23,10 @@ namespace RIPJO {
         std::string getName() const;
         std::size_t getUnrest() const;
         std::mutex &getMutex();
+        std::size_t getIncidentCount() const;
+        RIPJO::Incident operator[](std::size_t index) const;
+        RIPJO::Incident &operator[](std::size_t index);
+
 
     private:
         std::vector<RIPJO::Incident> _incidentList;
