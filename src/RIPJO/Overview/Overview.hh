@@ -30,7 +30,7 @@ namespace RIPJO {
         std::vector<std::shared_ptr<RIPJO::District>> &getDistrict(void);
 
     private:
-        std::shared_ptr<RIPJO::Player> _player;
+        Player _player;
         Time _time;
         std::vector<std::shared_ptr<RIPJO::District>> _districts;
     };

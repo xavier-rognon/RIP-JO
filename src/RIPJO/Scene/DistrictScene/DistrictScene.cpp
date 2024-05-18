@@ -90,4 +90,3 @@ void RIPJO::DistrictScene::keyHandling(void)
             std::cerr << "[DEBUG] Doing sth" << std::endl;
     }
 }
-

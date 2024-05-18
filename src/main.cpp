@@ -5,6 +5,7 @@
 ** main.cpp
 */
 
+#include <future>
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -26,6 +27,6 @@ int main(int argc, char **argv) {
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars", overview);
     parser.parseDistrict("Champs-elysee", overview);
-    RIPJO::RIPJO game(overview);
+    RIPJO::RIPJO game(std::shared_ptr<RIPJO::Overview>);
     return 0;
 }

@@ -6,13 +6,15 @@
 */
 
 #include "RIPJO.hh"
+#include "Overview/Overview.hh"
+#include <memory>
 
 std::unique_ptr<RIPJO::IScene> createMainMenu()
 {
     return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
 }
 
-RIPJO::RIPJO::RIPJO(Overview overview):
+RIPJO::RIPJO::RIPJO(std::shared_ptr<Overview> overview):
     _overview(overview), _currentScene(0)
 {
     setWindow();
@@ -55,7 +57,7 @@ void RIPJO::RIPJO::setWindow(void)
 void RIPJO::RIPJO::loadScenes(void)
 {
     _scenes.push_back(createMainMenu());
-    for (auto district: _overview.getDistrict()) {
+    for (auto district: _overview->getDistrict()) {
         _scenes.push_back(std::unique_ptr<DistrictScene> (new DistrictScene(district)));
         _scenes.back()->loadModel();
     }

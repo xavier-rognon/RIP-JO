@@ -9,16 +9,15 @@
 #include "../District/District.hh"
 #include <cmath>
 #include <iostream>
-#include <memory>
 
 RIPJO::Overview::Overview():
-    _player(std::shared_ptr<RIPJO::Player> (new Player())), _time(RIPJO::Time(_player))
+    _player(RIPJO::Player()), _time(RIPJO::Time(_player))
 {
 
 }
 
 RIPJO::Overview::Overview(const std::string &path):
-    _player(std::shared_ptr<RIPJO::Player> (new Player(path))), _time(RIPJO::Time(_player))
+    _player(RIPJO::Player(path)), _time(RIPJO::Time(_player))
 {
 }
 
@@ -36,7 +35,7 @@ std::size_t RIPJO::Overview::getNbDistrict() const
 
 std::size_t RIPJO::Overview::getPlayersInfluence() const
 {
-    return _player->getInfluence();
+    return _player.getInfluence();
 }
 
 std::shared_ptr<RIPJO::District> RIPJO::Overview::operator[](std::size_t index) const
@@ -55,5 +54,5 @@ std::vector<std::shared_ptr<RIPJO::District>> &RIPJO::Overview::getDistrict(void
 
 void RIPJO::Overview::setPlayerInfluence(std::size_t influence)
 {
-    _player->setInfluence(influence);
+    _player.setInfluence(influence);
 }

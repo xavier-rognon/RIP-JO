@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <future>
 #include <iostream>
 #include <map>
 #include <vector>
@@ -26,7 +27,7 @@ namespace RIPJO {
     class RIPJO {
 
     public:
-        RIPJO(Overview overview);
+        RIPJO(std::shared_ptr<Overview> overview);
         ~RIPJO();
 
 
@@ -36,7 +37,7 @@ namespace RIPJO {
 
         void loadScenes(void);
 
-        Overview _overview;
+        std::shared_ptr<Overview> _overview;
         std::size_t _currentScene;
         std::vector<std::unique_ptr<IScene>> _scenes;
     };
