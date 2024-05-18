@@ -2,27 +2,29 @@
 ** EPITECH PROJECT, 2024
 ** RIP-JO
 ** File description:
-** DistricScene
+** DistrictScene
 */
 
-#include "DistricScene.hh"
+#include "DistrictScene.hh"
 
-RIPJO::DistricScene::DistricScene(std::shared_ptr<RIPJO::District> district):
-    _district(district)
+RIPJO::DistrictScene::DistrictScene(std::shared_ptr<RIPJO::District> district):
+    _district(district), _lastMousePosition((Vector2){0,0})
 {
     setCamera();
 }
 
-RIPJO::DistricScene::~DistricScene()
+RIPJO::DistrictScene::~DistrictScene()
 {
 }
 
-void RIPJO::DistricScene::computeLogic(std::size_t &currentScene)
+void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
 }
 
-void RIPJO::DistricScene::displayElements(void)
+void RIPJO::DistrictScene::displayElements(void)
 {
+    mouseMotionHandling();
+    keyHandling();
     BeginMode3D(_camera);
 
     for (auto &model: _district->getModel()) {
@@ -34,7 +36,12 @@ void RIPJO::DistricScene::displayElements(void)
     EndMode3D();
 }
 
-void RIPJO::DistricScene::setCamera(void)
+void RIPJO::DistrictScene::loadModel(void)
+{
+    _district->loadModels();
+}
+
+void RIPJO::DistrictScene::setCamera(void)
 {
     _camera.position = (Vector3){50.0f, 50.0f, 50.0f};
     _camera.target = (Vector3){0.0f, 10.0f, 0.0f};
@@ -44,10 +51,10 @@ void RIPJO::DistricScene::setCamera(void)
     UpdateCamera(&_camera, CAMERA_FIRST_PERSON);
 }
 
-void RIPJO::DistricScene::mouseMotionHandling(Vector2 &lastMousePosition)
+void RIPJO::DistrictScene::mouseMotionHandling(void)
 {
     Vector2 currentMousePosition = GetMousePosition();
-    Vector2 delta = {currentMousePosition.x - lastMousePosition.x, currentMousePosition.y - lastMousePosition.y};
+    Vector2 delta = {currentMousePosition.x - _lastMousePosition.x, currentMousePosition.y - _lastMousePosition.y};
     Vector3 forward;
     Vector3 right;
     float wheel = GetMouseWheelMove();
@@ -65,10 +72,10 @@ void RIPJO::DistricScene::mouseMotionHandling(Vector2 &lastMousePosition)
     }
     _camera.position.y -= wheel * 1.0f;
     _camera.target.y -= wheel * 1.0f;
-    lastMousePosition = currentMousePosition;
+    _lastMousePosition = currentMousePosition;
 }
 
-void RIPJO::DistricScene::keyHandling(void)
+void RIPJO::DistrictScene::keyHandling(void)
 {
     bool hit = false;
 

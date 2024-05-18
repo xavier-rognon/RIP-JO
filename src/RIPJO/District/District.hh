@@ -30,6 +30,7 @@ namespace RIPJO {
 
         void addModel(Vector3 coo, Vector3 dir, std::string model);
         void displayDistrict(void);
+        void loadModels(void);
         std::vector<Model3D> getModel(void) const;
 
     private:

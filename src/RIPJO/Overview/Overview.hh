@@ -15,7 +15,9 @@ namespace RIPJO {
     public:
         Overview() = default;
         ~Overview() = default;
+
         void addDistrict(std::shared_ptr<RIPJO::District> district);
+        std::vector<std::shared_ptr<RIPJO::District>> &getDistrict(void);
 
     private:
         std::vector<std::shared_ptr<RIPJO::District>> _districts;

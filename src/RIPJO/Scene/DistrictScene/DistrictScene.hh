@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** RIP-JO
 ** File description:
-** DistricScene
+** DistrictScene
 */
 
 #pragma once
@@ -11,22 +11,24 @@
 
 namespace RIPJO
 {
-    class DistricScene : public IScene {
+    class DistrictScene : public IScene {
         public:
-            DistricScene(std::shared_ptr<RIPJO::District> district);
-            ~DistricScene();
+            DistrictScene(std::shared_ptr<RIPJO::District> district);
+            ~DistrictScene();
 
             void computeLogic(std::size_t &currentScene);
             void displayElements(void);
+            void loadModel(void);
 
             void setCamera(void);
 
             void keyHandling(void);
-            void mouseMotionHandling(Vector2 &lastMousePosition);
+            void mouseMotionHandling(void);
 
         protected:
         private:
             std::shared_ptr<RIPJO::District> _district;
             Camera3D _camera;
+            Vector2 _lastMousePosition;
     };   
 }

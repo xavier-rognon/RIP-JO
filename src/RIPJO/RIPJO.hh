@@ -16,6 +16,8 @@
 #include "Overview/Overview.hh"
 #include "District/District.hh"
 #include "Scene/IScene.hh"
+#include "Scene/DistrictScene/DistrictScene.hh"
+#include "Scene/MainMenu/MainMenu.hh"
 #include <memory>
 #include <raylib.h>
 #include <raymath.h>
@@ -31,7 +33,8 @@ namespace RIPJO {
     private:
         void setWindow(void);
         void gameLoop(void);
-        void listScene(void);
+
+        void loadScenes(void);
 
         Overview _overview;
         std::size_t _currentScene;

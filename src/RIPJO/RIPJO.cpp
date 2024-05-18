@@ -6,10 +6,6 @@
 */
 
 #include "RIPJO.hh"
-#include "Scene/IScene.hh"
-#include "Scene/MainMenu/MainMenu.hh"
-#include <memory>
-#include <raylib.h>
 
 std::unique_ptr<RIPJO::IScene> createMainMenu()
 {
@@ -28,37 +24,39 @@ RIPJO::RIPJO::~RIPJO()
     CloseWindow();
 }
 
-//! Game Handling: _______________________________________________________________________________________________________________________________________________________ 
 void RIPJO::RIPJO::gameLoop()
 {
-    _scenes.push_back(createMainMenu());
-    // INFO: loop while the window is open
+    loadScenes();
+
     while (WindowShouldClose() == false) {
         _scenes[_currentScene]->computeLogic(_currentScene);
-        // INFO: start the drawing process
         BeginDrawing();
-    
+
         ClearBackground(RAYWHITE);
+        if (IsKeyPressed(KEY_A)) {
+            _currentScene += 1;
+            _currentScene %= _scenes.size();
+        }
         _scenes[_currentScene]->displayElements();
-    
-        // INFO: end the drawing process
+
         EndDrawing();
     }
 }
 
-//! Set Values: _______________________________________________________________________________________________________________________________________________________ 
-
 void RIPJO::RIPJO::setWindow(void)
 {
-    // INFO: this part setups the window info
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "RIP JO 2024");
     SetTargetFPS(60);
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
-    // INFO: start the gameloop
     InitAudioDevice();
 }
 
-void RIPJO::RIPJO::listScene(void)
+void RIPJO::RIPJO::loadScenes(void)
 {
+    _scenes.push_back(createMainMenu());
+    for (auto district: _overview.getDistrict()) {
+        _scenes.push_back(std::unique_ptr<DistrictScene> (new DistrictScene(district)));
+        _scenes.back()->loadModel();
+    }
 }

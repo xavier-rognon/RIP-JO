@@ -44,3 +44,7 @@ void RIPJO::MainMenu::displayElements()
                (GetScreenHeight() - _logo.height) / 5, WHITE);
     _slider.Draw();
 }
+
+void RIPJO::MainMenu::loadModel(void)
+{
+}

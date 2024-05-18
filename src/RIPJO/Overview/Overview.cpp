@@ -14,3 +14,8 @@ void RIPJO::Overview::addDistrict(std::shared_ptr<RIPJO::District> district)
     _districts.push_back(district);
     std::cout << "District added : " << "size " << _districts.size() << " name : " << district->getName() << std::endl;
 }
+
+std::vector<std::shared_ptr<RIPJO::District>> &RIPJO::Overview::getDistrict(void)
+{
+    return _districts;
+}

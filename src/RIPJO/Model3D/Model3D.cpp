@@ -11,34 +11,12 @@ RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir):
 	_modelFilepath("./assets/3DObject/models/" + model + ".obj") ,_position(coo),
 	_direction(dir), _displayBound(false), _scale(1.0f), _eventId("")
 {
-	// std::string tmp = "./assets/3DObject/models/" + model + ".obj";
-
-	// if (!FileExists(tmp.c_str())) {
-	//     std::cerr << "\033[31mModel file does not exist: " << tmp<< "\033[0m" << std::endl;
-	// 	exit(84);
-	// }
-	// if (!FileExists("./assets/3DObject/textures/textures.png")) {
-	//     std::cerr << "\033[31mTexture file does not exist: ./assets/3DObject/textures/textures.png\033[0m" << std::endl;
-	// 	exit(84);
-	// }
-	// loadModel();
 }
 
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, std::string eventId):
 	_modelFilepath("./assets/3DObject/models/" + model + ".obj"), _position(coo),
 	_direction(dir), _displayBound(false), _scale(1.0f), _eventId(eventId)
 {
-	// std::string tmp = "./assets/3DObject/models/" + model + ".obj";
-
-	// if (!FileExists(tmp.c_str())) {
-	//     std::cerr << "\033[31mModel file does not exist: " << tmp << "\033[0m" << std::endl;
-	// 	exit(84);
-	// }
-	// if (!FileExists("./assets/3DObject/textures/textures.png")) {
-	//     std::cerr << "\033[31mTexture file does not exist: ./assets/3DObject/textures/textures.png\033[0m" << std::endl;
-	// 	exit(84);
-	// }
-	// loadModel();
 }
 
 RIPJO::Model3D::~Model3D(void)
@@ -47,7 +25,6 @@ RIPJO::Model3D::~Model3D(void)
 
 void RIPJO::Model3D::loadModel(void)
 {
-    // std::cerr << "\t\t\t\033[31m[DEBUG]\033[0m" << std::endl;
 
 	_model = LoadModel(_modelFilepath.c_str());
 	_texture = LoadTexture("./assets/3DObject/textures/textures.png");

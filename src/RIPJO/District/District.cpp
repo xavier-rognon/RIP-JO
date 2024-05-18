@@ -46,6 +46,13 @@ void RIPJO::District::displayDistrict(void)
     }
 }
 
+void RIPJO::District::loadModels(void)
+{
+    for (auto &model : _models) {
+        model.loadModel();
+    }
+}
+
 std::vector<RIPJO::Model3D> RIPJO::District::getModel(void) const
 {
     return _models;
