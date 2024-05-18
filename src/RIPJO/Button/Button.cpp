@@ -30,7 +30,7 @@ void RIPJO::Button::Draw_Button()
 
 void RIPJO::Button::Draw_Text()
 {
-    // INFO : Draw Text
+    // INFO : Draw Text and switch color
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
         DrawText(_text.c_str(), _btnBounds.x + (_button.width - MeasureText(_text.c_str(), 15)) / 2,
             _btnBounds.y + (_button.height - MeasureTextEx(GetFontDefault(), _text.c_str(), 15, 0).y) / 2, 15, RED);
