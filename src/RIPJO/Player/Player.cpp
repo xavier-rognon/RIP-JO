@@ -22,3 +22,8 @@ void RIPJO::Player::setInfluence(std::size_t influence)
 {
     _influence = influence;
 }
+
+std::mutex &RIPJO::Player::getMutex()
+{
+    return _mutex;
+}

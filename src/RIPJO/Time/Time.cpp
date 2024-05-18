@@ -7,7 +7,6 @@
 
 #include "Time.hh"
 #include <chrono>
-#include <mutex>
 
 RIPJO::Time::Time(Player &player):
     _player(player), _running(true)
@@ -26,7 +25,7 @@ void RIPJO::Time::addInfluencePeriodically()
 {
     while (_running) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::unique_lock<std::mutex> lock(_mutex);
+        std::unique_lock<std::mutex> lock(_player.getMutex());
         std::size_t influence = _player.getInfluence();
         influence += 1;
         _player.setInfluence(influence);

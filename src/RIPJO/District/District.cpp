@@ -10,7 +10,7 @@
 #include <vector>
 
 RIPJO::District::District(const std::string &name, std::size_t unrest):
-    _name(name), _unrest(unrest)
+    _unrest(unrest), _name(name)
 {
 }
 
@@ -22,4 +22,9 @@ void RIPJO::District::addIncident(RIPJO::Incident incident)
 std::string RIPJO::District::getName() const
 {
     return _name;
+}
+
+std::mutex &RIPJO::District::getMutex()
+{
+    return _mutex;
 }

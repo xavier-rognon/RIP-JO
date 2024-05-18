@@ -8,6 +8,7 @@
 #pragma once
 #include "../Incident/Incident.hh"
 #include <cstddef>
+#include <mutex>
 
 namespace RIPJO {
 
@@ -21,9 +22,11 @@ namespace RIPJO {
 
         std::string getName() const;
         std::size_t getUnrest() const;
+        std::mutex &getMutex();
 
     private:
         std::vector<RIPJO::Incident> _incidentList;
+        std::mutex _mutex;
         std::size_t _unrest;
         std::string _name;
     };

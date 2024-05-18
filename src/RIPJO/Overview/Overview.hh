@@ -7,21 +7,17 @@
 
 #pragma once
 #include "../District/District.hh"
-
 #include <vector>
 
 namespace RIPJO {
 
     class Overview {
+    public:
+        Overview();
+        ~Overview() = default;
+        void addDistrict(RIPJO::District district);
 
-        public:
-            Overview();
-            ~Overview() = default;
-            void addDistrict(RIPJO::District district);
-
-        protected:
-
-        private:
-            std::vector<RIPJO::District> _districts;
+    private:
+        std::vector<RIPJO::District> _districts;
     };
 }
