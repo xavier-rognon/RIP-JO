@@ -28,7 +28,7 @@ bool RIPJO::Parsing::initialize(const std::string &filename) {
     return true;
 }
 
-void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overview &overview) {
+void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, std::shared_ptr<Overview> overview) {
     try {
         const libconfig::Setting &root = cfg.getRoot();
         const libconfig::Setting &district = root[nameDistrict.c_str()];
@@ -47,7 +47,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overv
             RIPJO::Incident incident(_name, _indexDistricts, _influenceCoast, _unrestGain);
             districtObj->addIncident(incident);
         }
-        overview.addDistrict(districtObj);
+        overview->addDistrict(districtObj);
         for (std::size_t i = 0; i < modelsSetting.getLength(); i++) {
             const libconfig::Setting &modelSetting = modelsSetting[i];
             _x = modelSetting["x"];
@@ -66,7 +66,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overv
     }
 }
 
-void RIPJO::Parsing::parseSave(const std::string &nameDistrict, RIPJO::Overview &overview)
+void RIPJO::Parsing::parseSave(const std::string &nameDistrict, std::shared_ptr<Overview> overview)
 {
     try {
         const libconfig::Setting &root = cfg.getRoot();
@@ -88,7 +88,7 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, RIPJO::Overview 
             RIPJO::Incident incident(_name, _indexDistricts, _influenceCoast, _unrestGain);
             districtObj->addIncident(incident);
         }
-        overview.addDistrict(districtObj);
+        overview->addDistrict(districtObj);
         for (std::size_t i = 0; i < modelsSetting.getLength(); i++) {
             const libconfig::Setting &modelSetting = modelsSetting[i];
             _x = modelSetting["x"];

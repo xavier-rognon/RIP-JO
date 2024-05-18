@@ -7,6 +7,7 @@
 
 #include <future>
 #include <iostream>
+#include <memory>
 #include <thread>
 #include <chrono>
 #include "RIPJO/Overview/Overview.hh"
@@ -23,10 +24,10 @@ int main(int argc, char **argv) {
         return 84;
     }
     RIPJO::Parsing parser;
-    RIPJO::Overview overview;
+    auto overview = std::make_shared<RIPJO::Overview>(new RIPJO::Overview);
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars", overview);
     parser.parseDistrict("Champs-elysee", overview);
-    RIPJO::RIPJO game(std::shared_ptr<RIPJO::Overview>);
+    RIPJO::RIPJO game(overview);
     return 0;
 }
