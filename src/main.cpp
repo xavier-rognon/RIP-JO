@@ -24,8 +24,9 @@ int main(int argc, char **argv) {
     RIPJO::Parsing parser;
     RIPJO::Overview overview;
     parser.initialize("config/event.format");
-    parser.parseDistrict("Champs-mars", overview);
-    parser.parseDistrict("Champs-elysee", overview);
-    RIPJO::RIPJO game;
+    parser.parsePlayer(overview);
+    parser.parseSave("Champs-mars", overview);
+    parser.parseSave("Champs-elysee", overview);
+    //RIPJO::RIPJO game;
     return 0;
 }

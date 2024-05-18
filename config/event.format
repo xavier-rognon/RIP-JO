@@ -1,4 +1,5 @@
-Player : {
+Player :
+{
        influence = 42;
 };
 

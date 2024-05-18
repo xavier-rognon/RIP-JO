@@ -57,8 +57,6 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overv
             _dy = modelSetting["dy"];
             _dz = modelSetting["dz"];
             _model = modelSetting["model"].c_str();
-            //Gabin appel ici les methode add de ce que tu as besoin sur le district
-            //le for fait 1 ligne de model par ligne
         }
     } catch (const libconfig::SettingNotFoundException &nfex) {
         std::cerr << "Missing setting in configuration file." << std::endl;
@@ -74,12 +72,14 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, RIPJO::Overview 
         const libconfig::Setting &district = root[nameDistrict.c_str()];
         const libconfig::Setting &eventsSetting = district["event"];
         const libconfig::Setting &modelsSetting = district["model"];
-        auto districtObj = std::make_shared<RIPJO::District>(nameDistrict);
+        int unrest = 0;
 
+        district.lookupValue("unrest", unrest);
+        auto districtObj = std::make_shared<RIPJO::District>(nameDistrict, unrest);
         for (std::size_t i = 0; i < eventsSetting.getLength(); i++) {
             const libconfig::Setting &eventSetting = eventsSetting[i];
             const libconfig::Setting &indexDistrict = eventSetting["indexDistrict"];
-            for (int j = 0; j < indexDistrict.getLength(); ++j)
+            for (int j = 0; j < indexDistrict.getLength(); j++)
                 _indexDistricts.push_back(indexDistrict[j]);
             _influenceCoast = eventSetting["influenceCoast"];
             _unrestGain = eventSetting["unrestGain"];
@@ -97,9 +97,24 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, RIPJO::Overview 
             _dy = modelSetting["dy"];
             _dz = modelSetting["dz"];
             _model = modelSetting["model"].c_str();
-            //Gabin appel ici les methode add de ce que tu as besoin sur le district
-            //le for fait 1 ligne de model par ligne
         }
+    } catch (const libconfig::SettingNotFoundException &nfex) {
+        std::cerr << "Missing setting in configuration file." << std::endl;
+    } catch (const libconfig::SettingTypeException &tex) {
+        std::cerr << "Type error in configuration file." << std::endl;
+    }
+}
+
+void RIPJO::Parsing::parsePlayer(RIPJO::Overview &overview)
+{
+    try {
+        const libconfig::Setting &root = cfg.getRoot();
+        const libconfig::Setting &player = root["Player"];
+        int influence = 0;
+        player.lookupValue("influence", influence);
+
+        overview.setPlayerInfluence(influence);
+        std::cout << "influence " << influence << std::endl;
     } catch (const libconfig::SettingNotFoundException &nfex) {
         std::cerr << "Missing setting in configuration file." << std::endl;
     } catch (const libconfig::SettingTypeException &tex) {

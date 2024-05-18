@@ -47,3 +47,8 @@ std::shared_ptr<RIPJO::District> &RIPJO::Overview::operator[](std::size_t index)
 {
     return _districts[index];
 }
+
+void RIPJO::Overview::setPlayerInfluence(std::size_t influence)
+{
+    _player.setInfluence(influence);
+}
