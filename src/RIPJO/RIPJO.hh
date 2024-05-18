@@ -14,6 +14,8 @@
 #include "Utils/Utils.hh"
 #include "Model3D/Model3D.hh"
 #include "District/District.hh"
+#include "Scene/IScene.hh"
+#include <memory>
 #include <raylib.h>
 #include <raymath.h>
 
@@ -42,6 +44,8 @@ namespace RIPJO {
         // std::map<std::string, std::pair<Model, Vector3>> _models;    //! Deprecated
         // std::map<std::string, Texture2D> _textures;                  //! Deprecated
         // std::map<std::string, std::pair<BoundingBox, bool>> _bounds; //! Deprecated
+        std::size_t _currentScene;
+        std::vector<std::unique_ptr<IScene>> _scenes;
         Camera _camera;
     };
 }

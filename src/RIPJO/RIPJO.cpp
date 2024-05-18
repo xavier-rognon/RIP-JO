@@ -6,10 +6,20 @@
 */
 
 #include "RIPJO.hh"
+#include "Scene/IScene.hh"
+#include "Scene/MainMenu/MainMenu.hh"
+#include <memory>
 
-RIPJO::RIPJO::RIPJO()
+std::unique_ptr<RIPJO::IScene> createMainMenu()
+{
+    return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
+}
+
+RIPJO::RIPJO::RIPJO():
+    _currentScene(0)
 {
     setWindow();
+    _scenes.push_back(createMainMenu());
     gameLoop();
 }
 
@@ -19,22 +29,22 @@ RIPJO::RIPJO::~RIPJO()
 }
 
 //! Game Handling: _______________________________________________________________________________________________________________________________________________________ 
-void RIPJO::RIPJO::gameLoop(void)
+void RIPJO::RIPJO::gameLoop()
 {
-    Vector2 lastMousePosition = GetMousePosition();
     // INFO: loop while the window is open
-    while (!WindowShouldClose()) {
-
-        mouseMotionHandling(lastMousePosition);
-        keyHandling();
+    while (WindowShouldClose() == false) {
+        _scenes[_currentScene]->computeLogic(_currentScene);
         // INFO: start the drawing process
         BeginDrawing();
         ClearBackground(RAYWHITE);
+
         BeginMode3D(_camera);
         // displayModels(); //! Deprecated
         // displayBounds(); //! Deprecated
         DrawGrid(20, 10.0f);
         EndMode3D();
+    
+        _scenes[_currentScene]->displayElements();
         // INFO: end the drawing process
         EndDrawing();
     }
@@ -100,6 +110,7 @@ void RIPJO::RIPJO::keyHandling(void)
 void RIPJO::RIPJO::setWindow(void)
 {
     // INFO: this part setups the window info
+    std::cout << "jaj" << std::endl;
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "RIP JO 2024");
     SetTargetFPS(60);
     if (IsWindowFullscreen() == false)
