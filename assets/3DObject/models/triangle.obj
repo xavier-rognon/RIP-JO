@@ -1,6 +1,6 @@
 # Blender 4.1.1
 # www.blender.org
-mtllib triangleBuilding.mtl
+mtllib triangle.mtl
 o NurbsPath
 v 3.280990 0.000000 0.000000
 v 4.000000 0.000000 0.719010
