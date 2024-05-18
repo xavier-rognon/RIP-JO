@@ -7,9 +7,12 @@
 
 #pragma once
 
+#include "../Overview/Overview.hh"
+
 #include <cstddef>
 #include <libconfig.h++>
 #include <vector>
+#include <memory>
 #include <string>
 
 namespace RIPJO {
@@ -21,7 +24,7 @@ namespace RIPJO {
             ~Parsing() = default;
 
             bool initialize(const std::string &filename);
-            void parseDistrict(const std::string &nameDistrict);
+            void parseDistrict(const std::string &nameDistrict, RIPJO::Overview &overview);
 
         protected:
 
@@ -31,5 +34,12 @@ namespace RIPJO {
             int _unrestGain;
             int _influenceCoast;
             std::vector<int> _indexDistricts;
+            int _x;
+            int _y;
+            int _z;
+            int _dx;
+            int _dy;
+            int _dz;
+            std::string _model;
     };
 }

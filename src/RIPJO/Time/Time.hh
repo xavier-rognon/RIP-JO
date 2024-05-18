@@ -20,7 +20,6 @@ namespace RIPJO {
 
         private:
             std::thread _influenceThread;
-            std::mutex _mutex;
             Player &_player;
             bool _running;
     };

@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <thread>
+#include <mutex>
 
 namespace RIPJO {
     class Player {
@@ -18,7 +19,10 @@ namespace RIPJO {
 
         std::size_t getInfluence() const;
         void  setInfluence(std::size_t);
+        std::mutex &getMutex();
+        
     private:
         std::size_t _influence;
+        std::mutex _mutex; 
     };
 }

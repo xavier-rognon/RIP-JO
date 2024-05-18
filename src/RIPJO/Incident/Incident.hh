@@ -21,8 +21,8 @@ namespace RIPJO {
                   std::size_t influenceCost, std::size_t unrestGain);
         ~Incident() = default;
 
-        int executeIncident(std::mutex &mutex, std::size_t &influence,
-                            std::size_t &unrest) const;
+        int executeIncident(std::mutex &pMutex, std::size_t &influence,
+                            std::mutex &dMutex, std::size_t &unrest) const;
 
         std::string getName() const;
         void setName(std::string);
