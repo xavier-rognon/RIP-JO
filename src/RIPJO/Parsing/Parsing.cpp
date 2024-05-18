@@ -57,14 +57,6 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overv
             _dy = modelSetting["dy"];
             _dz = modelSetting["dz"];
             _model = modelSetting["model"].c_str();
-            std::cout << "Model added" << std::endl;
-            std::cout << "x: " << _x << std::endl;
-            std::cout << "y: " << _y << std::endl;
-            std::cout << "z: " << _z << std::endl;
-            std::cout << "dx: " << _dx << std::endl;
-            std::cout << "dy: " << _dy << std::endl;
-            std::cout << "dz: " << _dz << std::endl;
-            std::cout << "model: " << _model << std::endl;
             //Gabin appel ici les methode add de ce que tu as besoin sur le district
             //le for fait 1 ligne de model par ligne
         }

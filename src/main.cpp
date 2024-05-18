@@ -16,8 +16,6 @@
 #include "unistd.h"
 
 int main() {
-    RIPJO::Player player;
-    RIPJO::Time time(player);
     RIPJO::Parsing parser;
     RIPJO::Overview overview;
 

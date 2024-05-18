@@ -15,14 +15,15 @@ namespace RIPJO {
     class Player {
     public:
         Player();
+        Player(const std::string &path);
         ~Player() = default;
 
         std::size_t getInfluence() const;
         void  setInfluence(std::size_t);
         std::mutex &getMutex();
-        
+
     private:
         std::size_t _influence;
-        std::mutex _mutex; 
+        std::mutex _mutex;
     };
 }

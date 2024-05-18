@@ -7,10 +7,23 @@
 
 #include "Overview.hh"
 #include "../District/District.hh"
+#include <cmath>
 #include <iostream>
+
+RIPJO::Overview::Overview():
+    _player(RIPJO::Player()), _time(RIPJO::Time(_player))
+{
+
+}
+
+RIPJO::Overview::Overview(const std::string &path):
+    _player(RIPJO::Player(path)), _time(RIPJO::Time(_player))
+{
+}
 
 void RIPJO::Overview::addDistrict(std::shared_ptr<RIPJO::District> district)
 {
     _districts.push_back(district);
+    _time.addDistrict(district);
     std::cout << "District added : " << "size " << _districts.size() << " name : " << district->getName() << std::endl;
 }

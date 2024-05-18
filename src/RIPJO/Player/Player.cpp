@@ -7,10 +7,16 @@
 
 #include "Player.hh"
 #include <chrono>
+#include <mutex>
 
 RIPJO::Player::Player():
     _influence(0)
 {
+}
+
+RIPJO::Player::Player(const std::string &path)
+{
+    //Faire un truc pour load le player
 }
 
 std::size_t RIPJO::Player::getInfluence() const

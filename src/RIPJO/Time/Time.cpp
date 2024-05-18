@@ -7,6 +7,7 @@
 
 #include "Time.hh"
 #include <chrono>
+#include <iostream>
 
 RIPJO::Time::Time(Player &player):
     _player(player), _running(true)
@@ -30,4 +31,11 @@ void RIPJO::Time::addInfluencePeriodically()
         influence += 1;
         _player.setInfluence(influence);
     }
+}
+
+void RIPJO::Time::addDistrict(std::shared_ptr<District> district)
+{
+    _districts.push_back(district);
+    std::cout << "District added" << std::endl;
+    std::cout << "district name " << district->getName() << std::endl;
 }
