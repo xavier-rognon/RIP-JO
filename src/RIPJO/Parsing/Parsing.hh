@@ -12,6 +12,7 @@
 #include <cstddef>
 #include <libconfig.h++>
 #include <vector>
+#include <memory>
 #include <string>
 
 namespace RIPJO {

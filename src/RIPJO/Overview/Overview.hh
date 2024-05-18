@@ -8,6 +8,7 @@
 #pragma once
 #include "../District/District.hh"
 #include <vector>
+#include <memory>
 
 namespace RIPJO {
 
