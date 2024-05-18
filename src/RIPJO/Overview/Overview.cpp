@@ -42,3 +42,7 @@ std::shared_ptr<RIPJO::District> &RIPJO::Overview::operator[](std::size_t index)
 {
     return _districts[index];
 }
+std::vector<std::shared_ptr<RIPJO::District>> &RIPJO::Overview::getDistrict(void)
+{
+    return _districts;
+}

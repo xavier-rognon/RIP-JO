@@ -6,8 +6,7 @@ Champs-mars :
         );
 
         model = (
-            {x = 0; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "tree"},
-            {x = 0; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "building1"}
+            {x = 0; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "stade"}
         );
 };
 
@@ -23,7 +22,6 @@ Champs-elysee :
         );
 
         model = (
-            {x = 42; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "tree"},
-            {x = 0; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "building1"}
+            {x = 42; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "eiffel"}
         );
 };

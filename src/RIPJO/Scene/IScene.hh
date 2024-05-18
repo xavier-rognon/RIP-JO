@@ -15,6 +15,7 @@ namespace RIPJO {
     class IScene {
     public:
         virtual void computeLogic(std::size_t &currentScene) = 0;
-        virtual void displayElements() = 0;
+        virtual void displayElements(void) = 0;
+        virtual void loadModel(void) = 0;
     };
 }

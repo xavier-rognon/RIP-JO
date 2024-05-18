@@ -53,3 +53,30 @@ RIPJO::Incident &RIPJO::District::operator[](std::size_t index)
 {
     return _incidentList.at(index);
 }
+
+void RIPJO::District::addModel(Vector3 coo, Vector3 dir, std::string model)
+{
+    Model3D tmp (model, coo, dir);
+
+    _models.push_back(tmp);
+}
+
+void RIPJO::District::displayDistrict(void)
+{
+    for (const auto &model : _models) {
+        model.DrawModel3D();
+        model.DrawHitBox();
+    }
+}
+
+void RIPJO::District::loadModels(void)
+{
+    for (auto &model : _models) {
+        model.loadModel();
+    }
+}
+
+std::vector<RIPJO::Model3D> RIPJO::District::getModel(void) const
+{
+    return _models;
+}
