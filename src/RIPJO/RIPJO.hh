@@ -36,7 +36,7 @@ namespace RIPJO {
         void setWindow(void);
         void gameLoop(void);
         void keyHandling(void);
-        void mouseMotionHandling(void);
+        void mouseMotionHandling(Vector2 &lastMousePosition);
 
         std::map<std::string, std::pair<Model, Vector3>> _models;
         std::map<std::string, Texture2D> _textures;

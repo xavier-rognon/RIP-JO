@@ -23,10 +23,11 @@ RIPJO::RIPJO::~RIPJO()
 //! Game Handling: _______________________________________________________________________________________________________________________________________________________ 
 void RIPJO::RIPJO::gameLoop(void)
 {
-
+    Vector2 lastMousePosition = GetMousePosition();
     // INFO: loop while the window is open
     while (!WindowShouldClose()) {
-        mouseMotionHandling();
+
+        mouseMotionHandling(lastMousePosition);
         keyHandling();
         // INFO: start the drawing process
         BeginDrawing();
@@ -41,9 +42,8 @@ void RIPJO::RIPJO::gameLoop(void)
     }
 }
 
-void RIPJO::RIPJO::mouseMotionHandling(void)
+void RIPJO::RIPJO::mouseMotionHandling(Vector2 &lastMousePosition)
 {
-    Vector2 lastMousePosition = GetMousePosition();
     Vector2 currentMousePosition = GetMousePosition();
     Vector2 delta = {currentMousePosition.x - lastMousePosition.x, currentMousePosition.y - lastMousePosition.y};
     Vector3 forward;
@@ -63,6 +63,7 @@ void RIPJO::RIPJO::mouseMotionHandling(void)
     }
     _camera.position.y -= wheel * 1.0f;
     _camera.target.y -= wheel * 1.0f;
+    lastMousePosition = currentMousePosition;
 }
 
 void RIPJO::RIPJO::keyHandling(void)
