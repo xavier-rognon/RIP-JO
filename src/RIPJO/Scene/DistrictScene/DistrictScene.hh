@@ -8,6 +8,7 @@
 #pragma once
 #include "../../District/District.hh"
 #include "../IScene.hh"
+#include <raylib.h>
 
 namespace RIPJO
 {

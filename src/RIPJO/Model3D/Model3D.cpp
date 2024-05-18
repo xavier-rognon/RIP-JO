@@ -7,15 +7,15 @@
 
 #include "Model3D.hh"
 
-RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir):
+RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, float scale):
 	_modelFilepath("./assets/3DObject/models/" + model + ".obj") ,_position(coo),
-	_direction(dir), _displayBound(false), _scale(1.0f), _eventId("")
+	_direction(dir), _displayBound(false), _scale(scale), _eventId("")
 {
 }
 
-RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, std::string eventId):
+RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, std::string eventId):
 	_modelFilepath("./assets/3DObject/models/" + model + ".obj"), _position(coo),
-	_direction(dir), _displayBound(false), _scale(1.0f), _eventId(eventId)
+	_direction(dir), _displayBound(false), _scale(scale), _eventId(eventId)
 {
 }
 

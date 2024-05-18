@@ -13,8 +13,8 @@
 namespace RIPJO {
     class Model3D {
         public:
-            Model3D(std::string model, Vector3 coo, Vector3 dir);
-            Model3D(std::string model, Vector3 coo, Vector3 dir, std::string eventId);
+            Model3D(std::string model, Vector3 coo, Vector3 dir, float scale);
+            Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, std::string eventId);
             ~Model3D(void);
 
             void loadModel(void);

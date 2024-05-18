@@ -56,8 +56,9 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, std::shared_
             _dx = modelSetting["dx"];
             _dy = modelSetting["dy"];
             _dz = modelSetting["dz"];
+            _scale = modelSetting["scale"];
             _model = modelSetting["model"].c_str();
-            districtObj->addModel((Vector3){_x * 1.f, _y * 1.f, _z * 1.f}, (Vector3){_dx * 1.f, _dy * 1.f, _dz * 1.f}, _model);
+            districtObj->addModel((Vector3){_x * 1.f, _y * 1.f, _z * 1.f}, (Vector3){_dx * 1.f, _dy * 1.f, _dz * 1.f}, _model, _scale);
         }
     } catch (const libconfig::SettingNotFoundException &nfex) {
         std::cerr << "Missing setting in configuration file." << std::endl;
