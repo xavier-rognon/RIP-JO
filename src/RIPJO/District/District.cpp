@@ -9,12 +9,8 @@
 #include <cstddef>
 #include <vector>
 
-RIPJO::District::District(const std::string &name):
-    _name(name)
-{
-}
-
-RIPJO::District::District()
+RIPJO::District::District(const std::string &name, std::size_t unrest):
+    _name(name), _unrest(unrest)
 {
 }
 
