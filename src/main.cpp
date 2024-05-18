@@ -15,15 +15,17 @@
 #include "RIPJO/Time/Time.hh"
 #include "unistd.h"
 
-int main() {
+int main(int argc, char **argv) {
+
+    if (argc > 1) {
+        std::cerr << "Usage: ./RIP-JO for start game." << std::endl;
+        return 84;
+    }
     RIPJO::Parsing parser;
     RIPJO::Overview overview;
-
-    // std::this_thread::sleep_for(std::chrono::seconds(5));
-    // std::cout << "Player influence after 5 seconds: " << player.getInfluence() << std::endl;
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars", overview);
     parser.parseDistrict("Champs-elysee", overview);
-    RIPJO::RIPJO jaj;
+    RIPJO::RIPJO game;
     return 0;
 }

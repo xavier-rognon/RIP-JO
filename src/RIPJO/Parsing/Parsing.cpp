@@ -34,7 +34,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overv
         const libconfig::Setting &district = root[nameDistrict.c_str()];
         const libconfig::Setting &eventsSetting = district["event"];
         const libconfig::Setting &modelsSetting = district["model"];
-        auto districtObj = std::make_shared<RIPJO::District>(nameDistrict);
+        auto districtObj = std::make_shared<RIPJO::District>(nameDistrict, 4);
 
         for (std::size_t i = 0; i < eventsSetting.getLength(); i++) {
             const libconfig::Setting &eventSetting = eventsSetting[i];
