@@ -133,6 +133,7 @@ void RIPJO::RIPJO::handle3DObjects(void)
 
 void RIPJO::RIPJO::loadModels(void)
 {
+    // ! Refactor : Load Model du district (avec reference (peut etre pas besoin j etais fatigue))
     _models["tree"] =   {LoadModel("./assets/3DObject/models/tree.obj"), {0., 0., 0.}};
 }
 

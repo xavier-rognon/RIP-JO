@@ -28,3 +28,23 @@ std::mutex &RIPJO::District::getMutex()
 {
     return _mutex;
 }
+
+void RIPJO::District::addModel(Vector3 coo, Vector3 dir, std::string model)
+{
+    Model3D tmp (model, coo, dir);
+
+    _models.push_back(tmp);
+}
+
+void RIPJO::District::displayDistrict(void)
+{
+    for (auto model : _models) {
+        model.DrawModel3D();
+        model.DrawHitBox();
+    }
+}
+
+std::vector<RIPJO::Model3D> RIPJO::District::getModel(void) const
+{
+    return _models;
+}
