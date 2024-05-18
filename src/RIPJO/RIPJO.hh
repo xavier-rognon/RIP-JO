@@ -12,6 +12,7 @@
 #include <map>
 #include "Utils/Utils.hh"
 #include <raylib.h>
+#include <raymath.h>
 
 namespace RIPJO {
     class RIPJO {
@@ -35,8 +36,9 @@ namespace RIPJO {
         void setWindow(void);
         void gameLoop(void);
         void keyHandling(void);
+        void mouseMotionHandling(void);
 
-        std::map<std::string, Model> _models;
+        std::map<std::string, std::pair<Model, Vector3>> _models;
         std::map<std::string, Texture2D> _textures;
         std::map<std::string, std::pair<BoundingBox, bool>> _bounds;
         Camera _camera;
