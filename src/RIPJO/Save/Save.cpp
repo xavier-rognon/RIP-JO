@@ -11,6 +11,7 @@ void RIPJO::Save::createSave(const RIPJO::Overview &gameState)
 {
     std::ofstream saveStream(".gameSave");
 
+    saveStream << "Player : {        influence = " << gameState.getPlayersInfluence() << ";\n};\n";
     for (std::size_t i = 0; i < gameState.getNbDistrict(); i++) {
         if (gameState[i]->getIncidentCount() == 0)
             continue;

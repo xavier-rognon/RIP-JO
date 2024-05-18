@@ -28,7 +28,7 @@ void RIPJO::Time::addInfluencePeriodically()
     std::size_t unrest = 0;
 
     while (_running) {
-        std::this_thread::sleep_for(std::chrono::seconds(30));
+        std::this_thread::sleep_for(std::chrono::seconds(5));
         std::unique_lock<std::mutex> lock(_player.getMutex());
         unrest = 0;
         for (std::size_t i = 0; i < _districts.size(); i++)
