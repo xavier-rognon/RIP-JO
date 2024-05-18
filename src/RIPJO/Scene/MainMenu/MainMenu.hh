@@ -18,6 +18,7 @@ namespace RIPJO {
         ~MainMenu();
         void computeLogic(std::size_t &currentScene) override;
         void displayElements() override;
+        void loadModel() override;
     private:
         // TODO: button class for the interactive part
         // TODO: check with the ui if text is needed

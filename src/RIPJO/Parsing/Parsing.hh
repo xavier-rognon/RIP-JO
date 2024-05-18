@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2024
-** JAM3 - RIPJO
+** JAM3 - RIPJOÒ
 ** File description:
 ** parsing.hh
 */
@@ -24,8 +24,9 @@ namespace RIPJO {
             ~Parsing() = default;
 
             bool initialize(const std::string &filename);
-            void parseDistrict(const std::string &nameDistrict, RIPJO::Overview &overview);
-            void parseSave(const std::string &nameDistrict, RIPJO::Overview &overview);
+            void parseDistrict(const std::string &nameDistrict, std::shared_ptr<Overview> overview);
+            void parseSave(const std::string &nameDistrict, std::shared_ptr<Overview> overview);
+            void parsePlayer(RIPJO::Overview &overview);
 
         protected:
 

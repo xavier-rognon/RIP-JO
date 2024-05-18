@@ -9,7 +9,6 @@
 #include "../District/District.hh"
 #include "../Time/Time.hh"
 #include <vector>
-#include <memory>
 
 namespace RIPJO {
 
@@ -23,9 +22,12 @@ namespace RIPJO {
         RIPJO::Time &getTime(void);
 
         std::size_t getNbDistrict() const;
-        
+        std::size_t getPlayersInfluence() const;
+        void setPlayerInfluence(std::size_t influence);
+
         std::shared_ptr<RIPJO::District> operator[](std::size_t index) const;
         std::shared_ptr<RIPJO::District> &operator[](std::size_t index);
+        std::vector<std::shared_ptr<RIPJO::District>> &getDistrict(void);
 
     private:
         Player _player;

@@ -17,7 +17,7 @@
 namespace RIPJO {
     class Time {
         public:
-            Time(Player& player);
+            Time(Player &player);
             ~Time();
             void addInfluencePeriodically();
             void addDistrict(std::shared_ptr<District> district);
