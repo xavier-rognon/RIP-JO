@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
         return 84;
     }
     RIPJO::Parsing parser;
-    auto overview = std::make_shared<RIPJO::Overview>(new RIPJO::Overview);
+    auto overview = std::make_shared<RIPJO::Overview>();
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars", overview);
     parser.parseDistrict("Champs-elysee", overview);
