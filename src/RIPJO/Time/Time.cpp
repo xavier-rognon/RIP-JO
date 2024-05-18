@@ -10,7 +10,7 @@
 #include <cstddef>
 #include <iostream>
 
-RIPJO::Time::Time(Player &player):
+RIPJO::Time::Time(std::shared_ptr<Player> player):
     _player(player), _running(true)
 {
     _influenceThread = std::thread(&Time::addInfluencePeriodically, this);
@@ -29,16 +29,16 @@ void RIPJO::Time::addInfluencePeriodically()
 
     while (_running) {
         std::this_thread::sleep_for(std::chrono::seconds(5));
-        std::unique_lock<std::mutex> lock(_player.getMutex());
+        std::unique_lock<std::mutex> lock(_player->getMutex());
         unrest = 0;
         for (std::size_t i = 0; i < _districts.size(); i++)
             unrest += _districts[i]->getUnrest();
         unrest = unrest / _districts.size();
-        std::size_t influence = _player.getInfluence();
+        std::size_t influence = _player->getInfluence();
         influence += unrest;
-        _player.setInfluence(influence);
+        _player->setInfluence(influence);
         std::cout << "Influence added" << std::endl;
-        std::cout << "Influence player = " << _player.getInfluence() << std::endl;
+        std::cout << "Influence player = " << _player->getInfluence() << std::endl;
     }
 }
 
