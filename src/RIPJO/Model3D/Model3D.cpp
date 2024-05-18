@@ -44,6 +44,7 @@ void RIPJO::Model3D::DrawHitBox(void) const
 
 bool RIPJO::Model3D::hasEvent(void) const
 {
+	return !_eventId.empty();
 }
 
 Model RIPJO::Model3D::getModel(void) const

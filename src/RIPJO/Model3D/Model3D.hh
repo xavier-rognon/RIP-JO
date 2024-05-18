@@ -41,7 +41,7 @@ namespace RIPJO {
             Vector3 _direction;
             BoundingBox _bound;
             bool _displayBound;
-            std::string _eventId;
             float _scale;
+            std::string _eventId;
     };
 }

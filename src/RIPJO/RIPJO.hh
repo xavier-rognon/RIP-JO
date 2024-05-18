@@ -10,7 +10,10 @@
 
 #include <iostream>
 #include <map>
+#include <vector>
 #include "Utils/Utils.hh"
+#include "Model3D/Model3D.hh"
+#include "District/District.hh"
 #include <raylib.h>
 #include <raymath.h>
 
@@ -22,25 +25,23 @@ namespace RIPJO {
         ~RIPJO();
 
     private:
-        void loadModels(void);
-        void loadTextures(void);
-        void handle3DObjects(void);
+        // void loadModels(void);       //! Deprecated
+        // void loadTextures(void);     //! Deprecated
+        // void handle3DObjects(void);  //! Deprecated
         void setCamera(void);
 
-        void unloadModels(void);
-        void unloadTextures(void);
-
-        void displayBounds(void);
-        void displayModels(void);
+        // void displayBounds(void);    //! Deprecated
+        // void displayModels(void);    //! Deprecated
 
         void setWindow(void);
         void gameLoop(void);
         void keyHandling(void);
         void mouseMotionHandling(Vector2 &lastMousePosition);
 
-        std::map<std::string, std::pair<Model, Vector3>> _models;
-        std::map<std::string, Texture2D> _textures;
-        std::map<std::string, std::pair<BoundingBox, bool>> _bounds;
+        // District _district;      // Todo Update with District
+        // std::map<std::string, std::pair<Model, Vector3>> _models;    //! Deprecated
+        // std::map<std::string, Texture2D> _textures;                  //! Deprecated
+        // std::map<std::string, std::pair<BoundingBox, bool>> _bounds; //! Deprecated
         Camera _camera;
     };
 }

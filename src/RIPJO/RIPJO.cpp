@@ -15,8 +15,6 @@ RIPJO::RIPJO::RIPJO()
 
 RIPJO::RIPJO::~RIPJO()
 {
-    unloadTextures();
-    unloadModels();
     CloseWindow();
 }
 
@@ -33,8 +31,8 @@ void RIPJO::RIPJO::gameLoop(void)
         BeginDrawing();
         ClearBackground(RAYWHITE);
         BeginMode3D(_camera);
-        displayModels();
-        displayBounds();
+        // displayModels(); //! Deprecated
+        // displayBounds(); //! Deprecated
         DrawGrid(20, 10.0f);
         EndMode3D();
         // INFO: end the drawing process
@@ -71,29 +69,31 @@ void RIPJO::RIPJO::keyHandling(void)
     bool hit = false;
 
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        for (auto &bounds : _bounds) {
-            if (GetRayCollisionBox(GetScreenToWorldRay(GetMousePosition(), _camera), bounds.second.first).hit) {
-                bounds.second.second = !bounds.second.second;
-                hit = true;
-            }
-        }
+        // for (auto &bounds : _bounds) {   // Todo Update with district
+        //     if (GetRayCollisionBox(GetScreenToWorldRay(GetMousePosition(), _camera), bounds.second.first).hit) {
+        //         bounds.second.second = !bounds.second.second;
+        //         hit = true;
+        //     }
+        // }
         if (!hit)
             std::cerr << "[DEBUG] Doing sth" << std::endl;
     }
 }
 
-void RIPJO::RIPJO::displayModels(void)
-{
-    for (const auto &model : _models)
-        DrawModel(model.second.first, model.second.second, 1.0f, WHITE); 
-}
+//! Deprecated
+// void RIPJO::RIPJO::displayModels(void)
+// {
+//     for (const auto &model : _models)
+//         DrawModel(model.second.first, model.second.second, 1.0f, WHITE); 
+// }
 
-void RIPJO::RIPJO::displayBounds(void)
-{
-    for (const auto &bounds : _bounds)
-        if (bounds.second.second)
-            DrawBoundingBox(bounds.second.first, GREEN);
-}
+//! Deprecated
+// void RIPJO::RIPJO::displayBounds(void)
+// {
+//     for (const auto &bounds : _bounds)
+//         if (bounds.second.second)
+//             DrawBoundingBox(bounds.second.first, GREEN);
+// }
 
 //! Set Values: _______________________________________________________________________________________________________________________________________________________ 
 
@@ -105,7 +105,7 @@ void RIPJO::RIPJO::setWindow(void)
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
     // INFO: start the gameloop
-    handle3DObjects();
+    // handle3DObjects(); // Todo Update with district
     setCamera();
 }
 
@@ -119,39 +119,28 @@ void RIPJO::RIPJO::setCamera(void)
     UpdateCamera(&_camera, CAMERA_FIRST_PERSON);
 }
 
-void RIPJO::RIPJO::handle3DObjects(void)
-{
-    loadModels();
-    loadTextures();
-    // INFO: Link Textures to Models + Load Bounds of each Model
-    for (auto model : _models) {
-        _models[model.first].first.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _textures["standard"];
-        _bounds[model.first].first = GetMeshBoundingBox(_models[model.first].first.meshes[0]);
-        _bounds[model.first].second = false;
-    }
-}
+// ! Deprecated
+// void RIPJO::RIPJO::handle3DObjects(void)
+// {
+//     loadModels();
+//     loadTextures();
+//     // INFO: Link Textures to Models + Load Bounds of each Model
+//     for (auto model : _models) {
+//         _models[model.first].first.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _textures["standard"];
+//         _bounds[model.first].first = GetMeshBoundingBox(_models[model.first].first.meshes[0]);
+//         _bounds[model.first].second = false;
+//     }
+// }
 
-void RIPJO::RIPJO::loadModels(void)
-{
-    // ! Refactor : Load Model du district (avec reference (peut etre pas besoin j etais fatigue))
-    _models["tree"] =   {LoadModel("./assets/3DObject/models/tree.obj"), {0., 0., 0.}};
-}
+// ! Deprecated
+// void RIPJO::RIPJO::loadModels(void)
+// {
+//     // ! Refactor : Load Model du district (avec reference (peut etre pas besoin j etais fatigue))
+//     _models["tree"] =   {LoadModel("./assets/3DObject/models/tree.obj"), {0., 0., 0.}};
+// }
 
-void RIPJO::RIPJO::loadTextures(void)
-{
-    _textures["standard"] = LoadTexture("./assets/3DObject/textures/textures.png");
-}
-
-//! Unset Values: _______________________________________________________________________________________________________________________________________________________ 
-
-void RIPJO::RIPJO::unloadModels(void)
-{
-    for (auto &model : _models)
-        UnloadModel(model.second.first); 
-}
-
-void RIPJO::RIPJO::unloadTextures(void)
-{
-    for (auto &texture : _textures)
-        UnloadTexture(texture.second); 
-}
+// ! Deprecated
+// void RIPJO::RIPJO::loadTextures(void)
+// {
+//     _textures["standard"] = LoadTexture("./assets/3DObject/textures/textures.png");
+// }

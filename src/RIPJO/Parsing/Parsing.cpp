@@ -65,8 +65,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, RIPJO::Overv
             std::cout << "dy: " << _dy << std::endl;
             std::cout << "dz: " << _dz << std::endl;
             std::cout << "model: " << _model << std::endl;
-            //Gabin appel ici les methode add de ce que tu as besoin sur le district
-            //le for fait 1 ligne de model par ligne
+            districtObj->addModel((Vector3){_x * 1.f, _y * 1.f, _z * 1.f}, (Vector3){_dx * 1.f, _dy * 1.f, _dz * 1.f}, _model);
         }
     } catch (const libconfig::SettingNotFoundException &nfex) {
         std::cerr << "Missing setting in configuration file." << std::endl;
