@@ -8,9 +8,13 @@
 
 #pragma once
 
-#include <iostream>
-#include <map>
 #include "Utils/Utils.hh"
+#include "Scene/IScene.hh"
+
+#include <iostream>
+#include <memory>
+#include <vector>
+#include <map>
 #include <raylib.h>
 #include <raymath.h>
 
@@ -41,6 +45,8 @@ namespace RIPJO {
         std::map<std::string, std::pair<Model, Vector3>> _models;
         std::map<std::string, Texture2D> _textures;
         std::map<std::string, std::pair<BoundingBox, bool>> _bounds;
+        std::size_t _currentScene;
+        std::vector<std::unique_ptr<IScene>> _scenes;
         Camera _camera;
     };
 }

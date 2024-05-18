@@ -26,5 +26,6 @@ int main() {
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars", overview);
     parser.parseDistrict("Champs-elysee", overview);
+    RIPJO::RIPJO jaj;
     return 0;
 }
