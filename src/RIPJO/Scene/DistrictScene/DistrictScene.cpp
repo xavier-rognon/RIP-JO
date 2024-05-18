@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2024
-** RIP-JO
-** File description:
-** DistrictScene
-*/
-
 #include "DistrictScene.hh"
 
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<RIPJO::District> district):
@@ -81,7 +74,8 @@ void RIPJO::DistrictScene::keyHandling(void)
 
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         for (auto &model : _district->getModel()) {
-            if (GetRayCollisionBox(GetScreenToWorldRay(GetMousePosition(), _camera), model.getBound()).hit) {
+            Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
+            if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {
                 model.setDisplayBound(!model.getDisplayBound());
                 hit = true;
             }
