@@ -32,6 +32,7 @@ namespace RIPJO {
             float getScale(void) const;
 
             void setScale(float scale);
+            void setDisplayBound(bool tmp);
 
         protected:
         private:

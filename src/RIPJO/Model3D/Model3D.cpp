@@ -10,7 +10,17 @@
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir):
 	_position(coo), _direction(dir), _displayBound(false), _scale(1.0f), _eventId("")
 {
-	_model = LoadModel(model.c_str());
+	std::string tmp = "./assets/3DObject/models/" + model + ".obj";
+
+	if (!FileExists(tmp.c_str())) {
+	    std::cerr << "Model file does not exist: " << tmp << std::endl;
+		exit(84);
+	}
+	if (!FileExists("./assets/3DObject/textures/textures.png")) {
+	    std::cerr << "Texture file does not exist: ./assets/3DObject/textures/textures.png" << std::endl;
+		exit(84);
+	}
+	_model = LoadModel(tmp.c_str());
 	_texture = LoadTexture("./assets/3DObject/textures/textures.png");
 	_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _texture;
 	_bound = GetMeshBoundingBox(_model.meshes[0]);
@@ -19,7 +29,17 @@ RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir):
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, std::string eventId):
 	_position(coo), _direction(dir), _displayBound(false), _scale(1.0f), _eventId(eventId)
 {
-	_model = LoadModel(model.c_str());
+	std::string tmp = "./assets/3DObject/models/" + model + ".obj";
+
+	if (!FileExists(tmp.c_str())) {
+	    std::cerr << "Model file does not exist: " << tmp << std::endl;
+		exit(84);
+	}
+	if (!FileExists("./assets/3DObject/textures/textures.png")) {
+	    std::cerr << "Texture file does not exist: ./assets/3DObject/textures/textures.png" << std::endl;
+		exit(84);
+	}
+	_model = LoadModel(tmp.c_str());
 	_texture = LoadTexture("./assets/3DObject/textures/textures.png");
 	_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _texture;
 	_bound = GetMeshBoundingBox(_model.meshes[0]);
@@ -90,4 +110,9 @@ float RIPJO::Model3D::getScale(void) const
 void RIPJO::Model3D::setScale(float scale)
 {
 	_scale = scale;
+}
+
+void RIPJO::Model3D::setDisplayBound(bool tmp)
+{
+	_displayBound = tmp;
 }

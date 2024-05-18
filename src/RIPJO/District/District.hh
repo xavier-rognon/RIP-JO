@@ -12,6 +12,7 @@
 #include <cstddef>
 #include <mutex>
 #include<tuple>
+#include <memory>
 
 namespace RIPJO {
 
