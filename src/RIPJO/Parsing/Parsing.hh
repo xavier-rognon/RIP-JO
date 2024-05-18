@@ -33,5 +33,12 @@ namespace RIPJO {
             int _unrestGain;
             int _influenceCoast;
             std::vector<int> _indexDistricts;
+            int _x;
+            int _y;
+            int _z;
+            int _dx;
+            int _dy;
+            int _dz;
+            std::string _model;
     };
 }

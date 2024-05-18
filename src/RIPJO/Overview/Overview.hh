@@ -13,11 +13,11 @@ namespace RIPJO {
 
     class Overview {
     public:
-        Overview();
+        Overview() = default;
         ~Overview() = default;
-        void addDistrict(RIPJO::District district);
+        void addDistrict(std::shared_ptr<RIPJO::District> district);
 
     private:
-        std::vector<RIPJO::District> _districts;
+        std::vector<std::shared_ptr<RIPJO::District>> _districts;
     };
 }

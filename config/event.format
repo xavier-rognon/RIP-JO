@@ -4,6 +4,11 @@ Champs-mars :
             { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
             { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 1; unrestGain = 4; name = "Alien invasion" }
         );
+
+        model = (
+            {x = 0; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "tree"},
+            {x = 0; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "building1"}
+        );
 };
 
 Champs-elysee :
@@ -15,5 +20,10 @@ Champs-elysee :
             { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
             { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
             { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 1; unrestGain = 4; name = "Alien invasion" }
+        );
+
+        model = (
+            {x = 42; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "tree"},
+            {x = 0; y = 0; z = 0; dx = 0; dy = 0; dz = 0; model = "building1"}
         );
 };

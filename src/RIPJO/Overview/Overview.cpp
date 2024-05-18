@@ -9,12 +9,8 @@
 #include "../District/District.hh"
 #include <iostream>
 
-RIPJO::Overview::Overview()
-{}
-
-
-void RIPJO::Overview::addDistrict(RIPJO::District district)
+void RIPJO::Overview::addDistrict(std::shared_ptr<RIPJO::District> district)
 {
     _districts.push_back(district);
-    std::cout << "District added : " << "size " << _districts.size() << " name : " << district.getName() << std::endl;
+    std::cout << "District added : " << "size " << _districts.size() << " name : " << district->getName() << std::endl;
 }
