@@ -27,3 +27,18 @@ void RIPJO::Overview::addDistrict(std::shared_ptr<RIPJO::District> district)
     _time.addDistrict(district);
     std::cout << "District added : " << "size " << _districts.size() << " name : " << district->getName() << std::endl;
 }
+
+std::size_t RIPJO::Overview::getNbDistrict() const
+{
+    return _districts.size();
+}
+
+std::shared_ptr<RIPJO::District> RIPJO::Overview::operator[](std::size_t index) const
+{
+    return _districts[index];
+}
+
+std::shared_ptr<RIPJO::District> &RIPJO::Overview::operator[](std::size_t index)
+{
+    return _districts[index];
+}

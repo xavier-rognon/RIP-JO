@@ -18,8 +18,14 @@ namespace RIPJO {
         Overview();
         Overview(const std::string &path);
         ~Overview() = default;
+
         void addDistrict(std::shared_ptr<RIPJO::District> district);
         RIPJO::Time &getTime(void);
+
+        std::size_t getNbDistrict() const;
+        
+        std::shared_ptr<RIPJO::District> operator[](std::size_t index) const;
+        std::shared_ptr<RIPJO::District> &operator[](std::size_t index);
 
     private:
         Player _player;
