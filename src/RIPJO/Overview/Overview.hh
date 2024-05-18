@@ -23,7 +23,8 @@ namespace RIPJO {
         RIPJO::Time &getTime(void);
 
         std::size_t getNbDistrict() const;
-        
+        std::size_t getPlayersInfluence() const;
+
         std::shared_ptr<RIPJO::District> operator[](std::size_t index) const;
         std::shared_ptr<RIPJO::District> &operator[](std::size_t index);
 

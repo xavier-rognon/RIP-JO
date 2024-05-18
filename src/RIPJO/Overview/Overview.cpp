@@ -33,6 +33,11 @@ std::size_t RIPJO::Overview::getNbDistrict() const
     return _districts.size();
 }
 
+std::size_t RIPJO::Overview::getPlayersInfluence() const
+{
+    return _player.getInfluence();
+}
+
 std::shared_ptr<RIPJO::District> RIPJO::Overview::operator[](std::size_t index) const
 {
     return _districts[index];
