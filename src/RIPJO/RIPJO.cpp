@@ -6,8 +6,18 @@
 */
 
 #include "RIPJO.hh"
+#include "Scene/IScene.hh"
+#include "Scene/MainMenu/MainMenu.hh"
+#include <memory>
+#include <raylib.h>
 
-RIPJO::RIPJO::RIPJO()
+std::unique_ptr<RIPJO::IScene> createMainMenu()
+{
+    return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
+}
+
+RIPJO::RIPJO::RIPJO():
+    _currentScene(0)
 {
     setWindow();
     gameLoop();
@@ -21,22 +31,16 @@ RIPJO::RIPJO::~RIPJO()
 }
 
 //! Game Handling: _______________________________________________________________________________________________________________________________________________________ 
-void RIPJO::RIPJO::gameLoop(void)
+void RIPJO::RIPJO::gameLoop()
 {
-    Vector2 lastMousePosition = GetMousePosition();
+    _scenes.push_back(createMainMenu());
     // INFO: loop while the window is open
-    while (!WindowShouldClose()) {
-
-        mouseMotionHandling(lastMousePosition);
-        keyHandling();
+    while (WindowShouldClose() == false) {
+        _scenes[_currentScene]->computeLogic(_currentScene);
         // INFO: start the drawing process
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        BeginMode3D(_camera);
-        displayModels();
-        displayBounds();
-        DrawGrid(20, 10.0f);
-        EndMode3D();
+        _scenes[_currentScene]->displayElements();
         // INFO: end the drawing process
         EndDrawing();
     }
@@ -72,10 +76,10 @@ void RIPJO::RIPJO::keyHandling(void)
 
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         for (auto &bounds : _bounds) {
-            if (GetRayCollisionBox(GetScreenToWorldRay(GetMousePosition(), _camera), bounds.second.first).hit) {
-                bounds.second.second = !bounds.second.second;
-                hit = true;
-            }
+            // if (GetRayCollisionBox(GetScreenToWorldRay(GetMousePosition(), _camera), bounds.second.first).hit) {
+            //     bounds.second.second = !bounds.second.second;
+            //     hit = true;
+            // }
         }
         if (!hit)
             std::cerr << "[DEBUG] Doing sth" << std::endl;
@@ -100,13 +104,14 @@ void RIPJO::RIPJO::displayBounds(void)
 void RIPJO::RIPJO::setWindow(void)
 {
     // INFO: this part setups the window info
+    std::cout << "jaj" << std::endl;
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "RIP JO 2024");
     SetTargetFPS(60);
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
-    // INFO: start the gameloop
-    handle3DObjects();
-    setCamera();
+    InitAudioDevice();
+    // handle3DObjects();
+    // setCamera();
 }
 
 void RIPJO::RIPJO::setCamera(void)
