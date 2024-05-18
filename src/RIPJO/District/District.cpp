@@ -54,9 +54,9 @@ RIPJO::Incident &RIPJO::District::operator[](std::size_t index)
     return _incidentList.at(index);
 }
 
-void RIPJO::District::addModel(Vector3 coo, Vector3 dir, std::string model)
+void RIPJO::District::addModel(Vector3 coo, Vector3 dir, std::string model, float scale)
 {
-    Model3D tmp (model, coo, dir);
+    Model3D tmp (model, coo, dir, scale);
 
     _models.push_back(tmp);
 }

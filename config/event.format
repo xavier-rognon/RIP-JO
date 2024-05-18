@@ -13,7 +13,7 @@ Champs-mars :
         );
 
         model = (
-            {x = 0; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "stade"}
+            {x = 0; y = 0; z = 0; dx = 1; dy = 0; dz = 0; scale = 0.4; model = "stade"}
         );
 };
 
@@ -31,6 +31,6 @@ Champs-elysee :
         );
 
         model = (
-            {x = 42; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "eiffel"}
+            {x = 42; y = 0; z = 0; dx = 1; dy = 0; dz = 0; scale = 50.0; model = "eiffel"}
         );
 };

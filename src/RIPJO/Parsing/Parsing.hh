@@ -42,6 +42,7 @@ namespace RIPJO {
             int _dx;
             int _dy;
             int _dz;
+            float _scale;
             std::string _model;
     };
 }
