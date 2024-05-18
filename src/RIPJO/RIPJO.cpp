@@ -9,6 +9,7 @@
 #include "Scene/IScene.hh"
 #include "Scene/MainMenu/MainMenu.hh"
 #include <memory>
+#include <raylib.h>
 
 std::unique_ptr<RIPJO::IScene> createMainMenu()
 {
@@ -19,7 +20,6 @@ RIPJO::RIPJO::RIPJO():
     _currentScene(0)
 {
     setWindow();
-    _scenes.push_back(createMainMenu());
     gameLoop();
 }
 
@@ -31,6 +31,7 @@ RIPJO::RIPJO::~RIPJO()
 //! Game Handling: _______________________________________________________________________________________________________________________________________________________ 
 void RIPJO::RIPJO::gameLoop()
 {
+    _scenes.push_back(createMainMenu());
     // INFO: loop while the window is open
     while (WindowShouldClose() == false) {
         _scenes[_currentScene]->computeLogic(_currentScene);
@@ -55,4 +56,5 @@ void RIPJO::RIPJO::setWindow(void)
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
     // INFO: start the gameloop
+    InitAudioDevice();
 }
