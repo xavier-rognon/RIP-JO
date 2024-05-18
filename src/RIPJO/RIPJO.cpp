@@ -16,8 +16,8 @@ std::unique_ptr<RIPJO::IScene> createMainMenu()
     return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
 }
 
-RIPJO::RIPJO::RIPJO():
-    _currentScene(0)
+RIPJO::RIPJO::RIPJO(Overview overview):
+    _overview(overview), _currentScene(0)
 {
     setWindow();
     gameLoop();
@@ -57,4 +57,8 @@ void RIPJO::RIPJO::setWindow(void)
         ToggleFullscreen();
     // INFO: start the gameloop
     InitAudioDevice();
+}
+
+void RIPJO::RIPJO::listScene(void)
+{
 }

@@ -36,7 +36,6 @@ void RIPJO::District::addModel(Vector3 coo, Vector3 dir, std::string model)
 
     _models.push_back(tmp);
     std::cerr << "\t\t\t\033[31m[DEBUG] Model Added to District " << _name << "\033[0m" << std::endl;
-    std::cout << "MODEL ADDED" << std::endl;
 }
 
 void RIPJO::District::displayDistrict(void)

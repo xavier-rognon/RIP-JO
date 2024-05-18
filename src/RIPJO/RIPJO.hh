@@ -13,6 +13,7 @@
 #include <vector>
 #include "Utils/Utils.hh"
 #include "Model3D/Model3D.hh"
+#include "Overview/Overview.hh"
 #include "District/District.hh"
 #include "Scene/IScene.hh"
 #include <memory>
@@ -23,13 +24,16 @@ namespace RIPJO {
     class RIPJO {
 
     public:
-        RIPJO();
+        RIPJO(Overview overview);
         ~RIPJO();
+
 
     private:
         void setWindow(void);
         void gameLoop(void);
+        void listScene(void);
 
+        Overview _overview;
         std::size_t _currentScene;
         std::vector<std::unique_ptr<IScene>> _scenes;
     };

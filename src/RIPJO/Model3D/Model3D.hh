@@ -17,6 +17,9 @@ namespace RIPJO {
             Model3D(std::string model, Vector3 coo, Vector3 dir, std::string eventId);
             ~Model3D(void);
 
+            void loadModel(void);
+            void unloadModel(void);
+
             void DrawModel3D(void) const;
             void DrawHitBox(void) const;
 
@@ -36,6 +39,7 @@ namespace RIPJO {
 
         protected:
         private:
+            std::string _modelFilepath;
             Model _model;
             Texture2D _texture;
             Vector3 _position;

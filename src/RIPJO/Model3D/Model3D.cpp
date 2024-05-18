@@ -8,44 +8,54 @@
 #include "Model3D.hh"
 
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir):
-	_position(coo), _direction(dir), _displayBound(false), _scale(1.0f), _eventId("")
+	_modelFilepath("./assets/3DObject/models/" + model + ".obj") ,_position(coo),
+	_direction(dir), _displayBound(false), _scale(1.0f), _eventId("")
 {
-	std::string tmp = "./assets/3DObject/models/" + model + ".obj";
+	// std::string tmp = "./assets/3DObject/models/" + model + ".obj";
 
-	if (!FileExists(tmp.c_str())) {
-	    std::cerr << "Model file does not exist: " << tmp << std::endl;
-		exit(84);
-	}
-	if (!FileExists("./assets/3DObject/textures/textures.png")) {
-	    std::cerr << "Texture file does not exist: ./assets/3DObject/textures/textures.png" << std::endl;
-		exit(84);
-	}
-	_model = LoadModel(tmp.c_str());
-	_texture = LoadTexture("./assets/3DObject/textures/textures.png");
-	_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _texture;
-	_bound = GetMeshBoundingBox(_model.meshes[0]);
+	// if (!FileExists(tmp.c_str())) {
+	//     std::cerr << "\033[31mModel file does not exist: " << tmp<< "\033[0m" << std::endl;
+	// 	exit(84);
+	// }
+	// if (!FileExists("./assets/3DObject/textures/textures.png")) {
+	//     std::cerr << "\033[31mTexture file does not exist: ./assets/3DObject/textures/textures.png\033[0m" << std::endl;
+	// 	exit(84);
+	// }
+	// loadModel();
 }
 
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, std::string eventId):
-	_position(coo), _direction(dir), _displayBound(false), _scale(1.0f), _eventId(eventId)
+	_modelFilepath("./assets/3DObject/models/" + model + ".obj"), _position(coo),
+	_direction(dir), _displayBound(false), _scale(1.0f), _eventId(eventId)
 {
-	std::string tmp = "./assets/3DObject/models/" + model + ".obj";
+	// std::string tmp = "./assets/3DObject/models/" + model + ".obj";
 
-	if (!FileExists(tmp.c_str())) {
-	    std::cerr << "Model file does not exist: " << tmp << std::endl;
-		exit(84);
-	}
-	if (!FileExists("./assets/3DObject/textures/textures.png")) {
-	    std::cerr << "Texture file does not exist: ./assets/3DObject/textures/textures.png" << std::endl;
-		exit(84);
-	}
-	_model = LoadModel(tmp.c_str());
+	// if (!FileExists(tmp.c_str())) {
+	//     std::cerr << "\033[31mModel file does not exist: " << tmp << "\033[0m" << std::endl;
+	// 	exit(84);
+	// }
+	// if (!FileExists("./assets/3DObject/textures/textures.png")) {
+	//     std::cerr << "\033[31mTexture file does not exist: ./assets/3DObject/textures/textures.png\033[0m" << std::endl;
+	// 	exit(84);
+	// }
+	// loadModel();
+}
+
+RIPJO::Model3D::~Model3D(void)
+{
+}
+
+void RIPJO::Model3D::loadModel(void)
+{
+    // std::cerr << "\t\t\t\033[31m[DEBUG]\033[0m" << std::endl;
+
+	_model = LoadModel(_modelFilepath.c_str());
 	_texture = LoadTexture("./assets/3DObject/textures/textures.png");
 	_model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = _texture;
 	_bound = GetMeshBoundingBox(_model.meshes[0]);
 }
 
-RIPJO::Model3D::~Model3D(void)
+void RIPJO::Model3D::unloadModel(void)
 {
 	UnloadModel(_model);
 	UnloadTexture(_texture);
