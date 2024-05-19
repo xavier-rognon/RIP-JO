@@ -8,16 +8,27 @@
 #include "LayoutMetro.hh"
 #include "../../RIPJO.hh"
 #include <raylib.h>
+#include <type_traits>
 
 RIPJO::LayoutMetro::LayoutMetro(std::shared_ptr<Overview> overview):
     _overview(overview),
-    _exitButton("Back to district", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 160, 30),
-    _executeEventButton("Execute event", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 270, 30)
-{}
+    _exitButton("Back to district", "asset/Rectangle.png", GetScreenWidth() * 0.95 - 300,
+                    GetScreenHeight() * 0.85, 30),
+    _executeEventButton("Execute event", "asset/Rectangle.png", GetScreenWidth() * 0.95 - 650,
+                    GetScreenHeight() * 0.85, 30)
+{
+    Image temp = LoadImage("asset/Interaction/Bouche_de_metro.png");
 
-RIPJO::LayoutMetro::~LayoutMetro() {}
+    ImageResize(&temp, (temp.height * GetScreenHeight()) / temp.width,
+                GetScreenHeight());
+    _illustration = LoadTextureFromImage(temp);
+    UnloadImage(temp);
+}
+
+RIPJO::LayoutMetro::~LayoutMetro()
+{
+    UnloadTexture(_illustration);
+}
 
 void RIPJO::LayoutMetro::computeLogic(std::size_t &currentScene)
 {
@@ -40,7 +51,11 @@ void RIPJO::LayoutMetro::computeLogic(std::size_t &currentScene)
 
 void RIPJO::LayoutMetro::displayElements(void)
 {
-    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), (Color) {0, 0, 0, 125});
+    District *district = (*_overview)[0].get();
+    Incident incident = (*district)[3];
+
+    DrawTextureRec(_illustration, {0, 0, (GetScreenWidth() / 3.0f), (float)GetScreenHeight()}, {0, 0}, WHITE);
+    DrawText(incident.getName().c_str(), GetScreenWidth() / 2.9, GetScreenHeight() * 0.05, 40, BLACK);
     _exitButton.Draw();
     _executeEventButton.Draw();
 }

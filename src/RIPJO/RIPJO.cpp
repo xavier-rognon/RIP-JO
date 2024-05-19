@@ -32,7 +32,10 @@ void RIPJO::RIPJO::gameLoop()
         _scenes[_currentScene]->computeLogic(_currentScene);
         BeginDrawing();
 
-        ClearBackground(SKYBLUE);
+        if (_currentScene == DISTRICT1)
+            ClearBackground(SKYBLUE);
+        else
+            ClearBackground(WHITE);
         if (IsKeyPressed(KEY_A)) {
             _currentScene += 1;
             _currentScene %= _scenes.size();
