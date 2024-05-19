@@ -27,9 +27,9 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createOption()
     return std::unique_ptr<OptionMenu>(new OptionMenu);
 }
 
-std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createPause()
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createPause(const std::shared_ptr<Overview> &overview)
 {
-    return std::unique_ptr<PauseMenu>(new PauseMenu);
+    return std::unique_ptr<PauseMenu>(new PauseMenu(overview));
 }
 
 std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutEiffel(std::shared_ptr<Overview> overview)

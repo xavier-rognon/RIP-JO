@@ -19,7 +19,7 @@ RIPJO::Map::Map(std::shared_ptr<Overview> overview):
 {
     float resolution[3] = { (float)GetScreenWidth(), (float)GetScreenHeight(), 1.0f };
 
-    _pauseMenu = SceneFactory::createPause();
+    _pauseMenu = SceneFactory::createPause(_overview);
     _map = LoadImage("asset/Map_2D.png");
     ImageResize(&_map, GetScreenWidth(), GetScreenHeight());
     _textureMap = LoadTextureFromImage(_map);
