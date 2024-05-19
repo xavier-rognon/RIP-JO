@@ -1,7 +1,8 @@
 #include "DistrictScene.hh"
 
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<RIPJO::District> district):
-    _district(district), _lastMousePosition((Vector2){0,0})
+    _district(district), _lastMousePosition((Vector2){0,0}), _backButton("Back", "asset/Rectangle.png",
+    (GetScreenWidth() / 2) + 670, (GetScreenHeight() / 2) + 450, 30, 300, 300)
 {
     setCamera();
 }
@@ -12,6 +13,10 @@ RIPJO::DistrictScene::~DistrictScene()
 
 void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
+    if (_backButton.IsButtonPressed()) {
+        currentScene = 0;
+    }
+    _backButton.Event();
 }
 
 void RIPJO::DistrictScene::displayElements(void)
@@ -27,6 +32,9 @@ void RIPJO::DistrictScene::displayElements(void)
     DrawGrid(20, 10.0f);
 
     EndMode3D();
+
+    _backButton.Draw_Button();
+    _backButton.Draw_Text();
 }
 
 void RIPJO::DistrictScene::loadModel(void)
