@@ -79,8 +79,8 @@ void RIPJO::DistrictScene::loadModel(void)
 
 void RIPJO::DistrictScene::setCamera(void)
 {
-    _camera.position = (Vector3){50.0f, 50.0f, 50.0f};
-    _camera.target = (Vector3){0.0f, 10.0f, 0.0f};
+    _camera.position = (Vector3){150.0f, 80.0f, 150.0f};
+    _camera.target = (Vector3){100.0f, 40.0f, 100.0f};
     _camera.up = (Vector3){0.0f, 1.0f, 0.0f};
     _camera.fovy = 45.0f;
     _camera.projection = CAMERA_PERSPECTIVE;
@@ -95,21 +95,38 @@ void RIPJO::DistrictScene::mouseMotionHandling(void)
     Vector3 right;
     float wheel = GetMouseWheelMove();
 
+    Vector3 circleCenter = {0.0f, 0.0f, 0.0f};
+    float circleRadius = 500.0f;
+
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT)) {
         forward = Vector3Subtract(_camera.target, _camera.position);
         forward.y = 0;
         forward = Vector3Normalize(forward);
         right = Vector3CrossProduct(forward, {0, 1, 0});
         right = Vector3Normalize(right);
-        _camera.position = Vector3Add(_camera.position, Vector3Scale(right, -delta.x * 0.1f));
-        _camera.position = Vector3Add(_camera.position, Vector3Scale(forward, delta.y * 0.1f));
-        _camera.target = Vector3Add(_camera.target, Vector3Scale(right, -delta.x * 0.1f));
-        _camera.target = Vector3Add(_camera.target, Vector3Scale(forward, delta.y * 0.1f));
+
+        Vector3 newPosition = Vector3Add(_camera.position, Vector3Scale(right, -delta.x * 0.1f));
+        newPosition = Vector3Add(newPosition, Vector3Scale(forward, delta.y * 0.1f));
+
+        Vector3 offsetFromCenter = Vector3Subtract(newPosition, circleCenter);
+        float distanceFromCenter = Vector3Length(offsetFromCenter);
+
+        if (distanceFromCenter <= circleRadius) {
+            _camera.position = newPosition;
+            _camera.target = Vector3Add(_camera.target, Vector3Scale(right, -delta.x * 0.1f));
+            _camera.target = Vector3Add(_camera.target, Vector3Scale(forward, delta.y * 0.1f));
+        }
     }
-    _camera.position.y -= wheel * 1.0f;
-    _camera.target.y -= wheel * 1.0f;
+
+    if ((_camera.target.y >= 0 && _camera.position.y >= 0 && wheel > 0) ||
+        (_camera.target.y <= 170 && _camera.position.y <= 170 && wheel < 0)) {
+        _camera.position.y -= wheel * 1.0f;
+        _camera.target.y -= wheel * 1.0f;
+    }
+
     _lastMousePosition = currentMousePosition;
 }
+
 
 void RIPJO::DistrictScene::keyHandling(void)
 {
