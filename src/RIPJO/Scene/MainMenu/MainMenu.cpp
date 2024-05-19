@@ -8,7 +8,8 @@
 #include "MainMenu.hh"
 #include <raylib.h>
 
-RIPJO::MainMenu::MainMenu()
+RIPJO::MainMenu::MainMenu():
+    _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2) - 140, (GetScreenHeight() / 2) + 150, 30)
 {
     Image backgroundImage = LoadImage("asset/background.png");
 
@@ -32,6 +33,7 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
     float volume = 0;
 
     _slider.computeLogic(volume, 2);
+    _playButton.Event();
     SetMusicVolume(_music, volume);
     // UpdateMusicStream(_music);
     (void)currentScene;
@@ -43,6 +45,9 @@ void RIPJO::MainMenu::displayElements()
     DrawTexture(_logo, (GetScreenWidth() - _logo.width) / 2,
                (GetScreenHeight() - _logo.height) / 5, WHITE);
     _slider.Draw();
+    _playButton.Draw_Button();
+    _playButton.Draw_Text();
+    //_playButton.Draw_Button();
 }
 
 void RIPJO::MainMenu::loadModel(void)

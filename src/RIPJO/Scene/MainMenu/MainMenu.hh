@@ -10,6 +10,7 @@
 
 #include "../IScene.hh"
 #include "../../UIElement/Slider.hh"
+#include "../../Button/Button.hh"
 
 namespace RIPJO {
     class MainMenu : public IScene{
@@ -26,6 +27,7 @@ namespace RIPJO {
         Texture2D _logo;
         Texture2D _background;
         Music _music;
+        Button _playButton;
         Sound _sound;
     };
 }
