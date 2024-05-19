@@ -45,12 +45,14 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         _states = !_states;
     }
     if (IsKeyPressed(KEY_B)) {
-        currentScene = 0;
+        currentScene = 2;
     }
     if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        currentScene = 3;
         std::cout << "OK 1" << std::endl;
     }
     if (_circle2 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        currentScene = 2;
         std::cout << "OK 2" << std::endl;
     }
     if (_circle3 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
@@ -68,4 +70,8 @@ void RIPJO::Map::displayElements()
     SetCircleLines(GetScreenWidth() / 1.82, 670, 85);
     SetCircleLines(GetScreenWidth() / 1.8, 200, 85);
     SetCircleLines(GetScreenWidth() / 1.26, 430, 85);
+}
+
+void RIPJO::Map::loadModel(void)
+{
 }
