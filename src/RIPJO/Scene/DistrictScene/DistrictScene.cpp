@@ -112,6 +112,11 @@ void RIPJO::DistrictScene::keyHandling(void)
                 _isPopupOpen = true;
                 hit = true;
             }
+            if (_interestPointMetro->IsClicked(_camera)) {
+               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
+                _isPopupOpen = true;
+                hit = true;
+            }
             if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {
                 model.setDisplayBound(!model.getDisplayBound());
                 hit = true;

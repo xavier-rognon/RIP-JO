@@ -36,3 +36,8 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutEiffel(std::shar
 {
     return std::unique_ptr<LayoutEiffel>(new LayoutEiffel(overview));
 }
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutMetro(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutMetro>(new LayoutMetro(overview));
+}

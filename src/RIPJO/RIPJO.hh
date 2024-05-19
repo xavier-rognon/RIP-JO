@@ -32,6 +32,7 @@ namespace RIPJO {
         CREDITS_MENU,
         OPTIONS_MENU,
         LAYOUTEIFFEL,
+        LAYOUTMETRO,
         DISTRICT1,
         DISTRICT2
     };
