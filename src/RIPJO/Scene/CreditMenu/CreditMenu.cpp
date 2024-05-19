@@ -12,8 +12,8 @@
 #include <fstream>
 
 RIPJO::CreditMenu::CreditMenu():
-    _backButton("Back", "asset/Rectangle.png",
-        (GetScreenWidth() / 2) + 860, (GetScreenHeight() / 2) + 600, 30, 300, 300)
+    _backButton("Go back", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
+               GetScreenHeight() * 0.9, 30, 300, 300)
 {
     Image backgroundImage = LoadImage("asset/background.png");
 

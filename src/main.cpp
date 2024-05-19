@@ -17,6 +17,9 @@
 #include "RIPJO/Time/Time.hh"
 #include "unistd.h"
 
+float volume = 0.5;
+bool showFPS = false;
+
 int main(int argc, char **argv) {
 
     if (argc > 1) {

@@ -18,3 +18,11 @@ std::size_t RIPJO::Utils::centerTextY(std::string text, std::size_t fontSize)
     Vector2 textSize = MeasureTextEx(GetFontDefault(), text.c_str(), fontSize, 0);
     return (GetMonitorHeight(0) - textSize.y) / 2;
 }
+
+void RIPJO::Utils::DrawOutlinedText(const char *text, int posX, int posY, int fontSize, Color color, int outlineSize, Color outlineColor) {
+    DrawText(text, posX - outlineSize, posY - outlineSize, fontSize, outlineColor);
+    DrawText(text, posX + outlineSize, posY - outlineSize, fontSize, outlineColor);
+    DrawText(text, posX - outlineSize, posY + outlineSize, fontSize, outlineColor);
+    DrawText(text, posX + outlineSize, posY + outlineSize, fontSize, outlineColor);
+    DrawText(text, posX, posY, fontSize, color);
+}

@@ -8,8 +8,10 @@
 #include "RIPJO.hh"
 #include "Button/Button.hh"
 #include "Overview/Overview.hh"
+#include "Scene/IScene.hh"
 #include "Scene/Map/Map.hh"
 #include "Scene/SceneFactory.hh"
+#include <raylib.h>
 
 RIPJO::RIPJO::RIPJO(std::shared_ptr<Overview> overview):
     _overview(overview), _currentScene(0)
@@ -37,6 +39,8 @@ void RIPJO::RIPJO::gameLoop()
         }
         _scenes[_currentScene]->displayElements();
 
+        if (showFPS == true)
+            DrawFPS(5, 5);
         EndDrawing();
     }
 }

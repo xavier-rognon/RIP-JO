@@ -6,6 +6,7 @@
 */
 
 #include "Button.hh"
+#include "../Utils/Utils.hh"
 #include <raylib.h>
 #include <iostream>
 
@@ -27,7 +28,7 @@ void RIPJO::Button::Draw()
 
     _sourceRec.y = _btnState * _frameHeight;
     DrawTextureRec(_button, _sourceRec, {_btnBounds.x, _btnBounds.y}, RAYWHITE);
-    DrawText(_text.c_str(), textPosX, textPosY, _textSize, YELLOW);
+    Utils::DrawOutlinedText(_text.c_str(), textPosX, textPosY, _textSize, YELLOW, 2, BLACK);
 }
 
 void RIPJO::Button::Event()

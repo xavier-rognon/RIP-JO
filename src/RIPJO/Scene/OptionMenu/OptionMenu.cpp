@@ -6,10 +6,8 @@
 */
 
 #include "OptionMenu.hpp"
-
-
-bool showFPS = false;
-float volume = 0.5f;
+#include "../../Utils/Utils.hh"
+#include <raylib.h>
 
 RIPJO::OptionMenu::OptionMenu():
     _fpsToggle("Toggle FPS", "asset/Rectangle.png", GetScreenWidth() / 4. - 150,
@@ -19,6 +17,7 @@ RIPJO::OptionMenu::OptionMenu():
 {
     Image backgroundImage = LoadImage("asset/background.png");
 
+    ImageResize(&backgroundImage, GetScreenWidth(), GetScreenHeight());
     _volumeSlider = Slider(25, "Volume", 75, 50);
     _background = LoadTextureFromImage(backgroundImage);
     UnloadImage(backgroundImage);
@@ -38,8 +37,9 @@ void RIPJO::OptionMenu::computeLogic(std::size_t &currentScene)
 
 void RIPJO::OptionMenu::displayElements()
 {
-    DrawText("Option Menu", RIPJO::Utils::centerTextX("Option Menu", 20),
-             GetScreenHeight() * 0.1, 20, BLACK);
+    DrawTexture(_background, 0, 0, WHITE);
+    Utils::DrawOutlinedText("Option Menu", RIPJO::Utils::centerTextX("Option Menu", 60),
+             GetScreenHeight() * 0.1, 60, WHITE, 2, BLACK);
     _fpsToggle.Draw();
     _exitMenu.Draw();
     _volumeSlider.Draw();

@@ -49,8 +49,6 @@ RIPJO::MainMenu::~MainMenu()
 
 void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
 {
-    float volume = 0;
-
     _playButton.Event();
     _optionButton.Event();
     _creditButton.Event();
@@ -69,7 +67,7 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
         currentScene = SceneType::CREDITS_MENU;
     if (IsKeyPressed(KEY_E) || _playButton.IsButtonPressed())
         currentScene = SceneType::ALL_DISTRICTS;
-    // UpdateMusicStream(_music);
+    UpdateMusicStream(_music);
 }
 
 void RIPJO::MainMenu::displayElements()
@@ -88,5 +86,4 @@ void RIPJO::MainMenu::displayElements()
     else
         _loadButtonInvalid.Draw();
     saveFile.close();
-    //_playButton.Draw();
 }
