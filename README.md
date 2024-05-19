@@ -2,12 +2,14 @@
 # JO RIP 2024
 
 This project was made in the context of a JAM at Epitech Mulhouse.\
-It was entirely made in C++ and using Raylib.\
+It was entirely made in C++ and using Raylib on Linux\
 
 ### Description
 It's simple. Imagine the worst case scenario for the **JO PARIS 2024** and reproduce it in the game :)
 
 ## Installation
+
+### Before Everything, make sure you have Raylib installed to build the game
 
 At first clone the repo
 
