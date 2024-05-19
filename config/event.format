@@ -8,8 +8,12 @@ Champs-mars :
         unrest = 11;
 
         event = (
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 1; unrestGain = 4; name = "Alien invasion" }
+            { indexDistrict = [1]; influenceCost = 20; unrestGain = 4; name = "Pour garbage trucks into the Seine."; x = 48.; y = 95.; z = -6.; r = 5. },
+            { indexDistrict = [1]; influenceCost = 5; unrestGain = 1; name = "Remove some cobblestones from the road, causing construction work in the street."; x = 48.; y = 95.; z = -6.; r = 5. },
+            { indexDistrict = [1]; influenceCost = 100; unrestGain = 15; name = "Organize a riot against the food coloring of the Seine"; x = 48.; y = 95.; z = -6.; r = 5. },
+            { indexDistrict = [1]; influenceCost = 15; unrestGain = 3; name = "Increase subway tickets prices."; x = 48.; y = 95.; z = -6.; r = 5. },
+            { indexDistrict = [1]; influenceCost = 30; unrestGain = 6; name = "Increase JO events tickets prices."; x = 48.; y = 95.; z = -6.; r = 5. },
+            { indexDistrict = [1]; influenceCost = 60; unrestGain = 10; name = "Hack the lights system of the Eiffel Tower."; x = 48.; y = 95.; z = -6.; r = 5. },
         );
 
         model = (

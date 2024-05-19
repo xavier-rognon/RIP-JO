@@ -58,7 +58,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     float strength = floor(q.x + 1.0);
     float T3 = max(2.0, 2.0 * strength) * iTime;
 
-    q.x = mod(q.x, 1.0) - 0.5;
+    q.x = mod(q.x, 1.0) - 0.92;
     q.y -= 0.25;
     float n = fbm(strength * q - vec2(0.0, T3));
 
