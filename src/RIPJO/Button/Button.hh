@@ -9,8 +9,7 @@ namespace RIPJO {
     class Button {
     public:
         Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15, float width = 0, float height = 0);
-        void Draw_Button();
-        void Draw_Text();
+        void Draw();
         void Event();
         bool IsButtonPressed() const;
 

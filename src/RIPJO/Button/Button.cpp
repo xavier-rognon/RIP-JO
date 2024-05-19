@@ -20,24 +20,15 @@ RIPJO::Button::Button(std::string text, std::string assetPath, float x, float y,
 
 
 
-void RIPJO::Button::Draw_Button()
-{
-    _sourceRec.y = _btnState * _frameHeight;
-    DrawTextureRec(_button, _sourceRec, {_btnBounds.x, _btnBounds.y}, RAYWHITE);
-}
-
-void RIPJO::Button::Draw_Text()
+void RIPJO::Button::Draw()
 {
     float textPosX = _btnBounds.x + (_btnBounds.width - MeasureText(_text.c_str(), _textSize)) / 2;
     float textPosY = _btnBounds.y + (_btnBounds.height - MeasureTextEx(GetFontDefault(), _text.c_str(), _textSize, 0).y) / 2;
 
-    if (_btnState == 2) {
-        DrawText(_text.c_str(), textPosX, textPosY, _textSize, RED);
-    } else {
-        DrawText(_text.c_str(), textPosX, textPosY, _textSize, YELLOW);
-    }
+    _sourceRec.y = _btnState * _frameHeight;
+    DrawTextureRec(_button, _sourceRec, {_btnBounds.x, _btnBounds.y}, RAYWHITE);
+    DrawText(_text.c_str(), textPosX, textPosY, _textSize, YELLOW);
 }
-
 
 void RIPJO::Button::Event()
 {
