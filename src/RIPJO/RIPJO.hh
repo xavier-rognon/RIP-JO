@@ -31,6 +31,7 @@ namespace RIPJO {
         ALL_DISTRICTS,
         CREDITS_MENU,
         OPTIONS_MENU,
+        LAYOUTEIFFEL,
         DISTRICT1,
         DISTRICT2
     };

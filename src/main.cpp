@@ -22,6 +22,7 @@ float flameIntensity = 1;
 bool showFPS = false;
 bool gamePaused = false;
 std::size_t prevScene = 0;
+bool _isPopupOpen = false;
 
 int main(void) {
     RIPJO::Parsing parser;

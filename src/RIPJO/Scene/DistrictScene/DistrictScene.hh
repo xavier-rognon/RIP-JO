@@ -12,6 +12,8 @@
 #include "../IScene.hh"
 #include <raylib.h>
 
+extern bool _isPopupOpen;
+
 namespace RIPJO
 {
     class DistrictScene : public IScene {
@@ -34,14 +36,12 @@ namespace RIPJO
         Vector2 _lastMousePosition;
         Vector3 _fixedPointPosition;
         Button _backButton;
-        bool _isPopupDisplayedEiffel;
         std::unique_ptr<InterestPoint> _interestPoint;
         std::unique_ptr<InterestPoint> _interestPointStade;
         std::unique_ptr<InterestPoint> _interestPointRue;
         std::unique_ptr<InterestPoint> _interestPointSeine;
         std::unique_ptr<InterestPoint> _interestPointArc;
         std::unique_ptr<InterestPoint> _interestPointMetro;
-        std::unique_ptr<IScene> _popupEiffel;
 
     };
 }

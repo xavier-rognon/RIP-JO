@@ -23,7 +23,7 @@ namespace RIPJO {
             static std::unique_ptr<IScene> createCredit();
             static std::unique_ptr<IScene> createOption();
             static std::unique_ptr<IScene> createPause();
-            static std::unique_ptr<IScene> createLayoutEiffel();
+            static std::unique_ptr<IScene> createLayoutEiffel(std::shared_ptr<Overview> overview);
 
     };
 }

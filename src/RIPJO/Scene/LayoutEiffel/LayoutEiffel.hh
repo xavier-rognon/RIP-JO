@@ -15,12 +15,14 @@
 namespace RIPJO {
     class LayoutEiffel : public IScene{
     public:
-        LayoutEiffel();
+        LayoutEiffel(std::shared_ptr<Overview> overview);
         ~LayoutEiffel();
         void computeLogic(std::size_t &currentScene) override;
         void displayElements(void) override;
         void loadModel(void) override {};
     private:
+        std::shared_ptr<Overview> _overview;
         Button _exitButton;
+        Button _executeEventButton;
     };
 }

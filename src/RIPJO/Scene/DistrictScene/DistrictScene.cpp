@@ -19,8 +19,6 @@ RIPJO::DistrictScene::DistrictScene(std::shared_ptr<District> district):
     _interestPointArc(std::make_unique<InterestPoint>((Vector3){160.0f, 35.0f, 180.0f}, 5.0f, "!")),
     _interestPointMetro(std::make_unique<InterestPoint>((Vector3){-15.0f, 25.0f, 30.0f}, 5.0f, "!"))
 {
-    _popupEiffel = SceneFactory::createLayoutEiffel();
-    _isPopupDisplayedEiffel = false;
     setCamera();
 }
 
@@ -30,10 +28,9 @@ RIPJO::DistrictScene::~DistrictScene()
 
 void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
-    if (IsKeyPressed(KEY_ESCAPE))
-        _isPopupDisplayedEiffel = !_isPopupDisplayedEiffel;
-    if (_isPopupDisplayedEiffel == true) {
-        _popupEiffel->computeLogic(currentScene);
+
+    if (_isPopupOpen) {
+        currentScene = SceneType::LAYOUTEIFFEL;
         return;
     }
     if (_backButton.IsButtonPressed()) {
@@ -62,9 +59,6 @@ void RIPJO::DistrictScene::displayElements(void)
         _interestPoint->DrawInterestPoint(_camera);
     EndMode3D();
     _backButton.Draw();
-    if (_isPopupDisplayedEiffel) {
-        _popupEiffel->displayElements();
-    }
 }
 
 void RIPJO::DistrictScene::loadModel(void)
@@ -113,11 +107,9 @@ void RIPJO::DistrictScene::keyHandling(void)
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         for (auto &model : _district->getModel()) {
             Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
-            if (_interestPoint->IsClicked(_camera) || _interestPointStade->IsClicked(_camera) ||
-                _interestPointRue->IsClicked(_camera) || _interestPointSeine->IsClicked(_camera) ||
-                _interestPointArc->IsClicked(_camera) || _interestPointMetro->IsClicked(_camera)) {
-                std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupDisplayedEiffel = true;
+            if (_interestPoint->IsClicked(_camera)) {
+               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
+                _isPopupOpen = true;
                 hit = true;
             }
             if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {
