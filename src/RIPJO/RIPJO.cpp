@@ -58,7 +58,7 @@ void RIPJO::RIPJO::setWindow(void)
 void RIPJO::RIPJO::loadScenes(void)
 {
     _scenes.push_back(SceneFactory::createMainMenu());
-    _scenes.push_back(SceneFactory::createMap());
+    _scenes.push_back(SceneFactory::createMap(_overview));
     _scenes.push_back(SceneFactory::createCredit());
     _scenes.push_back(SceneFactory::createOption());
     for (auto district: _overview->getDistrict()) {

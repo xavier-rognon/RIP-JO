@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2024
+** RIP-JO
+** File description:
+** DistrictScene
+*/
+
 #include "DistrictScene.hh"
 #include "../../RIPJO.hh"
 

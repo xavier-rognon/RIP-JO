@@ -12,13 +12,21 @@
 #include <iostream>
 #include <raylib.h>
 #include "../IScene.hh"
+#include "../../Overview/Overview.hh"
+#include "../../District/District.hh"
 #include "../../Button/Button.hh"
 
 namespace RIPJO {
     class Map : public IScene {
 
+    enum shaderInfo {
+        IRESOLUTION = 0,
+        ITIME,
+        IHEIGHT,
+    };
+
     public:
-        Map();
+        Map(std::shared_ptr<Overview> overview);
         ~Map() = default;
         void SetMap(void);
         void SetCircleLines(int _centerX, int _centerY, int _radius);
@@ -28,6 +36,12 @@ namespace RIPJO {
 
     private:
         std::unique_ptr<IScene> _pauseMenu;
+
+        Shader _shaderFlame;
+        std::vector<int> _shaderArgEmplacement;
+        Texture _torch;
+
+        std::shared_ptr<Overview> _overview;
 
         Image _map;
         Texture2D _textureMap;

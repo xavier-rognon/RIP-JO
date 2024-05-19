@@ -18,7 +18,7 @@ namespace RIPJO {
     class SceneFactory {
         public:
             static std::unique_ptr<IScene> createMainMenu();
-            static std::unique_ptr<IScene> createMap();
+            static std::unique_ptr<IScene> createMap(std::shared_ptr<Overview> overview);
             static std::unique_ptr<IScene> createCredit();
             static std::unique_ptr<IScene> createOption();
             static std::unique_ptr<IScene> createPause();

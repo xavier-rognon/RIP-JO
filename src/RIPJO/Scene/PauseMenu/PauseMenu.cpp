@@ -45,6 +45,8 @@ void RIPJO::PauseMenu::computeLogic(std::size_t &currentScene)
 void RIPJO::PauseMenu::displayElements(void)
 {
     DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), (Color) {0, 0, 0, 125});
+    Utils::DrawOutlinedText("--GAME PAUSED--", Utils::centerTextX("--GAME PAUSED--", 70),
+                            GetScreenHeight() * 0.1, 70, WHITE, 4, BLACK);
     _resumeButton.Draw();
     _optionButton.Draw();
     _mainMenuButton.Draw();
