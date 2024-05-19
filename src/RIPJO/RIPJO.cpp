@@ -62,10 +62,10 @@ void RIPJO::RIPJO::setWindow(void)
 
 void RIPJO::RIPJO::loadScenes(void)
 {
-    _scenes.push_back(createMainMenu());
-    _scenes.push_back(createMap());
     for (auto district: _overview->getDistrict()) {
         _scenes.push_back(std::unique_ptr<DistrictScene> (new DistrictScene(district)));
         _scenes.back()->loadModel();
     }
+    _scenes.push_back(createMainMenu());
+    _scenes.push_back(createMap());
 }
