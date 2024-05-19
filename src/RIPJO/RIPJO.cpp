@@ -43,7 +43,7 @@ void RIPJO::RIPJO::gameLoop()
         _scenes[_currentScene]->displayElements();
 
         if (showFPS == true)
-            DrawFPS(5, 5);
+            DrawFPS(5, 45);
         EndDrawing();
     }
 }

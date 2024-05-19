@@ -9,18 +9,15 @@
 #include "../../Save/Save.hh"
 #include <raylib.h>
 
-RIPJO::PauseMenu::PauseMenu(std::shared_ptr<Overview> overview):
-    _overview(overview),
+RIPJO::PauseMenu::PauseMenu():
     _resumeButton("Resume", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
                   GetScreenHeight() / 2. - 230, 30),
     _optionButton("Option", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
                   GetScreenHeight() / 2. - 100, 30),
-    _saveButton("Save", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                GetScreenHeight() / 2. + 30, 30),
     _mainMenuButton("Main Menu", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 160, 30),
+                    GetScreenHeight() / 2. + 30, 30),
     _quitGameButton("Exit", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 290, 30)
+                    GetScreenHeight() / 2. + 160, 30)
 {}
 
 RIPJO::PauseMenu::~PauseMenu() {}
@@ -29,7 +26,6 @@ void RIPJO::PauseMenu::computeLogic(std::size_t &currentScene)
 {
     _resumeButton.Event();
     _optionButton.Event();
-    _saveButton.Event();
     _mainMenuButton.Event();
     _quitGameButton.Event();
     if (_resumeButton.IsButtonPressed())
@@ -37,9 +33,6 @@ void RIPJO::PauseMenu::computeLogic(std::size_t &currentScene)
     if (_optionButton.IsButtonPressed()) {
         prevScene = currentScene;
         currentScene = OPTIONS_MENU;
-    }
-    if (_saveButton.IsButtonPressed()) {
-        Save::createSave(_overview);
     }
     if (_mainMenuButton.IsButtonPressed()) {
         gamePaused = false;
@@ -57,7 +50,6 @@ void RIPJO::PauseMenu::displayElements(void)
                             GetScreenHeight() * 0.1, 70, WHITE, 4, BLACK);
     _resumeButton.Draw();
     _optionButton.Draw();
-    _saveButton.Draw();
     _mainMenuButton.Draw();
     _quitGameButton.Draw();
 }

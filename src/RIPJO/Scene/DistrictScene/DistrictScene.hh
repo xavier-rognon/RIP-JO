@@ -40,6 +40,6 @@ namespace RIPJO
         std::unique_ptr<InterestPoint> _interestPointSeine;
         std::unique_ptr<InterestPoint> _interestPointTriumph;
         std::unique_ptr<InterestPoint> _interestPointMetro;
-
+        std::unique_ptr<IScene> _pauseMenu;
     };
 }

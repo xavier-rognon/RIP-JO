@@ -8,16 +8,18 @@
 #include "DistrictScene.hh"
 #include "../../RIPJO.hh"
 #include "../SceneFactory.hh"
+#include <raylib.h>
 
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<District> district):
     _district(district), _lastMousePosition((Vector2){0, 0}), _backButton("Back", "asset/Rectangle.png",
-    (GetScreenWidth() / 2.) + 670, (GetScreenHeight() / 2.) + 450, 30),
+            (GetScreenWidth() * 0.05), (GetScreenHeight() * 0.85), 30),
     _interestPointEiffel(std::make_unique<InterestPoint>((Vector3){48.0f, 100.0f, -6.0f}, 5.0f, "!")),
     _interestPointStadium(std::make_unique<InterestPoint>((Vector3){160.0f, 50.0f, -160.0f}, 5.0f, "!")),
     _interestPointRoad(std::make_unique<InterestPoint>((Vector3){-150.0f, 30.0f, -90.0f}, 5.0f, "!")),
     _interestPointSeine(std::make_unique<InterestPoint>((Vector3){5.0f, 5.0f, 180.0f}, 5.0f, "!")),
     _interestPointTriumph(std::make_unique<InterestPoint>((Vector3){160.0f, 35.0f, 180.0f}, 5.0f, "!")),
-    _interestPointMetro(std::make_unique<InterestPoint>((Vector3){-15.0f, 25.0f, 30.0f}, 5.0f, "!"))
+    _interestPointMetro(std::make_unique<InterestPoint>((Vector3){-15.0f, 25.0f, 30.0f}, 5.0f, "!")),
+    _pauseMenu(SceneFactory::createPause())
 {
     setCamera();
 }
@@ -28,7 +30,14 @@ RIPJO::DistrictScene::~DistrictScene()
 
 void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
-
+    if (IsKeyPressed(KEY_ESCAPE))
+        gamePaused = !gamePaused;
+    if (gamePaused == true) {
+        _pauseMenu->computeLogic(currentScene);
+        return;
+    }
+    mouseMotionHandling();
+    keyHandling();
     if (_isPopupOpen[0]) {
         currentScene = SceneType::LAYOUTEIFFEL;
         return;
@@ -64,12 +73,9 @@ void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 
 void RIPJO::DistrictScene::displayElements(void)
 {
-    mouseMotionHandling();
-    keyHandling();
     BeginMode3D(_camera);
 
     _district->displayDistrict();
-    // DrawGrid(50, 10.0f);
 
     _interestPointMetro->DrawInterestPoint(_camera);
     _interestPointTriumph->DrawInterestPoint(_camera);
@@ -79,6 +85,10 @@ void RIPJO::DistrictScene::displayElements(void)
     _interestPointEiffel->DrawInterestPoint(_camera);
     EndMode3D();
     _backButton.Draw();
+    Utils::DrawOutlinedText(TextFormat("Unrest : %d", _district->getUnrest()), 5,
+                            5, 40, WHITE, 2, BLACK);
+    if (gamePaused == true)
+        _pauseMenu->displayElements();
 }
 
 void RIPJO::DistrictScene::loadModel(void)
@@ -139,45 +149,18 @@ void RIPJO::DistrictScene::mouseMotionHandling(void)
 
 void RIPJO::DistrictScene::keyHandling(void)
 {
-    bool hit = false;
-
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        for (auto &model : _district->getModel()) {
-            Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
-            if (_interestPointEiffel->IsClicked(_camera)) {
-               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen[0] = true;
-                hit = true;
-            }
-            if (_interestPointMetro->IsClicked(_camera)) {
-               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen[1] = true;
-                hit = true;
-            }
-            if (_interestPointSeine->IsClicked(_camera)) {
-               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen[2] = true;
-                hit = true;
-            }
-            if (_interestPointRoad->IsClicked(_camera)) {
-               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen[3] = true;
-                hit = true;
-            }
-            if (_interestPointStadium->IsClicked(_camera)) {
-               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen[4] = true;
-                hit = true;
-            }
-            if (_interestPointTriumph->IsClicked(_camera)) {
-               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen[5] = true;
-                hit = true;
-            }
-            if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {
-                model.setDisplayBound(!model.getDisplayBound());
-                hit = true;
-            }
-        }
+        if (_interestPointEiffel->IsClicked(_camera))
+            _isPopupOpen[0] = true;
+        if (_interestPointMetro->IsClicked(_camera))
+            _isPopupOpen[1] = true;
+        if (_interestPointSeine->IsClicked(_camera))
+            _isPopupOpen[2] = true;
+        if (_interestPointRoad->IsClicked(_camera))
+            _isPopupOpen[3] = true;
+        if (_interestPointStadium->IsClicked(_camera))
+            _isPopupOpen[4] = true;
+        if (_interestPointTriumph->IsClicked(_camera))
+            _isPopupOpen[5] = true;
     }
 }

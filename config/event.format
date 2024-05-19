@@ -1,6 +1,6 @@
 Player :
 {
-       influence = 42;
+       influence = 10;
 };
 
 Champs-mars :

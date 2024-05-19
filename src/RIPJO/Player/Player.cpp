@@ -16,6 +16,7 @@ RIPJO::Player::Player():
 
 RIPJO::Player::Player(const std::string &path)
 {
+    (void)path;
     //Faire un truc pour load le player
 }
 

@@ -19,7 +19,7 @@ RIPJO::Map::Map(std::shared_ptr<Overview> overview):
 {
     float resolution[3] = { (float)GetScreenWidth(), (float)GetScreenHeight(), 1.0f };
 
-    _pauseMenu = SceneFactory::createPause(_overview);
+    _pauseMenu = SceneFactory::createPause();
     _map = LoadImage("asset/Map_2D.png");
     ImageResize(&_map, GetScreenWidth(), GetScreenHeight());
     _textureMap = LoadTextureFromImage(_map);
@@ -80,23 +80,12 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
     if (IsKeyPressed(KEY_B)) {
         currentScene = SceneType::MAIN_MENU;
     }
-    if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         currentScene = SceneType::DISTRICT1;
-        std::cout << "OK 1" << std::endl;
-    }
-    if (_circle2 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    if (_circle2 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         currentScene = SceneType::DISTRICT2;
-        std::cout << "OK 2" << std::endl;
-    }
-    if (_circle3 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        std::cout << "OK 3" << std::endl;
-    }
-    if (_circle4 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        std::cout << "OK 4" << std::endl;
-    }
-    if (_backButton.IsButtonPressed()) {
+    if (_backButton.IsButtonPressed())
         currentScene = SceneType::MAIN_MENU;
-    }
     _backButton.Event();
 }
 
