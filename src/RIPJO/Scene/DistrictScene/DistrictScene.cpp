@@ -1,12 +1,21 @@
+/*
+** EPITECH PROJECT, 2024
+** RIP-JO
+** File description:
+** DistrictScene
+*/
+
 #include "DistrictScene.hh"
 #include "../../RIPJO.hh"
+#include "../SceneFactory.hh"
 
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<District> district):
     _district(district), _lastMousePosition((Vector2){0, 0}), _backButton("Back", "asset/Rectangle.png",
     (GetScreenWidth() / 2.) + 670, (GetScreenHeight() / 2.) + 450, 30),
-    _interestPoint(std::make_unique<InterestPoint>((Vector3){48.0f, 95.0f, -6.0f}, 5.0f, "!"))
+    _interestPoint(std::make_unique<InterestPoint>((Vector3){48.0f, 100.0f, -6.0f}, 5.0f, "!"))
 {
-    _pauseMenu = SceneFactory::createPause();
+    _popupEiffel = SceneFactory::createLayoutEiffel();
+    _isPopupDisplayedEiffel = false;
     setCamera();
 }
 
@@ -16,6 +25,12 @@ RIPJO::DistrictScene::~DistrictScene()
 
 void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
+    if (IsKeyPressed(KEY_ESCAPE))
+        _isPopupDisplayedEiffel = !_isPopupDisplayedEiffel;
+    if (_isPopupDisplayedEiffel == true) {
+        _popupEiffel->computeLogic(currentScene);
+        return;
+    }
     if (_backButton.IsButtonPressed()) {
         currentScene = SceneType::ALL_DISTRICTS;
     }
@@ -37,6 +52,9 @@ void RIPJO::DistrictScene::displayElements(void)
     _interestPoint->DrawInterestPoint(_camera);
     EndMode3D();
     _backButton.Draw();
+    if (_isPopupDisplayedEiffel) {
+        _popupEiffel->displayElements();
+    }
 }
 
 void RIPJO::DistrictScene::loadModel(void)
@@ -87,6 +105,7 @@ void RIPJO::DistrictScene::keyHandling(void)
             Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
             if (_interestPoint->IsClicked(_camera)) {
                 std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
+                _isPopupDisplayedEiffel = true;
                 hit = true;
             }
             if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {

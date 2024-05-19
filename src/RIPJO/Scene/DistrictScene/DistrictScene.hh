@@ -35,6 +35,7 @@ namespace RIPJO
             Vector2 _lastMousePosition;
             Vector3 _fixedPointPosition;
             Button _backButton;
+            bool _isPopupDisplayedEiffel;
             std::unique_ptr<InterestPoint> _interestPoint;
             std::unique_ptr<IScene> _popupEiffel;
 

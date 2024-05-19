@@ -11,7 +11,7 @@ RIPJO::InterestPoint::InterestPoint(Vector3 position, float radius, std::string 
 void RIPJO::InterestPoint::DrawInterestPoint(Camera camera) {
     DrawSphere(_position, _radius, RED);
     Vector2 screenPos = GetWorldToScreen(_position, camera);
-    DrawText(_text.c_str(), screenPos.x, screenPos.y, 50, WHITE);
+    DrawText(_text.c_str(), screenPos.x, screenPos.y, 300, WHITE);
 }
 
 bool RIPJO::InterestPoint::IsClicked(Camera camera) {

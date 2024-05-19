@@ -31,3 +31,8 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createPause()
 {
     return std::unique_ptr<PauseMenu>(new PauseMenu);
 }
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutEiffel()
+{
+    return std::unique_ptr<LayoutEiffel>(new LayoutEiffel);
+}
