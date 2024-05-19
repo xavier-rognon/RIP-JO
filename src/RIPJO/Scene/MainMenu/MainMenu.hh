@@ -30,6 +30,8 @@ namespace RIPJO {
         Texture2D _background;
         Music _music;
         Button _playButton;
+        Button _loadButtonValid;
+        Button _loadButtonInvalid;
         Sound _sound;
     };
 }

@@ -7,9 +7,15 @@
 
 #include "MainMenu.hh"
 #include <raylib.h>
+#include <fstream>
 
 RIPJO::MainMenu::MainMenu():
-    _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2) - 140, (GetScreenHeight() / 2) + 150, 30, 300, 300)
+    _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2) - 140,
+        (GetScreenHeight() / 2) + 150, 30, 300, 300),
+    _loadButtonValid("Load save", "asset/Rectangle.png", (GetScreenWidth() / 2) - 140,
+        (GetScreenHeight() / 2) + 300, 30, 300, 300),
+    _loadButtonInvalid("Load save", "asset/Invalidate.png", (GetScreenWidth() / 2) - 140,
+        (GetScreenHeight() / 2) + 300, 30, 300, 300)
 {
     Image backgroundImage = LoadImage("asset/background.png");
     Image backLogo = LoadImage("asset/jo.png");
@@ -40,6 +46,11 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
 
     _slider.computeLogic(volume, 2);
     _playButton.Event();
+    std::ifstream saveFile("config/.gameSave");
+    if (saveFile.good()) {
+        _loadButtonValid.Event();
+    }
+    saveFile.close();
     SetMusicVolume(_music, volume);
     if (IsKeyPressed(KEY_E) || _playButton.IsButtonPressed())
         currentScene = 1;
@@ -48,6 +59,7 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
 
 void RIPJO::MainMenu::displayElements()
 {
+    std::ifstream saveFile("config/.gameSave");
     DrawTexture(_background, 0, 0, WHITE);
     DrawTexture(_backLogoText, (GetScreenWidth() - _backLogoText.width) / 2,
                 (GetScreenHeight() - _backLogoText.height) / 5, WHITE);
@@ -56,6 +68,14 @@ void RIPJO::MainMenu::displayElements()
     _slider.Draw();
     _playButton.Draw_Button();
     _playButton.Draw_Text();
+    if (saveFile.good()) {
+        _loadButtonValid.Draw_Button();
+        _loadButtonValid.Draw_Text();
+    } else {
+        _loadButtonInvalid.Draw_Button();
+        _loadButtonInvalid.Draw_Text();
+    }
+    saveFile.close();
     //_playButton.Draw_Button();
 }
 
