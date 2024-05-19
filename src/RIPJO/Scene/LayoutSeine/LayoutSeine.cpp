@@ -10,11 +10,11 @@
 #include <raylib.h>
 
 RIPJO::LayoutSeine::LayoutSeine(std::shared_ptr<Overview> overview):
-    _overview(overview),
     _exitButton("Back to district", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
                     GetScreenHeight() / 2. + 160, 30),
     _executeEventButton("Execute event", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 270, 30)
+                    GetScreenHeight() / 2. + 270, 30),
+    _overview(overview)
 {}
 
 RIPJO::LayoutSeine::~LayoutSeine() {}
@@ -24,16 +24,12 @@ void RIPJO::LayoutSeine::computeLogic(std::size_t &currentScene)
     _exitButton.Event();
     _executeEventButton.Event();
     if (_exitButton.IsButtonPressed()) {
-        _isPopupOpen = false;
+        _isPopupOpen[2] = false;
         currentScene = SceneType::DISTRICT1;
     }
     if (_executeEventButton.IsButtonPressed()) {
-        Overview *overview = _overview.get();
-        District *district = (*overview)[0].get();
-        Incident incident = (*district)[0];
-        incident.executeIncident(overview->getPlayersMutex(),
-                                 overview->getPlayersInfluence(),
-                                 district->getMutex(), district->getUnrest());
+        //Mettre l'influence moins chez le joueur avec ovevierw'
+        //Changer ce qui faut dans le mecontentement
         currentScene = SceneType::DISTRICT1;
     }
 }

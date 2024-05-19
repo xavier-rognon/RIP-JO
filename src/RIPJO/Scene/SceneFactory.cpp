@@ -41,3 +41,8 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutMetro(std::share
 {
     return std::unique_ptr<LayoutMetro>(new LayoutMetro(overview));
 }
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutSeine(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutSeine>(new LayoutSeine(overview));
+}

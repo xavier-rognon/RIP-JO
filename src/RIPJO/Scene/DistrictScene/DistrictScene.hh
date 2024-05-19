@@ -12,8 +12,6 @@
 #include "../IScene.hh"
 #include <raylib.h>
 
-extern bool _isPopupOpen;
-
 namespace RIPJO
 {
     class DistrictScene : public IScene {

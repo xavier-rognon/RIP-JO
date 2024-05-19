@@ -24,7 +24,7 @@ void RIPJO::LayoutMetro::computeLogic(std::size_t &currentScene)
     _exitButton.Event();
     _executeEventButton.Event();
     if (_exitButton.IsButtonPressed()) {
-        _isPopupOpen = false;
+        _isPopupOpen[1] = false;
         currentScene = SceneType::DISTRICT1;
     }
     if (_executeEventButton.IsButtonPressed()) {

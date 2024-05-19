@@ -63,6 +63,7 @@ void RIPJO::RIPJO::loadScenes(void)
     _scenes.push_back(SceneFactory::createOption());
     _scenes.push_back(SceneFactory::createLayoutEiffel(_overview));
     _scenes.push_back(SceneFactory::createLayoutMetro(_overview));
+    _scenes.push_back(SceneFactory::createLayoutSeine(_overview));
     for (auto district: _overview->getDistrict()) {
         _scenes.push_back(std::unique_ptr<DistrictScene>(new DistrictScene(district)));
         _scenes.back()->loadModel();

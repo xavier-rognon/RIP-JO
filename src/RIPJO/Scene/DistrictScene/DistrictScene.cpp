@@ -29,9 +29,20 @@ RIPJO::DistrictScene::~DistrictScene()
 void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
 
-    if (_isPopupOpen) {
+    if (_isPopupOpen[0]) {
         currentScene = SceneType::LAYOUTEIFFEL;
         return;
+    }
+    if (_isPopupOpen[1]) {
+        currentScene = SceneType::LAYOUTMETRO;
+        return;
+    }
+    if (_isPopupOpen[2]) {
+        currentScene = SceneType::LAYOUTSEINE;
+        return;
+    }
+    if (_backButton.IsButtonPressed()) {
+        currentScene = SceneType::ALL_DISTRICTS;
     }
     if (_backButton.IsButtonPressed()) {
         currentScene = SceneType::ALL_DISTRICTS;
@@ -109,12 +120,17 @@ void RIPJO::DistrictScene::keyHandling(void)
             Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
             if (_interestPoint->IsClicked(_camera)) {
                // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen = true;
+                _isPopupOpen[0] = true;
                 hit = true;
             }
             if (_interestPointMetro->IsClicked(_camera)) {
                // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
-                _isPopupOpen = true;
+                _isPopupOpen[1] = true;
+                hit = true;
+            }
+            if (_interestPointSeine->IsClicked(_camera)) {
+               // std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
+                _isPopupOpen[2] = true;
                 hit = true;
             }
             if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {

@@ -33,6 +33,7 @@ namespace RIPJO {
         OPTIONS_MENU,
         LAYOUTEIFFEL,
         LAYOUTMETRO,
+        LAYOUTSEINE,
         DISTRICT1,
         DISTRICT2
     };
