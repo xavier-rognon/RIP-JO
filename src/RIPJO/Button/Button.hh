@@ -3,16 +3,15 @@
 #include <string>
 #include <raylib.h>
 
-#define NUM_FRAMES 3
+#define NUM_FRAMES 3.0f
 
 namespace RIPJO {
     class Button {
     public:
-        Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15, float width = 0, float height = 0);
-        void Draw_Button();
-        void Draw_Text();
+        Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15);
+        void Draw();
         void Event();
-        bool IsButtonPressed() const;
+        bool IsButtonPressed();
 
     private:
         int _btnState;
@@ -24,9 +23,5 @@ namespace RIPJO {
         Vector2 _mousePos;
         float _frameHeight;
         int _textSize;
-        float _btnX;
-        float _btnY;
-        float _btnWidth;
-        float _btnHeight;
     };
 }

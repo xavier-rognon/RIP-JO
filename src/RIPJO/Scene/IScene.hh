@@ -10,6 +10,16 @@
 
 #include <iostream>
 #include <raylib.h>
+#include <fstream>
+#include <memory>
+#include <vector>
+
+#include "../Utils/Utils.hh"
+
+extern float volume;
+extern bool showFPS;
+extern bool gamePaused;
+extern std::size_t prevScene;
 
 namespace RIPJO {
     class IScene {

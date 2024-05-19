@@ -17,17 +17,20 @@
 #include "RIPJO/Time/Time.hh"
 #include "unistd.h"
 
-int main(int argc, char **argv) {
+float volume = 0.5;
+bool showFPS = false;
+bool gamePaused = false;
+std::size_t prevScene = 0;
 
-    if (argc > 1) {
-        std::cerr << "Usage: ./RIP-JO for start game." << std::endl;
-        return 84;
-    }
+int main(void) {
     RIPJO::Parsing parser;
     auto overview = std::make_shared<RIPJO::Overview>();
+
     parser.initialize("config/event.format");
     parser.parseDistrict("Champs-mars", overview);
     parser.parseDistrict("Champs-elysee", overview);
+
     RIPJO::RIPJO game(overview);
+
     return 0;
 }

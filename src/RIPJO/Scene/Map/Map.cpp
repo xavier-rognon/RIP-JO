@@ -6,13 +6,18 @@
 */
 
 #include "Map.hh"
+#include "../../RIPJO.hh"
+#include "../SceneFactory.hh"
+
 #include <raylib.h>
 #include <unistd.h>
 #include <math.h>
 
 RIPJO::Map::Map():
-    _states(false)
+    _states(false), _backButton("Back", "asset/Rectangle.png", (GetScreenWidth() / 2.) + 670,
+                                (GetScreenHeight() / 2.) + 450, 30)
 {
+    _pauseMenu = SceneFactory::createPause();
     _map = LoadImage("asset/Map_2D.png");
     ImageResize(&_map, GetScreenWidth(), GetScreenHeight());
     _textureMap = LoadTextureFromImage(_map);
@@ -41,18 +46,24 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
     _circle4 = sqrt(pow(_mousePos.x - GetScreenWidth() / 1.26, 2) + pow(_mousePos.y - 430, 2));
     _radiusCircle = 85;
 
+    if (IsKeyPressed(KEY_ESCAPE))
+        gamePaused = !gamePaused;
+    if (gamePaused == true) {
+        _pauseMenu->computeLogic(currentScene);
+        return;
+    }
     if (IsKeyPressed(KEY_E)) {
         _states = !_states;
     }
     if (IsKeyPressed(KEY_B)) {
-        currentScene = 2;
+        currentScene = SceneType::MAIN_MENU;
     }
     if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        currentScene = 3;
+        currentScene = SceneType::DISTRICT1;
         std::cout << "OK 1" << std::endl;
     }
     if (_circle2 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        currentScene = 2;
+        currentScene = SceneType::DISTRICT2;
         std::cout << "OK 2" << std::endl;
     }
     if (_circle3 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
@@ -61,15 +72,22 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
     if (_circle4 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         std::cout << "OK 4" << std::endl;
     }
+    if (_backButton.IsButtonPressed()) {
+        currentScene = SceneType::MAIN_MENU;
+    }
+    _backButton.Event();
 }
 
 void RIPJO::Map::displayElements()
 {
     DrawTexture(_textureMap, 0, 0, WHITE);
+    _backButton.Draw();
     SetCircleLines(GetScreenWidth() / 3.6, 525, 85);
     SetCircleLines(GetScreenWidth() / 1.82, 670, 85);
     SetCircleLines(GetScreenWidth() / 1.8, 200, 85);
     SetCircleLines(GetScreenWidth() / 1.26, 430, 85);
+    if (gamePaused == true)
+        _pauseMenu->displayElements();
 }
 
 void RIPJO::Map::loadModel(void)

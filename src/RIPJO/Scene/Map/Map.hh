@@ -8,9 +8,11 @@
 
 #pragma once
 
+#include <algorithm>
 #include <iostream>
 #include <raylib.h>
 #include "../IScene.hh"
+#include "../../Button/Button.hh"
 
 namespace RIPJO {
     class Map : public IScene {
@@ -25,6 +27,8 @@ namespace RIPJO {
         void loadModel() override;
 
     private:
+        std::unique_ptr<IScene> _pauseMenu;
+
         Image _map;
         Texture2D _textureMap;
         bool _states;
@@ -38,5 +42,7 @@ namespace RIPJO {
         float _circle3;
         float _circle4;
         int _radiusCircle;
+
+        Button _backButton;
     };
 }

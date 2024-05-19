@@ -6,57 +6,48 @@
 */
 
 #include "Button.hh"
+#include "../Utils/Utils.hh"
 #include <raylib.h>
 #include <iostream>
 
-RIPJO::Button::Button(std::string text, std::string assetPath, float x, float y, int textSize, float width, float height):
-    _btnState(0), _btnAction(false), _text(text), _btnX(x), _btnY(y), _textSize(textSize), _btnWidth(width), _btnHeight(height)
+RIPJO::Button::Button(std::string text, std::string assetPath, float x, float y, int textSize):
+    _btnState(0), _btnAction(false), _text(text), _textSize(textSize)
 {
     _button = LoadTexture(assetPath.c_str());
-    _frameHeight = _btnHeight / NUM_FRAMES;
-    _sourceRec = {0, 0, _btnWidth, _frameHeight};
-    _btnBounds = {_btnX, _btnY, _btnWidth, _frameHeight};
+    _frameHeight = _button.height / NUM_FRAMES;
+    _sourceRec = {0, 0, (float)_button.width, _frameHeight};
+    _btnBounds = {x, y, (float)_button.width, _frameHeight};
 }
 
-
-
-void RIPJO::Button::Draw_Button()
-{
-    _sourceRec.y = _btnState * _frameHeight;
-    DrawTextureRec(_button, _sourceRec, {_btnBounds.x, _btnBounds.y}, RAYWHITE);
-}
-
-void RIPJO::Button::Draw_Text()
+void RIPJO::Button::Draw()
 {
     float textPosX = _btnBounds.x + (_btnBounds.width - MeasureText(_text.c_str(), _textSize)) / 2;
     float textPosY = _btnBounds.y + (_btnBounds.height - MeasureTextEx(GetFontDefault(), _text.c_str(), _textSize, 0).y) / 2;
 
-    if (_btnState == 2) {
-        DrawText(_text.c_str(), textPosX, textPosY, _textSize, RED);
-    } else {
-        DrawText(_text.c_str(), textPosX, textPosY, _textSize, YELLOW);
-    }
+    _sourceRec.y = _btnState * _frameHeight;
+    DrawTextureRec(_button, _sourceRec, {_btnBounds.x, _btnBounds.y}, RAYWHITE);
+    Utils::DrawOutlinedText(_text.c_str(), textPosX, textPosY, _textSize, YELLOW, 2, BLACK);
 }
-
 
 void RIPJO::Button::Event()
 {
     _mousePos = GetMousePosition();
-    _btnAction = false;
+    _btnState = 0;
 
-    bool isHover = CheckCollisionPointRec(_mousePos, _btnBounds);
-
-    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && isHover) {
-        _btnState = 2;
-        _btnAction = true;
-    } else if (isHover) {
+    if (CheckCollisionPointRec(_mousePos, _btnBounds)) {
         _btnState = 1;
-    } else {
-        _btnState = 0;
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            _btnState = 2;
+        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+            _btnAction = true;
     }
 }
 
-bool RIPJO::Button::IsButtonPressed() const
+bool RIPJO::Button::IsButtonPressed()
 {
-    return _btnAction;
+    if (_btnAction == true) {
+        _btnAction = false;
+        return true;
+    }
+    return false;
 }

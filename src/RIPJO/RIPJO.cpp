@@ -8,18 +8,10 @@
 #include "RIPJO.hh"
 #include "Button/Button.hh"
 #include "Overview/Overview.hh"
+#include "Scene/IScene.hh"
 #include "Scene/Map/Map.hh"
-#include <memory>
-
-std::unique_ptr<RIPJO::IScene> createMainMenu()
-{
-    return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
-}
-
-std::unique_ptr<RIPJO::IScene> createMap()
-{
-    return std::unique_ptr<RIPJO::Map>(new RIPJO::Map);
-}
+#include "Scene/SceneFactory.hh"
+#include <raylib.h>
 
 RIPJO::RIPJO::RIPJO(std::shared_ptr<Overview> overview):
     _overview(overview), _currentScene(0)
@@ -47,6 +39,8 @@ void RIPJO::RIPJO::gameLoop()
         }
         _scenes[_currentScene]->displayElements();
 
+        if (showFPS == true)
+            DrawFPS(5, 5);
         EndDrawing();
     }
 }
@@ -57,15 +51,18 @@ void RIPJO::RIPJO::setWindow(void)
     SetTargetFPS(60);
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
+    SetExitKey(KEY_DELETE);
     InitAudioDevice();
 }
 
 void RIPJO::RIPJO::loadScenes(void)
 {
     for (auto district: _overview->getDistrict()) {
-        _scenes.push_back(std::unique_ptr<DistrictScene> (new DistrictScene(district)));
+        _scenes.push_back(std::unique_ptr<DistrictScene>(new DistrictScene(district)));
         _scenes.back()->loadModel();
     }
-    _scenes.push_back(createMainMenu());
-    _scenes.push_back(createMap());
+    _scenes.push_back(SceneFactory::createMainMenu());
+    _scenes.push_back(SceneFactory::createMap());
+    _scenes.push_back(SceneFactory::createCredit());
+    _scenes.push_back(SceneFactory::createOption());
 }

@@ -6,6 +6,7 @@
 */
 
 #include "Slider.hh"
+#include "../Utils/Utils.hh"
 #include <raylib.h>
 
 
@@ -43,6 +44,6 @@ void RIPJO::Slider::Draw()
 {
     DrawRectangle(_rec.x, _rec.y, _rec.width, _rec.height, BLACK);
     DrawCircle(_spherePosX, _spherePosY, GetScreenHeight() * (1.5f / 100.0f), RED);
-    DrawText(_title.c_str(), (_rec.x + (_rec.width / 2) - MeasureText(_title.c_str(), 50) / 2.0f),
-             _rec.y - GetScreenWidth() * 0.04, 50, BLACK);
+    Utils::DrawOutlinedText(_title.c_str(), (_rec.x + (_rec.width / 2) - MeasureText(_title.c_str(), 50) / 2.0f),
+             _rec.y - GetScreenWidth() * 0.04, 50, WHITE, 2, BLACK);
 }

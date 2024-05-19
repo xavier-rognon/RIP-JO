@@ -11,6 +11,7 @@
 #include "../IScene.hh"
 #include "../../UIElement/Slider.hh"
 #include "../../Button/Button.hh"
+#include "../../RIPJO.hh"
 
 namespace RIPJO {
     class MainMenu : public IScene{
@@ -19,11 +20,10 @@ namespace RIPJO {
         ~MainMenu();
         void computeLogic(std::size_t &currentScene) override;
         void displayElements() override;
-        void loadModel() override;
+        void loadModel() override {}
     private:
         // TODO: button class for the interactive part
         // TODO: check with the ui if text is needed
-        Slider _slider;
         Texture2D _logo;
         Texture2D _Jo;
         Texture2D _backLogoText;
@@ -32,6 +32,9 @@ namespace RIPJO {
         Button _playButton;
         Button _loadButtonValid;
         Button _loadButtonInvalid;
+        Button _optionButton;
+        Button _creditButton;
+        Button _quitButton;
         Sound _sound;
     };
 }
