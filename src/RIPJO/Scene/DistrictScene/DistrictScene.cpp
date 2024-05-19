@@ -72,7 +72,7 @@ void RIPJO::DistrictScene::displayElements(void)
         model.DrawModel3D();
         model.DrawHitBox();
     }
-    DrawGrid(50, 10.0f);
+    // DrawGrid(50, 10.0f);
 
     _interestPointMetro->DrawInterestPoint(_camera);
     _interestPointTriumph->DrawInterestPoint(_camera);
