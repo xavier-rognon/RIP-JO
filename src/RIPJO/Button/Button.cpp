@@ -7,6 +7,7 @@
 
 #include "Button.hh"
 #include <raylib.h>
+#include <iostream>
 
 RIPJO::Button::Button(std::string text, std::string assetPath, float x, float y, int textSize, float width, float height):
     _btnState(0), _btnAction(false), _text(text), _btnX(x), _btnY(y), _textSize(textSize), _btnWidth(width), _btnHeight(height)
@@ -47,9 +48,7 @@ void RIPJO::Button::Event()
 
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && isHover) {
         _btnState = 2;
-        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
-            _btnAction = true;
-        }
+        _btnAction = true;
     } else if (isHover) {
         _btnState = 1;
     } else {

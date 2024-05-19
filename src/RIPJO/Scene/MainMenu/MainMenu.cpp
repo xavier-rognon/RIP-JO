@@ -41,7 +41,7 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
     _slider.computeLogic(volume, 2);
     _playButton.Event();
     SetMusicVolume(_music, volume);
-    if (IsKeyPressed(KEY_E))
+    if (IsKeyPressed(KEY_E) || _playButton.IsButtonPressed())
         currentScene = 1;
     // UpdateMusicStream(_music);
 }
