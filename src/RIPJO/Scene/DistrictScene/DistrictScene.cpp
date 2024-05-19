@@ -37,7 +37,7 @@ void RIPJO::DistrictScene::displayElements(void)
         model.DrawModel3D();
         model.DrawHitBox();
     }
-    DrawGrid(50, 10.0f);
+    // DrawGrid(50, 10.0f);
 
     EndMode3D();
 
