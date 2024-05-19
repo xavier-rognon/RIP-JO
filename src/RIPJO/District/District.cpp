@@ -68,7 +68,8 @@ void RIPJO::District::addModel(Vector3 coo, Vector3 dir, std::string model, floa
 
 void RIPJO::District::displayDistrict(void)
 {
-    for (const auto &model : _models) {
+    for (auto &model : _models) {
+        model.setBoatPos();
         model.DrawModel3D();
         model.DrawHitBox();
     }
@@ -81,7 +82,7 @@ void RIPJO::District::loadModels(void)
     }
 }
 
-std::vector<RIPJO::Model3D> RIPJO::District::getModel(void) const
+std::vector<RIPJO::Model3D> &RIPJO::District::getModel(void)
 {
     return _models;
 }

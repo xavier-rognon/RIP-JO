@@ -20,12 +20,12 @@ namespace RIPJO {
             void loadModel(void);
             void unloadModel(void);
 
-            void DrawModel3D(void) const;
+            void DrawModel3D(void);
             void DrawHitBox(void) const;
 
             bool hasEvent(void) const;
 
-            Model getModel(void) const;
+            Model &getModel(void);
             Texture2D getTexture(void) const;
             Vector3 getPosition(void) const;
             Vector3 getDirection(void) const;
@@ -33,6 +33,8 @@ namespace RIPJO {
             bool getDisplayBound(void) const;
             std::string getEventId(void) const;
             float getScale(void) const;
+
+            void setBoatPos(void);
 
             void setScale(float scale);
             void setDisplayBound(bool tmp);
@@ -49,5 +51,6 @@ namespace RIPJO {
             float _scale;
             float _rotate;
             std::string _eventId;
+            bool _boat;
     };
 }

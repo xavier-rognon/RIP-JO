@@ -9,14 +9,18 @@
 
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, float rotate):
 	_modelFilepath("./assets/3DObject/models/" + model + ".obj") ,_position(coo),
-	_direction(dir), _displayBound(false), _scale(scale), _rotate(rotate), _eventId("")
+	_direction(dir), _displayBound(false), _scale(scale), _rotate(rotate), _eventId(""), _boat(false)
 {
+	if (model == "boat")
+		_boat = true;
 }
 
 RIPJO::Model3D::Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, float rotate, std::string eventId):
 	_modelFilepath("./assets/3DObject/models/" + model + ".obj"), _position(coo),
-	_direction(dir), _displayBound(false), _scale(scale), _rotate(rotate), _eventId(eventId)
+	_direction(dir), _displayBound(false), _scale(scale), _rotate(rotate), _eventId(eventId), _boat(false)
 {
+	if (model == "boat")
+		_boat = true;
 }
 
 RIPJO::Model3D::~Model3D(void)
@@ -37,10 +41,20 @@ void RIPJO::Model3D::unloadModel(void)
 	UnloadTexture(_texture);
 }
 
-void RIPJO::Model3D::DrawModel3D(void) const
+void RIPJO::Model3D::DrawModel3D(void)
 {
 	DrawModelEx(_model, _position, _direction, _rotate, (Vector3){_scale, _scale, _scale}, WHITE);
 }
+
+void RIPJO::Model3D::setBoatPos(void)
+{
+	if (_boat) {
+		_position.z += 0.2f;
+		if (_position.z > 260.)
+			_position.z = -270.;
+	}
+}
+
 
 void RIPJO::Model3D::DrawHitBox(void) const
 {
@@ -53,7 +67,7 @@ bool RIPJO::Model3D::hasEvent(void) const
 	return !_eventId.empty();
 }
 
-Model RIPJO::Model3D::getModel(void) const
+Model &RIPJO::Model3D::getModel(void)
 {
 	return _model;
 }

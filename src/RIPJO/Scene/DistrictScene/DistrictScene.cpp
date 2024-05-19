@@ -56,10 +56,7 @@ void RIPJO::DistrictScene::displayElements(void)
     keyHandling();
     BeginMode3D(_camera);
 
-    for (auto &model: _district->getModel()) {
-        model.DrawModel3D();
-        model.DrawHitBox();
-    }
+    _district->displayDistrict();
     // DrawGrid(50, 10.0f);
 
     _interestPointMetro->DrawInterestPoint(_camera);

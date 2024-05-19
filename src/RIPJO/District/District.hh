@@ -36,7 +36,7 @@ namespace RIPJO {
         void addModel(Vector3 coo, Vector3 dir, std::string model, float scale, float rotate);
         void displayDistrict(void);
         void loadModels(void);
-        std::vector<Model3D> getModel(void) const;
+        std::vector<Model3D> &getModel(void);
 
     private:
         std::vector<RIPJO::Incident> _incidentList;
