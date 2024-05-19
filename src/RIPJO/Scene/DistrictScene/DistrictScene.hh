@@ -34,11 +34,11 @@ namespace RIPJO
         Vector2 _lastMousePosition;
         Vector3 _fixedPointPosition;
         Button _backButton;
-        std::unique_ptr<InterestPoint> _interestPoint;
-        std::unique_ptr<InterestPoint> _interestPointStade;
-        std::unique_ptr<InterestPoint> _interestPointRue;
+        std::unique_ptr<InterestPoint> _interestPointEiffel;
+        std::unique_ptr<InterestPoint> _interestPointStadium;
+        std::unique_ptr<InterestPoint> _interestPointRoad;
         std::unique_ptr<InterestPoint> _interestPointSeine;
-        std::unique_ptr<InterestPoint> _interestPointArc;
+        std::unique_ptr<InterestPoint> _interestPointTriumph;
         std::unique_ptr<InterestPoint> _interestPointMetro;
 
     };
