@@ -286,7 +286,7 @@ Champs-mars :
 
 
 
-            {x = 140.;  y = 1.1; z = 190.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 0.8; rotate = 45.; model = "ArcTriomphe"},
+            {x = 130.;  y = 1.1; z = 209.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.0; rotate = 45.; model = "ArcTriomphe"},
 
             {x = 40.; y = 1.; z =  85.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 180.; model = "triangle"},
             {x = 72.; y = 1.; z =  117.     ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 180.; model = "triangle"},
@@ -330,8 +330,37 @@ Champs-mars :
             {x = 210.  ; y = 1.; z =  185.    ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 0.;   model = "triangle"},
             {x = 242.  ; y = 1.; z =  217.    ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 0.;   model = "triangle"},
 
-            {x = 85.  ; y = 1.; z =  172.     ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 90.;   model = "triangle"},
 
+            {x = 85.  ; y = 1.  ; z = 172.     ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 90.;   model = "triangle"},
+
+            {x = 36.  ; y = -13.; z = 102.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 36.  ; y = -13.; z = 134.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 36.  ; y = -13.; z = 166.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 36.  ; y = -13.; z = 198.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 36.  ; y = -13.; z = 230.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+
+            {x = 68.  ; y = -13.; z = 134.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 68.  ; y = -13.; z = 166.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 68.  ; y = -13.; z = 198.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+            {x = 68.  ; y = -13.; z = 230.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
+
+            {x = 104. ; y = 1.  ; z = 245.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 180.;   model = "triangle"},
+
+            {x = 46.  ; y = 1.; z =  73.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 70.  ; y = 1.; z =  97.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 94.  ; y = 1.; z =  121.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 118. ; y = 1.; z =  145.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 142. ; y = 1.; z =  169.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 166. ; y = 1.; z =  193.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 190. ; y = 1.; z =  217.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 214. ; y = 1.; z =  241.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+            {x = 238. ; y = 1.; z =  265.       ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 45.; model = "road"},
+
+            {x = 265.  ; y = 1.; z =  77.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 135.; model = "road"},
+            {x = 241.  ; y = 1.; z =  101.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 135.; model = "road"},
+            {x = 217.  ; y = 1.; z =  125.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 135.; model = "road"},
+            {x = 193.  ; y = 1.; z =  149.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 135.; model = "road"},
+            {x = 169.  ; y = 1.; z =  173.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 135.; model = "road"},
 
 
 
