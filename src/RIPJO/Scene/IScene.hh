@@ -10,6 +10,10 @@
 
 #include <iostream>
 #include <raylib.h>
+#include <fstream>
+
+extern float volume;
+extern bool showFPS;
 
 namespace RIPJO {
     class IScene {
