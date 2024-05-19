@@ -2,9 +2,11 @@
 #include "../../RIPJO.hh"
 
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<District> district):
-    _district(district), _lastMousePosition((Vector2){0,0}), _backButton("Back", "asset/Rectangle.png",
-    (GetScreenWidth() / 2.) + 670, (GetScreenHeight() / 2.) + 450, 30)
+    _district(district), _lastMousePosition((Vector2){0, 0}), _backButton("Back", "asset/Rectangle.png",
+    (GetScreenWidth() / 2.) + 670, (GetScreenHeight() / 2.) + 450, 30),
+    _interestPoint(std::make_unique<InterestPoint>((Vector3){48.0f, 95.0f, -6.0f}, 5.0f, "!"))
 {
+    _pauseMenu = SceneFactory::createPause();
     setCamera();
 }
 
@@ -32,8 +34,8 @@ void RIPJO::DistrictScene::displayElements(void)
     }
     DrawGrid(50, 10.0f);
 
+    _interestPoint->DrawInterestPoint(_camera);
     EndMode3D();
-
     _backButton.Draw();
 }
 
@@ -83,12 +85,14 @@ void RIPJO::DistrictScene::keyHandling(void)
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         for (auto &model : _district->getModel()) {
             Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
+            if (_interestPoint->IsClicked(_camera)) {
+                std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
+                hit = true;
+            }
             if (GetRayCollisionBox(mouseRay, model.getBound()).hit) {
                 model.setDisplayBound(!model.getDisplayBound());
                 hit = true;
             }
         }
-        if (!hit)
-            std::cerr << "[DEBUG] Doing sth" << std::endl;
     }
 }

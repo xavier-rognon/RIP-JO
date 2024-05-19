@@ -37,8 +37,8 @@ void RIPJO::Time::addInfluencePeriodically()
         std::size_t influence = _player.getInfluence();
         influence += unrest;
         _player.setInfluence(influence);
-        std::cout << "Influence added" << std::endl;
-        std::cout << "Influence player = " << _player.getInfluence() << std::endl;
+        // std::cout << "Influence added" << std::endl;
+        // std::cout << "Influence player = " << _player.getInfluence() << std::endl;
     }
 }
 
