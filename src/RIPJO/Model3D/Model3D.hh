@@ -13,8 +13,8 @@
 namespace RIPJO {
     class Model3D {
         public:
-            Model3D(std::string model, Vector3 coo, Vector3 dir, float scale);
-            Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, std::string eventId);
+            Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, float rotate);
+            Model3D(std::string model, Vector3 coo, Vector3 dir, float scale, float rotate, std::string eventId);
             ~Model3D(void);
 
             void loadModel(void);
@@ -47,6 +47,7 @@ namespace RIPJO {
             BoundingBox _bound;
             bool _displayBound;
             float _scale;
+            float _rotate;
             std::string _eventId;
     };
 }
