@@ -22,6 +22,7 @@ namespace RIPJO {
         void SetCircleLines(int _centerX, int _centerY, int _radius);
         void computeLogic(std::size_t &currentScene) override;
         void displayElements() override;
+        void loadModel() override;
 
     private:
         Image _map;

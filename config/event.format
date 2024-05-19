@@ -13,7 +13,77 @@ Champs-mars :
         );
 
         model = (
-            {x = 0; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "stade"}
+            {x = -32.; y = 1.; z = 0.       ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -64.; y = 1.; z = -32.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -96.; y = 1.; z = -64.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -128.; y = 1.; z = -96.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -160.; y = 1.; z = -128.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -192.; y = 1.; z = -160.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -224.; y = 1.; z = -192.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+            {x = -256.; y = 1.; z = -224.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 0.; model = "triangle"},
+
+            {x = -64.; y = 1.; z = 32.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+            {x = -96.; y = 1.; z = 0.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+            {x = -128.; y = 1.; z = -32.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+            {x = -160.; y = 1.; z = -64.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+            {x = -192.; y = 1.; z = -96.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+            {x = -224.; y = 1.; z = -128.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+            {x = -256.; y = 1.; z = -160.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 5.; rotate = 180.; model = "triangle"},
+
+            {x = -60.; y = 1.; z = 48.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = 48.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+
+
+            {x = 50.; y = 5.; z = 0.        ; dx = 0.; dy = 1.; dz = 0.;    scale = 10.; rotate = 0.; model = "eiffel"},
+
+            {x = 85.; y = 0.1; z = -5.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 15.; rotate = 0.; model = "green"},
+            {x = 118.; y = 0.1; z = -5.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 15.; rotate = 0.; model = "green"},
+            {x = 151.; y = 0.1; z = -5.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 15.; rotate = 0.; model = "green"},
+
+            {x = 170.; y = 0.; z = 115.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
+            {x = 170.; y = 0.; z = -130.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
+            {x = -160.; y = 0.; z = 115.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
+            {x = -160.; y = 0.; z = -130.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
+        
+            {x = -16.; y = 1.; z = -12.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -36.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -60.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -84.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -108.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -132.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -156.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -180.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -204.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -228.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = -16.; y = 1.; z = -252.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+
+            {x = 30.; y = 1.; z = -84.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -108.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -132.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -156.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -180.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -204.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -228.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+            {x = 30.; y = 1.; z = -252.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
+
+            {x = 0.; y = -3.; z = -32.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -64.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -96.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -128.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -160.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -192.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -224.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = -256.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 0.        ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 32.       ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 64.       ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 96.       ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 128.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 160.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 192.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 224.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
+            {x = 0.; y = -3.; z = 256.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"}
+            
         );
 };
 
@@ -31,6 +101,8 @@ Champs-elysee :
         );
 
         model = (
-            {x = 42; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "eiffel"}
+            {x = 0.; y = 0.; z = 0.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 0.3 rotate = 0.;; model = "stade"},
+            {x = 42.; y = 0.; z = 0.    ; dx = 1.; dy = 0.; dz = 0.;    scale = 10.; rotate = 0.; model = "eiffel"},
+            {x = 42.; y = 0.; z = 0.    ; dx = 1.; dy = 0.; dz = 0.;    scale = 50.; rotate = 0.; model = "eiffel"}
         );
 };

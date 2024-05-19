@@ -8,11 +8,17 @@
 #include "RIPJO.hh"
 #include "Button/Button.hh"
 #include "Overview/Overview.hh"
+#include "Scene/Map/Map.hh"
 #include <memory>
 
 std::unique_ptr<RIPJO::IScene> createMainMenu()
 {
     return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
+}
+
+std::unique_ptr<RIPJO::IScene> createMap()
+{
+    return std::unique_ptr<RIPJO::Map>(new RIPJO::Map);
 }
 
 RIPJO::RIPJO::RIPJO(std::shared_ptr<Overview> overview):
@@ -33,7 +39,8 @@ void RIPJO::RIPJO::gameLoop()
     while (WindowShouldClose() == false) {
         _scenes[_currentScene]->computeLogic(_currentScene);
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+
+        ClearBackground(SKYBLUE);
         if (IsKeyPressed(KEY_A)) {
             _currentScene += 1;
             _currentScene %= _scenes.size();
@@ -56,6 +63,7 @@ void RIPJO::RIPJO::setWindow(void)
 void RIPJO::RIPJO::loadScenes(void)
 {
     _scenes.push_back(createMainMenu());
+    _scenes.push_back(createMap());
     for (auto district: _overview->getDistrict()) {
         _scenes.push_back(std::unique_ptr<DistrictScene> (new DistrictScene(district)));
         _scenes.back()->loadModel();
