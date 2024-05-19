@@ -34,6 +34,9 @@ namespace RIPJO {
         LAYOUTEIFFEL,
         LAYOUTMETRO,
         LAYOUTSEINE,
+        LAYOUTROAD,
+        LAYOUTSTADIUM,
+        LAYOUTTRIUMPH,
         DISTRICT1,
         DISTRICT2
     };

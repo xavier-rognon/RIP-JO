@@ -32,7 +32,10 @@ void RIPJO::RIPJO::gameLoop()
         _scenes[_currentScene]->computeLogic(_currentScene);
         BeginDrawing();
 
-        ClearBackground(SKYBLUE);
+        if (_currentScene == DISTRICT1)
+            ClearBackground(SKYBLUE);
+        else
+            ClearBackground(WHITE);
         if (IsKeyPressed(KEY_A)) {
             _currentScene += 1;
             _currentScene %= _scenes.size();
@@ -64,6 +67,9 @@ void RIPJO::RIPJO::loadScenes(void)
     _scenes.push_back(SceneFactory::createLayoutEiffel(_overview));
     _scenes.push_back(SceneFactory::createLayoutMetro(_overview));
     _scenes.push_back(SceneFactory::createLayoutSeine(_overview));
+    _scenes.push_back(SceneFactory::createLayoutRoad(_overview));
+    _scenes.push_back(SceneFactory::createLayoutStadium(_overview));
+    _scenes.push_back(SceneFactory::createLayoutTriumph(_overview));
     for (auto district: _overview->getDistrict()) {
         _scenes.push_back(std::unique_ptr<DistrictScene>(new DistrictScene(district)));
         _scenes.back()->loadModel();

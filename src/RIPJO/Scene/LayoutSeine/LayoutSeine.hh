@@ -23,6 +23,7 @@ namespace RIPJO {
         
     private:
         std::shared_ptr<Overview> _overview;
+        Texture _illustration;
         Button _exitButton;
         Button _executeEventButton;
     };

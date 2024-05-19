@@ -11,13 +11,23 @@
 
 RIPJO::LayoutRoad::LayoutRoad(std::shared_ptr<Overview> overview):
     _overview(overview),
-    _exitButton("Back to district", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 160, 30),
-    _executeEventButton("Execute event", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-                    GetScreenHeight() / 2. + 270, 30)
-{}
+    _exitButton("Back to district", "asset/Rectangle.png", GetScreenWidth() * 0.95 - 300,
+                    GetScreenHeight() * 0.85, 30),
+    _executeEventButton("Execute event", "asset/Rectangle.png", GetScreenWidth() * 0.95 - 650,
+                    GetScreenHeight() * 0.85, 30)
+{
+    Image temp = LoadImage("asset/Interaction/Rue_Travaux.png");
 
-RIPJO::LayoutRoad::~LayoutRoad() {}
+    ImageResize(&temp, (temp.height * GetScreenHeight()) / temp.width,
+                GetScreenHeight());
+    _illustration = LoadTextureFromImage(temp);
+    UnloadImage(temp);
+}
+
+RIPJO::LayoutRoad::~LayoutRoad()
+{
+    UnloadTexture(_illustration);
+}
 
 void RIPJO::LayoutRoad::computeLogic(std::size_t &currentScene)
 {
@@ -40,7 +50,17 @@ void RIPJO::LayoutRoad::computeLogic(std::size_t &currentScene)
 
 void RIPJO::LayoutRoad::displayElements(void)
 {
-    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), (Color) {0, 0, 0, 125});
+    District *district = (*_overview)[0].get();
+    Incident incident = (*district)[1];
+
+    DrawTextureRec(_illustration, {0, 0, (GetScreenWidth() / 3.0f), (float)GetScreenHeight()}, {0, 0}, WHITE);
+    DrawText(incident.getName().substr(0, incident.getName().find(',') + 1).c_str(),
+             GetScreenWidth() / 2.9, GetScreenHeight() * 0.05, 40, BLACK);
+    DrawText(incident.getName().substr(incident.getName().find(',') + 2).c_str(),
+             GetScreenWidth() / 2.9, GetScreenHeight() * 0.1, 40, BLACK);
+    DrawText(TextFormat("Current influence : %d", _overview->getPlayersInfluence()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.25, 40, BLACK);
+    DrawText(TextFormat("Purchase cost : %d", incident.getInfluenceCost()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.30, 40, BLACK);
+    DrawText(TextFormat("Unrest gain: %d", incident.getUnrestGain()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.35, 40, BLACK);
     _exitButton.Draw();
     _executeEventButton.Draw();
 }
