@@ -13,17 +13,17 @@
 
 RIPJO::MainMenu::MainMenu():
     _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) - 50, 30, 300, 300),
+        (GetScreenHeight() / 2.) - 50, 30),
     _loadButtonValid("Load save", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) + 60, 30, 300, 300),
+        (GetScreenHeight() / 2.) + 60, 30),
     _loadButtonInvalid("Load save", "asset/Invalidate.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) + 60, 30, 300, 300),
+        (GetScreenHeight() / 2.) + 60, 30),
     _optionButton("Option", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) + 170, 30, 300, 300),
+        (GetScreenHeight() / 2.) + 170, 30),
     _creditButton("Credit", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) + 280, 30, 300, 300),
+        (GetScreenHeight() / 2.) + 280, 30),
     _quitButton("Quit", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) + 390, 30, 300, 300)
+        (GetScreenHeight() / 2.) + 390, 30)
 {
     Image backgroundImage = LoadImage("asset/background.png");
     Image backLogo = LoadImage("asset/jo.png");

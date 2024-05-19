@@ -3,7 +3,7 @@
 
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<District> district):
     _district(district), _lastMousePosition((Vector2){0,0}), _backButton("Back", "asset/Rectangle.png",
-    (GetScreenWidth() / 2) + 670, (GetScreenHeight() / 2) + 450, 30, 300, 300)
+    (GetScreenWidth() / 2.) + 670, (GetScreenHeight() / 2.) + 450, 30)
 {
     setCamera();
 }

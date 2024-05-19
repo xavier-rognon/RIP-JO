@@ -7,17 +7,20 @@
 
 #include "CreditMenu.hh"
 #include "../../RIPJO.hh"
+#include "../../Utils/Utils.hh"
 
 #include <raylib.h>
 #include <fstream>
 
 RIPJO::CreditMenu::CreditMenu():
     _backButton("Go back", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-               GetScreenHeight() * 0.9, 30, 300, 300)
+               GetScreenHeight() * 0.9, 30)
 {
     Image backgroundImage = LoadImage("asset/background.png");
 
+    ImageResize(&backgroundImage, GetScreenWidth(), GetScreenHeight());
     _background = LoadTextureFromImage(backgroundImage);
+    UnloadImage(backgroundImage);
 }
 
 RIPJO::CreditMenu::~CreditMenu()
@@ -35,5 +38,7 @@ void RIPJO::CreditMenu::computeLogic(std::size_t &currentScene)
 void RIPJO::CreditMenu::displayElements()
 {
     DrawTexture(_background, 0, 0, WHITE);
+    Utils::DrawOutlinedText("Credits", Utils::centerTextX("Credits", 60),
+             GetScreenHeight() * 0.1, 60, WHITE, 2, BLACK);
     _backButton.Draw();
 }

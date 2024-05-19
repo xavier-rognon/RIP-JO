@@ -11,9 +11,9 @@
 
 RIPJO::OptionMenu::OptionMenu():
     _fpsToggle("Toggle FPS", "asset/Rectangle.png", GetScreenWidth() / 4. - 150,
-               GetScreenHeight() / 2., 30, 300, 300),
+               GetScreenHeight() / 2., 30),
     _exitMenu("Go back", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
-               GetScreenHeight() * 0.9, 30, 300, 300)
+               GetScreenHeight() * 0.9, 30)
 {
     Image backgroundImage = LoadImage("asset/background.png");
 

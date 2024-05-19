@@ -13,7 +13,8 @@
 #include <math.h>
 
 RIPJO::Map::Map():
-    _states(false), _backButton("Back", "asset/Rectangle.png", (GetScreenWidth() / 2) + 670, (GetScreenHeight() / 2) + 450, 30, 300, 300)
+    _states(false), _backButton("Back", "asset/Rectangle.png", (GetScreenWidth() / 2.) + 670,
+                                (GetScreenHeight() / 2.) + 450, 30)
 {
     _map = LoadImage("asset/Map_2D.png");
     ImageResize(&_map, GetScreenWidth(), GetScreenHeight());
