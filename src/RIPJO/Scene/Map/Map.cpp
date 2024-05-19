@@ -70,8 +70,7 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
 void RIPJO::Map::displayElements()
 {
     DrawTexture(_textureMap, 0, 0, WHITE);
-    _backButton.Draw_Button();
-    _backButton.Draw_Text();
+    _backButton.Draw();
     SetCircleLines(GetScreenWidth() / 3.6, 525, 85);
     SetCircleLines(GetScreenWidth() / 1.82, 670, 85);
     SetCircleLines(GetScreenWidth() / 1.8, 200, 85);

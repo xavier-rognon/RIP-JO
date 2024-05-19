@@ -14,7 +14,7 @@ RIPJO::DistrictScene::~DistrictScene()
 void RIPJO::DistrictScene::computeLogic(std::size_t &currentScene)
 {
     if (_backButton.IsButtonPressed()) {
-        currentScene = 0;
+        currentScene = 1;
     }
     _backButton.Event();
 }
@@ -33,8 +33,7 @@ void RIPJO::DistrictScene::displayElements(void)
 
     EndMode3D();
 
-    _backButton.Draw_Button();
-    _backButton.Draw_Text();
+    _backButton.Draw();
 }
 
 void RIPJO::DistrictScene::loadModel(void)
