@@ -12,7 +12,12 @@
 RIPJO::DistrictScene::DistrictScene(std::shared_ptr<District> district):
     _district(district), _lastMousePosition((Vector2){0, 0}), _backButton("Back", "asset/Rectangle.png",
     (GetScreenWidth() / 2.) + 670, (GetScreenHeight() / 2.) + 450, 30),
-    _interestPoint(std::make_unique<InterestPoint>((Vector3){48.0f, 100.0f, -6.0f}, 5.0f, "!"))
+    _interestPoint(std::make_unique<InterestPoint>((Vector3){48.0f, 100.0f, -6.0f}, 5.0f, "!")),
+    _interestPointStade(std::make_unique<InterestPoint>((Vector3){160.0f, 50.0f, -160.0f}, 5.0f, "!")),
+    _interestPointRue(std::make_unique<InterestPoint>((Vector3){-150.0f, 30.0f, -90.0f}, 5.0f, "!")),
+    _interestPointSeine(std::make_unique<InterestPoint>((Vector3){5.0f, 5.0f, 180.0f}, 5.0f, "!")),
+    _interestPointArc(std::make_unique<InterestPoint>((Vector3){160.0f, 35.0f, 180.0f}, 5.0f, "!")),
+    _interestPointMetro(std::make_unique<InterestPoint>((Vector3){-15.0f, 25.0f, 30.0f}, 5.0f, "!"))
 {
     _popupEiffel = SceneFactory::createLayoutEiffel();
     _isPopupDisplayedEiffel = false;
@@ -49,7 +54,12 @@ void RIPJO::DistrictScene::displayElements(void)
     }
     DrawGrid(50, 10.0f);
 
-    _interestPoint->DrawInterestPoint(_camera);
+    _interestPointMetro->DrawInterestPoint(_camera);
+    _interestPointArc->DrawInterestPoint(_camera);
+    _interestPointSeine->DrawInterestPoint(_camera);
+    _interestPointRue->DrawInterestPoint(_camera);
+    _interestPointStade->DrawInterestPoint(_camera);
+        _interestPoint->DrawInterestPoint(_camera);
     EndMode3D();
     _backButton.Draw();
     if (_isPopupDisplayedEiffel) {
@@ -103,7 +113,9 @@ void RIPJO::DistrictScene::keyHandling(void)
     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         for (auto &model : _district->getModel()) {
             Ray mouseRay = GetMouseRay(GetMousePosition(), _camera);
-            if (_interestPoint->IsClicked(_camera)) {
+            if (_interestPoint->IsClicked(_camera) || _interestPointStade->IsClicked(_camera) ||
+                _interestPointRue->IsClicked(_camera) || _interestPointSeine->IsClicked(_camera) ||
+                _interestPointArc->IsClicked(_camera) || _interestPointMetro->IsClicked(_camera)) {
                 std::cout << "[DEBUG] Popup clicked: " << _interestPoint->GetText() << std::endl;
                 _isPopupDisplayedEiffel = true;
                 hit = true;
