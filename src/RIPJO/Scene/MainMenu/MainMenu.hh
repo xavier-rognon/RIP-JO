@@ -23,6 +23,8 @@ namespace RIPJO {
         // TODO: check with the ui if text is needed
         Slider _slider;
         Texture2D _logo;
+        Texture2D _Jo;
+        Texture2D _backLogoText;
         Texture2D _background;
         Music _music;
         Sound _sound;
