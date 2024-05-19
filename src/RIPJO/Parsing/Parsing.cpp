@@ -36,7 +36,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, std::shared_
         const libconfig::Setting &modelsSetting = district["model"];
         auto districtObj = std::make_shared<RIPJO::District>(nameDistrict, 4);
 
-        for (std::size_t i = 0; i < eventsSetting.getLength(); i++) {
+        for (int i = 0; i < eventsSetting.getLength(); i++) {
             const libconfig::Setting &eventSetting = eventsSetting[i];
             const libconfig::Setting &indexDistrict = eventSetting["indexDistrict"];
             for (int j = 0; j < indexDistrict.getLength(); ++j)
@@ -49,7 +49,7 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, std::shared_
             _indexDistricts.clear();
         }
         overview->addDistrict(districtObj);
-        for (std::size_t i = 0; i < modelsSetting.getLength(); i++) {
+        for (int i = 0; i < modelsSetting.getLength(); i++) {
             const libconfig::Setting &modelSetting = modelsSetting[i];
             _x = modelSetting["x"];
             _y = modelSetting["y"];
@@ -80,7 +80,7 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, std::shared_ptr<
 
         district.lookupValue("unrest", unrest);
         auto districtObj = std::make_shared<RIPJO::District>(nameDistrict, unrest);
-        for (std::size_t i = 0; i < eventsSetting.getLength(); i++) {
+        for (int i = 0; i < eventsSetting.getLength(); i++) {
             const libconfig::Setting &eventSetting = eventsSetting[i];
             const libconfig::Setting &indexDistrict = eventSetting["indexDistrict"];
             for (int j = 0; j < indexDistrict.getLength(); j++)
@@ -93,7 +93,7 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, std::shared_ptr<
             _indexDistricts.clear();
         }
         overview->addDistrict(districtObj);
-        for (std::size_t i = 0; i < modelsSetting.getLength(); i++) {
+        for (int i = 0; i < modelsSetting.getLength(); i++) {
             const libconfig::Setting &modelSetting = modelsSetting[i];
             _x = modelSetting["x"];
             _y = modelSetting["y"];
