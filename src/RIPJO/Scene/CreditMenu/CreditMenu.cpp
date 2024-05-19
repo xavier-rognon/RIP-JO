@@ -49,8 +49,11 @@ void RIPJO::CreditMenu::displayElements()
     Utils::DrawOutlinedText("We realized this project as a group of 6 :",
              Utils::centerTextX("We realized this project as a group of 6 :", 30),
              GetScreenHeight() * 0.52, 30, WHITE, 2, BLACK);
-    Utils::DrawOutlinedText("Arthur SPILLER, Gabin PINOS, Kevin GLAENTZLIN, Enzo LORENZINI, Xavier ROGNON",
-             Utils::centerTextX("Arthur SPILLER, Gabin PINOS, Kevin GLAENTZLIN, Enzo LORENZINI, Xavier ROGNON", 30),
+    Utils::DrawOutlinedText("Arthur SPILLER, Gabin PINOS, Kevin GLAENTZLIN,",
+             Utils::centerTextX("Arthur SPILLER, Gabin PINOS, Kevin GLAENTZLIN,", 30),
              GetScreenHeight() * 0.55, 30, WHITE, 2, BLACK);
+    Utils::DrawOutlinedText("Corentin PIQUET, Enzo LORENZINI and Xavier ROGNON",
+             Utils::centerTextX("Corentin PIQUET, Enzo LORENZINI and Xavier ROGNON", 30),
+             GetScreenHeight() * 0.58, 30, WHITE, 2, BLACK);
     _backButton.Draw();
 }

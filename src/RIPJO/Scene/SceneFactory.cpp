@@ -12,9 +12,9 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createMainMenu()
     return std::unique_ptr<MainMenu>(new MainMenu);
 }
 
-std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createMap()
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createMap(std::shared_ptr<Overview> overview)
 {
-    return std::unique_ptr<Map>(new Map);
+    return std::unique_ptr<Map>(new Map(overview));
 }
 
 std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createCredit()

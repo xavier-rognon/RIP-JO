@@ -17,6 +17,7 @@
 #include "../Utils/Utils.hh"
 
 extern float volume;
+extern float flameIntensity;
 extern bool showFPS;
 extern bool gamePaused;
 extern std::size_t prevScene;
