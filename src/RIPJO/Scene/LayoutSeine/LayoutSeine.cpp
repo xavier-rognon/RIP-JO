@@ -34,7 +34,7 @@ void RIPJO::LayoutSeine::computeLogic(std::size_t &currentScene)
     _exitButton.Event();
     _executeEventButton.Event();
     if (_exitButton.IsButtonPressed()) {
-        _isPopupOpen[1] = false;
+        _isPopupOpen[0] = false;
         currentScene = SceneType::DISTRICT1;
     }
     if (_executeEventButton.IsButtonPressed()) {
@@ -55,6 +55,9 @@ void RIPJO::LayoutSeine::displayElements(void)
 
     DrawTextureRec(_illustration, {0, 0, (GetScreenWidth() / 3.0f), (float)GetScreenHeight()}, {0, 0}, WHITE);
     DrawText(incident.getName().c_str(), GetScreenWidth() / 2.9, GetScreenHeight() * 0.05, 40, BLACK);
+    DrawText(TextFormat("Current influence : %d", _overview->getPlayersInfluence()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.2, 40, BLACK);
+    DrawText(TextFormat("Purchase cost : %d", incident.getInfluenceCost()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.25, 40, BLACK);
+    DrawText(TextFormat("Unrest gain: %d", incident.getUnrestGain()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.30, 40, BLACK);
     _exitButton.Draw();
     _executeEventButton.Draw();
 }

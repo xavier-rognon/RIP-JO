@@ -55,6 +55,9 @@ void RIPJO::LayoutEiffel::displayElements(void)
 
     DrawTextureRec(_illustration, {0, 0, (GetScreenWidth() / 3.0f), (float)GetScreenHeight()}, {0, 0}, WHITE);
     DrawText(incident.getName().c_str(), GetScreenWidth() / 2.8, GetScreenHeight() * 0.05, 40, BLACK);
+    DrawText(TextFormat("Current influence : %d", _overview->getPlayersInfluence()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.2, 40, BLACK);
+    DrawText(TextFormat("Purchase cost : %d", incident.getInfluenceCost()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.25, 40, BLACK);
+    DrawText(TextFormat("Unrest gain: %d", incident.getUnrestGain()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.30, 40, BLACK);
     _exitButton.Draw();
     _executeEventButton.Draw();
 }

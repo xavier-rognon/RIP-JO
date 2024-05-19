@@ -58,6 +58,9 @@ void RIPJO::LayoutRoad::displayElements(void)
              GetScreenWidth() / 2.9, GetScreenHeight() * 0.05, 40, BLACK);
     DrawText(incident.getName().substr(incident.getName().find(',') + 2).c_str(),
              GetScreenWidth() / 2.9, GetScreenHeight() * 0.1, 40, BLACK);
+    DrawText(TextFormat("Current influence : %d", _overview->getPlayersInfluence()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.25, 40, BLACK);
+    DrawText(TextFormat("Purchase cost : %d", incident.getInfluenceCost()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.30, 40, BLACK);
+    DrawText(TextFormat("Unrest gain: %d", incident.getUnrestGain()), GetScreenWidth() / 2.8, GetScreenHeight() * 0.35, 40, BLACK);
     _exitButton.Draw();
     _executeEventButton.Draw();
 }
