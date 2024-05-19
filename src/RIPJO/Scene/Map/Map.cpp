@@ -13,14 +13,23 @@
 #include <unistd.h>
 #include <math.h>
 
-RIPJO::Map::Map():
-    _states(false), _backButton("Back", "asset/Rectangle.png", (GetScreenWidth() / 2.) + 670,
-                                (GetScreenHeight() / 2.) + 450, 30)
+RIPJO::Map::Map(std::shared_ptr<Overview> overview):
+    _overview(overview), _states(false), _backButton("Back", "asset/Rectangle.png",
+            (GetScreenWidth() * 0.05), (GetScreenHeight() * 0.85), 30)
 {
+    float resolution[3] = { (float)GetScreenWidth(), (float)GetScreenHeight(), 1.0f };
+
     _pauseMenu = SceneFactory::createPause();
     _map = LoadImage("asset/Map_2D.png");
     ImageResize(&_map, GetScreenWidth(), GetScreenHeight());
     _textureMap = LoadTextureFromImage(_map);
+    _shaderFlame = LoadShader(nullptr, "src/shader/fire.sl");
+    _shaderArgEmplacement.push_back(GetShaderLocation(_shaderFlame, "iResolution"));
+    _shaderArgEmplacement.push_back(GetShaderLocation(_shaderFlame, "iTime"));
+    _shaderArgEmplacement.push_back(GetShaderLocation(_shaderFlame, "uHeightMultiplier"));
+    _torch = LoadTexture("asset/torch.png");
+    SetShaderValue(_shaderFlame, _shaderArgEmplacement[IRESOLUTION],
+                   resolution, SHADER_UNIFORM_VEC3);
 }
 
 void RIPJO::Map::SetMap(void)
@@ -39,6 +48,8 @@ void RIPJO::Map::SetCircleLines(int _centerX, int _centerY, int _radius)
 
 void RIPJO::Map::computeLogic(std::size_t &currentScene)
 {
+    float time = GetTime();
+
     _mousePos = GetMousePosition();
     _circle1 = sqrt(pow(_mousePos.x - GetScreenWidth() / 3.6, 2) + pow(_mousePos.y - 525, 2));
     _circle2 = sqrt(pow(_mousePos.x - GetScreenWidth() / 1.82, 2) + pow(_mousePos.y - 670, 2));
@@ -52,6 +63,10 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         _pauseMenu->computeLogic(currentScene);
         return;
     }
+    SetShaderValue(_shaderFlame, _shaderArgEmplacement[IHEIGHT], &flameIntensity,
+                   SHADER_UNIFORM_FLOAT);
+    SetShaderValue(_shaderFlame, _shaderArgEmplacement[ITIME], &time,
+                   SHADER_UNIFORM_FLOAT);
     if (IsKeyPressed(KEY_E)) {
         _states = !_states;
     }
@@ -86,6 +101,13 @@ void RIPJO::Map::displayElements()
     SetCircleLines(GetScreenWidth() / 1.82, 670, 85);
     SetCircleLines(GetScreenWidth() / 1.8, 200, 85);
     SetCircleLines(GetScreenWidth() / 1.26, 430, 85);
+    DrawTexture(_torch, GetScreenWidth() * 0.8925, GetScreenHeight() * 0.89, WHITE);
+    Utils::DrawOutlinedText(TextFormat("Influence : %d", _overview->getPlayersInfluence()), 5, 5, 40, WHITE, 2, BLACK);
+
+    BeginShaderMode(_shaderFlame);
+    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), WHITE);
+    EndShaderMode();
+
     if (gamePaused == true)
         _pauseMenu->displayElements();
 }

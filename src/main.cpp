@@ -18,6 +18,7 @@
 #include "unistd.h"
 
 float volume = 0.5;
+float flameIntensity = 1;
 bool showFPS = false;
 bool gamePaused = false;
 std::size_t prevScene = 0;
