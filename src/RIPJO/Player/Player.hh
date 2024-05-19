@@ -19,6 +19,7 @@ namespace RIPJO {
         ~Player() = default;
 
         std::size_t getInfluence() const;
+        std::size_t &getInfluence();
         void  setInfluence(std::size_t);
         std::mutex &getMutex();
 

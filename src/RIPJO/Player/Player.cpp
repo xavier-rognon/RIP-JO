@@ -24,6 +24,11 @@ std::size_t RIPJO::Player::getInfluence() const
     return _influence;
 }
 
+std::size_t &RIPJO::Player::getInfluence()
+{
+    return _influence;
+}
+
 void RIPJO::Player::setInfluence(std::size_t influence)
 {
     _influence = influence;
