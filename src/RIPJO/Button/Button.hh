@@ -1,34 +1,30 @@
-/*
-** EPITECH PROJECT, 2024
-** RIP-JO
-** File description:
-** Button
-*/
-
-
 #pragma once
 
-#include <iostream>
+#include <string>
 #include <raylib.h>
 
-#define NUM_FRAMES  2
+#define NUM_FRAMES 3
 
 namespace RIPJO {
     class Button {
     public:
-        Button(std::string text);
+        Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15);
         void Draw_Button();
         void Draw_Text();
         void Event();
+        bool IsButtonPressed() const;
+
     private:
         int _btnState;
         bool _btnAction;
+        std::string _text;
         Texture2D _button;
-        Sound _fxButton;
-        float _frameHeight;
         Rectangle _sourceRec;
         Rectangle _btnBounds;
         Vector2 _mousePos;
-        std::string _text;
+        float _frameHeight;
+        int _textSize;
+        float _btnX;
+        float _btnY;
     };
 }

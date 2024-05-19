@@ -41,11 +41,12 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, std::shared_
             const libconfig::Setting &indexDistrict = eventSetting["indexDistrict"];
             for (int j = 0; j < indexDistrict.getLength(); ++j)
                 _indexDistricts.push_back(indexDistrict[j]);
-            _influenceCoast = eventSetting["influenceCoast"];
+            _influenceCost = eventSetting["influenceCost"];
             _unrestGain = eventSetting["unrestGain"];
             _name = eventSetting["name"].c_str();
-            RIPJO::Incident incident(_name, _indexDistricts, _influenceCoast, _unrestGain);
+            RIPJO::Incident incident(_name, _indexDistricts, _influenceCost, _unrestGain);
             districtObj->addIncident(incident);
+            _indexDistricts.clear();
         }
         overview->addDistrict(districtObj);
         for (std::size_t i = 0; i < modelsSetting.getLength(); i++) {
@@ -83,11 +84,12 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, std::shared_ptr<
             const libconfig::Setting &indexDistrict = eventSetting["indexDistrict"];
             for (int j = 0; j < indexDistrict.getLength(); j++)
                 _indexDistricts.push_back(indexDistrict[j]);
-            _influenceCoast = eventSetting["influenceCoast"];
+            _influenceCost = eventSetting["influenceCost"];
             _unrestGain = eventSetting["unrestGain"];
             _name = eventSetting["name"].c_str();
-            RIPJO::Incident incident(_name, _indexDistricts, _influenceCoast, _unrestGain);
+            RIPJO::Incident incident(_name, _indexDistricts, _influenceCost, _unrestGain);
             districtObj->addIncident(incident);
+            _indexDistricts.clear();
         }
         overview->addDistrict(districtObj);
         for (std::size_t i = 0; i < modelsSetting.getLength(); i++) {

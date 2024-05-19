@@ -6,6 +6,7 @@
 */
 
 #include "RIPJO.hh"
+#include "Button/Button.hh"
 #include "Overview/Overview.hh"
 #include <memory>
 
@@ -29,11 +30,9 @@ RIPJO::RIPJO::~RIPJO()
 void RIPJO::RIPJO::gameLoop()
 {
     loadScenes();
-
     while (WindowShouldClose() == false) {
         _scenes[_currentScene]->computeLogic(_currentScene);
         BeginDrawing();
-
         ClearBackground(RAYWHITE);
         if (IsKeyPressed(KEY_A)) {
             _currentScene += 1;

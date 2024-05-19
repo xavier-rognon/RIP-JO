@@ -15,6 +15,6 @@ namespace RIPJO {
 
     class Save {
     public:
-        static void createSave(const RIPJO::Overview &gameState);
+        static void createSave(const std::shared_ptr<Overview> &overview);
     };
 }
