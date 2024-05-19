@@ -46,3 +46,18 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutSeine(std::share
 {
     return std::unique_ptr<LayoutSeine>(new LayoutSeine(overview));
 }
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutRoad(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutRoad>(new LayoutRoad(overview));
+}
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutStadium(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutStadium>(new LayoutStadium(overview));
+}
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutTriumph(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutTriumph>(new LayoutTriumph(overview));
+}
