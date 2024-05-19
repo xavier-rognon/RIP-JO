@@ -8,12 +8,12 @@ Champs-mars :
         unrest = 11;
 
         event = (
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 1; unrestGain = 4; name = "Alien invasion" }
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 1; unrestGain = 4; name = "Alien invasion" }
         );
 
         model = (
-            {x = 0; y = 0; z = 0; dx = 1; dy = 0; dz = 0; scale = 0.4; model = "stade"}
+            {x = 0; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "stade"}
         );
 };
 
@@ -22,15 +22,15 @@ Champs-elysee :
         unrest = 11;
 
         event = (
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 2; unrestGain = 3; name = "Pirate Attack" },
-            { indexDistrict = [1, 2, 3, 42, 99]; influenceCoast = 1; unrestGain = 4; name = "Alien invasion" }
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 2; unrestGain = 3; name = "Pirate Attack" },
+            { indexDistrict = [1, 2, 3, 42, 99]; influenceCost = 1; unrestGain = 4; name = "Alien invasion" }
         );
 
         model = (
-            {x = 42; y = 0; z = 0; dx = 1; dy = 0; dz = 0; scale = 50.0; model = "eiffel"}
+            {x = 42; y = 0; z = 0; dx = 1; dy = 0; dz = 0; model = "eiffel"}
         );
 };
