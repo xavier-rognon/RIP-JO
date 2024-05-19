@@ -8,9 +8,10 @@
 #include "Incident.hh"
 
 RIPJO::Incident::Incident(std::string name, std::vector<int> targets,
-                          std::size_t influenceCost, std::size_t unrestGain):
+                          std::size_t influenceCost, std::size_t unrestGain,
+                          float x, float y, float z, float radius):
     _name(name), _targetDistricts(targets), _influenceCost(influenceCost),
-    _unrestGain(unrestGain)
+    _unrestGain(unrestGain), _x(x), _y(y), _z(z), _radius(radius)
 {}
 
 int RIPJO::Incident::executeIncident(std::mutex &pMutex, std::size_t &influence,
@@ -61,4 +62,24 @@ std::size_t RIPJO::Incident::getUnrestGain() const
 void RIPJO::Incident::setUnrestGain(std::size_t unrestGain)
 {
     _unrestGain = unrestGain;
+}
+
+float RIPJO::Incident::getX() const
+{
+    return _x;
+}
+
+float RIPJO::Incident::getY() const
+{
+    return _y;
+}
+
+float RIPJO::Incident::getZ() const
+{
+    return _z;
+}
+
+float RIPJO::Incident::getRadius() const
+{
+    return _radius;
 }

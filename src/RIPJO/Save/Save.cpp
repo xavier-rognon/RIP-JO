@@ -33,7 +33,11 @@ void RIPJO::Save::createSave(const std::shared_ptr<Overview> &overview)
             }
             saveStream << "]; influenceCost = " << incident.getInfluenceCost();
             saveStream << "; unrestGain = " << incident.getUnrestGain();
-            saveStream << "; name = \"" << incident.getName() << "\" }\n";
+            saveStream << "; name = \"" << incident.getName();
+            saveStream << "; x = \"" << incident.getX();
+            saveStream << "; y = \"" << incident.getY();
+            saveStream << "; z = \"" << incident.getZ();
+            saveStream << "; radius = \"" << incident.getRadius() << "\" }\n";
         }
         saveStream << "        };\n";
         baseConfig >> temp;
