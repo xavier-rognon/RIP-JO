@@ -8,7 +8,7 @@
 namespace RIPJO {
     class Button {
     public:
-        Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15);
+        Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15, float width = 0, float height = 0);
         void Draw_Button();
         void Draw_Text();
         void Event();
@@ -26,5 +26,7 @@ namespace RIPJO {
         int _textSize;
         float _btnX;
         float _btnY;
+        float _btnWidth;
+        float _btnHeight;
     };
 }

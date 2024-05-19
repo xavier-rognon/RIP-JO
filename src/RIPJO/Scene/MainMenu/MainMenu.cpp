@@ -9,7 +9,7 @@
 #include <raylib.h>
 
 RIPJO::MainMenu::MainMenu():
-    _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2) - 140, (GetScreenHeight() / 2) + 150, 30)
+    _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2) - 140, (GetScreenHeight() / 2) + 150, 30, 300, 300)
 {
     Image backgroundImage = LoadImage("asset/background.png");
     Image backLogo = LoadImage("asset/jo.png");
