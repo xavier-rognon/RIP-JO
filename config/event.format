@@ -13,7 +13,7 @@ Champs-mars :
             { indexDistrict = [1]; influenceCost = 100; unrestGain = 15; name = "Organize a riot against the food coloring of the Seine" },
             { indexDistrict = [1]; influenceCost = 15; unrestGain = 3; name = "Increase subway tickets prices." },
             { indexDistrict = [1]; influenceCost = 30; unrestGain = 6; name = "Increase JO events tickets prices." },
-            { indexDistrict = [1]; influenceCost = 60; unrestGain = 10; name = "Organize a riot of the subway workers." }
+            { indexDistrict = [1]; influenceCost = 60; unrestGain = 10; name = "Hack the lights system of the Eiffel Tower." },
         );
 
         model = (
