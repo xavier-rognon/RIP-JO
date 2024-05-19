@@ -34,7 +34,7 @@ namespace RIPJO {
             libconfig::Config cfg;
             std::string _name;
             int _unrestGain;
-            int _influenceCoast;
+            int _influenceCost;
             std::vector<int> _indexDistricts;
             float _x;
             float _y;

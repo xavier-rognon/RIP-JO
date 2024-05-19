@@ -10,6 +10,7 @@
 
 #include "../IScene.hh"
 #include "../../UIElement/Slider.hh"
+#include "../../Button/Button.hh"
 
 namespace RIPJO {
     class MainMenu : public IScene{
@@ -24,8 +25,11 @@ namespace RIPJO {
         // TODO: check with the ui if text is needed
         Slider _slider;
         Texture2D _logo;
+        Texture2D _Jo;
+        Texture2D _backLogoText;
         Texture2D _background;
         Music _music;
+        Button _playButton;
         Sound _sound;
     };
 }
