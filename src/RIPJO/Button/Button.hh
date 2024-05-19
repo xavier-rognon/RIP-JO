@@ -11,7 +11,7 @@ namespace RIPJO {
         Button(std::string text, std::string assetPath, float x = 0, float y = 0, int textSize = 15, float width = 0, float height = 0);
         void Draw();
         void Event();
-        bool IsButtonPressed() const;
+        bool IsButtonPressed();
 
     private:
         int _btnState;

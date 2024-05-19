@@ -33,21 +33,22 @@ void RIPJO::Button::Draw()
 void RIPJO::Button::Event()
 {
     _mousePos = GetMousePosition();
-    _btnAction = false;
+    _btnState = 0;
 
-    bool isHover = CheckCollisionPointRec(_mousePos, _btnBounds);
-
-    if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && isHover) {
-        _btnState = 2;
-        _btnAction = true;
-    } else if (isHover) {
+    if (CheckCollisionPointRec(_mousePos, _btnBounds)) {
         _btnState = 1;
-    } else {
-        _btnState = 0;
+        if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
+            _btnState = 2;
+        if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+            _btnAction = true;
     }
 }
 
-bool RIPJO::Button::IsButtonPressed() const
+bool RIPJO::Button::IsButtonPressed()
 {
-    return _btnAction;
+    if (_btnAction == true) {
+        _btnAction = false;
+        return true;
+    }
+    return false;
 }
