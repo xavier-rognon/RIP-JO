@@ -7,6 +7,7 @@
 
 #pragma once
 #include "../../District/District.hh"
+#include "../../Button/Button.hh"
 #include "../IScene.hh"
 #include <raylib.h>
 
@@ -31,5 +32,7 @@ namespace RIPJO
             std::shared_ptr<RIPJO::District> _district;
             Camera3D _camera;
             Vector2 _lastMousePosition;
+
+            Button _backButton;
     };
 }
