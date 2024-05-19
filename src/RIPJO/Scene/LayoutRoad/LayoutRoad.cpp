@@ -5,11 +5,11 @@
 ** LayoutEiffel
 */
 
-#include "LayoutMetro.hh"
+#include "LayoutRoad.hh"
 #include "../../RIPJO.hh"
 #include <raylib.h>
 
-RIPJO::LayoutMetro::LayoutMetro(std::shared_ptr<Overview> overview):
+RIPJO::LayoutRoad::LayoutRoad(std::shared_ptr<Overview> overview):
     _overview(overview),
     _exitButton("Back to district", "asset/Rectangle.png", GetScreenWidth() / 2. - 150,
                     GetScreenHeight() / 2. + 160, 30),
@@ -17,9 +17,9 @@ RIPJO::LayoutMetro::LayoutMetro(std::shared_ptr<Overview> overview):
                     GetScreenHeight() / 2. + 270, 30)
 {}
 
-RIPJO::LayoutMetro::~LayoutMetro() {}
+RIPJO::LayoutRoad::~LayoutRoad() {}
 
-void RIPJO::LayoutMetro::computeLogic(std::size_t &currentScene)
+void RIPJO::LayoutRoad::computeLogic(std::size_t &currentScene)
 {
     _exitButton.Event();
     _executeEventButton.Event();
@@ -30,7 +30,7 @@ void RIPJO::LayoutMetro::computeLogic(std::size_t &currentScene)
     if (_executeEventButton.IsButtonPressed()) {
         Overview *overview = _overview.get();
         District *district = (*overview)[0].get();
-        Incident incident = (*district)[3];
+        Incident incident = (*district)[1];
         incident.executeIncident(overview->getPlayersMutex(),
                                  overview->getPlayersInfluence(),
                                  district->getMutex(), district->getUnrest());
@@ -38,7 +38,7 @@ void RIPJO::LayoutMetro::computeLogic(std::size_t &currentScene)
     }
 }
 
-void RIPJO::LayoutMetro::displayElements(void)
+void RIPJO::LayoutRoad::displayElements(void)
 {
     DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), (Color) {0, 0, 0, 125});
     _exitButton.Draw();
