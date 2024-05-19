@@ -290,6 +290,9 @@ Champs-mars :
 
 
 
+
+
+
             {x = 130.;  y = 1.1; z = 209.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.0; rotate = 45.; model = "ArcTriomphe"},
 
             {x = 40.; y = 1.; z =  85.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 180.; model = "triangle"},
@@ -334,7 +337,6 @@ Champs-mars :
             {x = 210.  ; y = 1.; z =  185.    ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 0.;   model = "triangle"},
             {x = 242.  ; y = 1.; z =  217.    ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 0.;   model = "triangle"},
 
-
             {x = 85.  ; y = 1.  ; z = 172.     ; dx = 0.; dy = 1.; dz = 0.;  scale = 5.0; rotate = 90.;   model = "triangle"},
 
             {x = 36.  ; y = -13.; z = 102.      ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 0.;   model = "square"},
@@ -367,6 +369,9 @@ Champs-mars :
             {x = 169.  ; y = 1.; z =  173.        ; dx = 0.; dy = 1.; dz = 0.;  scale = 2.2; rotate = 135.; model = "road"},
 
 
+
+            {x = -64.; y = 1.; z = -110.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 30.; rotate = 0.; model = "tennis"},
+            {x = -64.; y = 1.; z = -200.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 45.; rotate = 0.; model = "green"},
 
 
 
