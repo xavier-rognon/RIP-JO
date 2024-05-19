@@ -19,6 +19,8 @@
 
 float volume = 0.5;
 bool showFPS = false;
+bool gamePaused = false;
+std::size_t prevScene = 0;
 
 int main(void) {
     RIPJO::Parsing parser;

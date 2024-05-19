@@ -11,6 +11,7 @@
 #include "../IScene.hh"
 #include "../../UIElement/Slider.hh"
 #include "../../Button/Button.hh"
+#include "../../RIPJO.hh"
 
 namespace RIPJO {
     class MainMenu : public IScene{

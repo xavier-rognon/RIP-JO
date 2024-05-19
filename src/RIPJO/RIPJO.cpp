@@ -51,6 +51,7 @@ void RIPJO::RIPJO::setWindow(void)
     SetTargetFPS(60);
     if (IsWindowFullscreen() == false)
         ToggleFullscreen();
+    SetExitKey(KEY_DELETE);
     InitAudioDevice();
 }
 

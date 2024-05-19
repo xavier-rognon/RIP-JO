@@ -6,10 +6,6 @@
 */
 
 #include "MainMenu.hh"
-#include "../../RIPJO.hh"
-
-#include <raylib.h>
-#include <fstream>
 
 RIPJO::MainMenu::MainMenu():
     _playButton("Play", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
@@ -49,24 +45,27 @@ RIPJO::MainMenu::~MainMenu()
 
 void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
 {
+    std::ifstream saveFile("config/.gameSave");
+
     _playButton.Event();
     _optionButton.Event();
     _creditButton.Event();
     _quitButton.Event();
-    std::ifstream saveFile("config/.gameSave");
     if (saveFile.good()) {
         _loadButtonValid.Event();
     }
     saveFile.close();
-    SetMusicVolume(_music, volume);
-    if (_optionButton.IsButtonPressed())
+    if (_optionButton.IsButtonPressed()) {
+        prevScene = SceneType::MAIN_MENU;
         currentScene = SceneType::OPTIONS_MENU;
+    }
     if (_quitButton.IsButtonPressed())
         std::exit(0);
     if (_creditButton.IsButtonPressed())
         currentScene = SceneType::CREDITS_MENU;
     if (IsKeyPressed(KEY_E) || _playButton.IsButtonPressed())
         currentScene = SceneType::ALL_DISTRICTS;
+    SetMusicVolume(_music, volume);
     UpdateMusicStream(_music);
 }
 

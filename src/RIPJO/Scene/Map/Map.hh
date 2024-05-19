@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <iostream>
 #include <raylib.h>
 #include "../IScene.hh"
@@ -26,6 +27,8 @@ namespace RIPJO {
         void loadModel() override;
 
     private:
+        std::unique_ptr<IScene> _pauseMenu;
+
         Image _map;
         Texture2D _textureMap;
         bool _states;

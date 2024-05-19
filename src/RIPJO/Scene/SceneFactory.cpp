@@ -9,20 +9,25 @@
 
 std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createMainMenu()
 {
-    return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
+    return std::unique_ptr<MainMenu>(new MainMenu);
 }
 
 std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createMap()
 {
-    return std::unique_ptr<RIPJO::Map>(new RIPJO::Map);
+    return std::unique_ptr<Map>(new Map);
 }
 
 std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createCredit()
 {
-    return std::unique_ptr<RIPJO::CreditMenu>(new RIPJO::CreditMenu);
+    return std::unique_ptr<CreditMenu>(new CreditMenu);
 }
 
 std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createOption()
 {
-    return std::unique_ptr<RIPJO::OptionMenu>(new RIPJO::OptionMenu);
+    return std::unique_ptr<OptionMenu>(new OptionMenu);
+}
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createPause()
+{
+    return std::unique_ptr<PauseMenu>(new PauseMenu);
 }

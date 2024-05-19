@@ -7,6 +7,7 @@
 
 #include "OptionMenu.hpp"
 #include "../../Utils/Utils.hh"
+#include <iterator>
 #include <raylib.h>
 
 RIPJO::OptionMenu::OptionMenu():
@@ -32,7 +33,7 @@ void RIPJO::OptionMenu::computeLogic(std::size_t &currentScene)
     if (_fpsToggle.IsButtonPressed())
         showFPS = !showFPS;
     if (_exitMenu.IsButtonPressed())
-        currentScene = 0;
+        currentScene = prevScene;
 }
 
 void RIPJO::OptionMenu::displayElements()
