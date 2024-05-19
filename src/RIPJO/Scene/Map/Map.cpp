@@ -50,11 +50,11 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         currentScene = SceneType::MAIN_MENU;
     }
     if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        currentScene = 3;
+        currentScene = SceneType::DISTRICT1;
         std::cout << "OK 1" << std::endl;
     }
     if (_circle2 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        currentScene = 2;
+        currentScene = SceneType::DISTRICT2;
         std::cout << "OK 2" << std::endl;
     }
     if (_circle3 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {

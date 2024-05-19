@@ -7,6 +7,10 @@
 
 #include "OptionMenu.hpp"
 
+
+bool showFPS = false;
+float volume = 0.5f;
+
 RIPJO::OptionMenu::OptionMenu():
     _fpsToggle("Toggle FPS", "asset/Rectangle.png", GetScreenWidth() / 4. - 150,
                GetScreenHeight() / 2., 30, 300, 300),

@@ -55,6 +55,7 @@ void RIPJO::RIPJO::loadScenes(void)
     _scenes.push_back(SceneFactory::createMainMenu());
     _scenes.push_back(SceneFactory::createMap());
     _scenes.push_back(SceneFactory::createCredit());
+    _scenes.push_back(SceneFactory::createOption());
     for (auto district: _overview->getDistrict()) {
         _scenes.push_back(std::unique_ptr<DistrictScene>(new DistrictScene(district)));
         _scenes.back()->loadModel();

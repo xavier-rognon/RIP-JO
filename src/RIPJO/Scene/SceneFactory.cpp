@@ -21,3 +21,8 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createCredit()
 {
     return std::unique_ptr<RIPJO::CreditMenu>(new RIPJO::CreditMenu);
 }
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createOption()
+{
+    return std::unique_ptr<RIPJO::OptionMenu>(new RIPJO::OptionMenu);
+}

@@ -29,10 +29,10 @@ namespace RIPJO {
     enum SceneType {
         MAIN_MENU,
         ALL_DISTRICTS,
-        DISTRICT1,
-        DISTRICT2,
+        CREDITS_MENU,
         OPTIONS_MENU,
-        CREDITS_MENU
+        DISTRICT1,
+        DISTRICT2
     };
 
     class RIPJO {

@@ -11,6 +11,7 @@
 #include "MainMenu/MainMenu.hh"
 #include "Map/Map.hh"
 #include "CreditMenu/CreditMenu.hh"
+#include "OptionMenu/OptionMenu.hpp"
 
 namespace RIPJO {
     class SceneFactory {
@@ -18,5 +19,6 @@ namespace RIPJO {
             static std::unique_ptr<IScene> createMainMenu();
             static std::unique_ptr<IScene> createMap();
             static std::unique_ptr<IScene> createCredit();
+            static std::unique_ptr<IScene> createOption();
     };
 }

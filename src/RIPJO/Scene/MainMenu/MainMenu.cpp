@@ -61,6 +61,8 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
     }
     saveFile.close();
     SetMusicVolume(_music, volume);
+    if (_optionButton.IsButtonPressed())
+        currentScene = SceneType::OPTIONS_MENU;
     if (_quitButton.IsButtonPressed())
         std::exit(0);
     if (_creditButton.IsButtonPressed())
