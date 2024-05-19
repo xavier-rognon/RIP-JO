@@ -39,7 +39,8 @@ void RIPJO::RIPJO::gameLoop()
     while (WindowShouldClose() == false) {
         _scenes[_currentScene]->computeLogic(_currentScene);
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+
+        ClearBackground(SKYBLUE);
         if (IsKeyPressed(KEY_A)) {
             _currentScene += 1;
             _currentScene %= _scenes.size();
