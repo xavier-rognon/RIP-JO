@@ -20,6 +20,7 @@ extern float volume;
 extern float flameIntensity;
 extern bool showFPS;
 extern bool gamePaused;
+extern bool _isPopupOpen[];
 extern std::size_t prevScene;
 
 namespace RIPJO {

@@ -240,7 +240,7 @@ Champs-mars :
             {x = 240.; y = 1.; z = -164.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 2.5; rotate = 0.; model = "road"},
             {x = 240.; y = 1.; z = -204.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 2.5; rotate = 0.; model = "road"},
             {x = 240.; y = 1.; z = -244.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 2.5; rotate = 0.; model = "road"},
-        
+
             {x = 230.; y = 1.; z = -70.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 0.4; rotate = 75.; model = "metro"},
 
             {x = 280.; y = 1.; z = -84.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.9; rotate = 0.; model = "square"},
@@ -460,7 +460,7 @@ Champs-mars :
             {x = 170.; y = 0.; z = -130.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
             {x = -160.; y = 0.; z = 115.    ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
             {x = -160.; y = 0.; z = -130.   ; dx = 0.; dy = 1.; dz = 0.;    scale = 150.; rotate = 0.; model = "grey"},
-        
+
             {x = -16.; y = 1.; z = -12.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
             {x = -16.; y = 1.; z = -36.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
             {x = -16.; y = 1.; z = -60.     ; dx = 0.; dy = 1.; dz = 0.;    scale = 3.5; rotate = 0.; model = "Building"},
@@ -490,7 +490,7 @@ Champs-mars :
             {x = 0.; y = -3.; z = 192.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
             {x = 0.; y = -3.; z = 224.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"},
             {x = 0.; y = -3.; z = 256.      ; dx = 0.; dy = 1.; dz = 0.;    scale = 1.; rotate = 0.; model = "seine"}
-            
+
         );
 };
 

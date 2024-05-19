@@ -24,6 +24,16 @@ std::string RIPJO::District::getName() const
     return _name;
 }
 
+std::size_t RIPJO::District::getUnrest() const
+{
+    return _unrest;
+}
+
+std::size_t &RIPJO::District::getUnrest()
+{
+    return _unrest;
+}
+
 std::mutex &RIPJO::District::getMutex()
 {
     return _mutex;
@@ -37,11 +47,6 @@ void RIPJO::District::setUnrest(std::size_t unrest)
 std::size_t RIPJO::District::getIncidentCount() const
 {
     return _incidentList.size();
-}
-
-std::size_t RIPJO::District::getUnrest() const
-{
-    return _unrest;
 }
 
 RIPJO::Incident RIPJO::District::operator[](std::size_t index) const

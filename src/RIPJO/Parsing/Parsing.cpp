@@ -44,7 +44,11 @@ void RIPJO::Parsing::parseDistrict(const std::string &nameDistrict, std::shared_
             _influenceCost = eventSetting["influenceCost"];
             _unrestGain = eventSetting["unrestGain"];
             _name = eventSetting["name"].c_str();
-            RIPJO::Incident incident(_name, _indexDistricts, _influenceCost, _unrestGain);
+            _x = eventSetting["x"];
+            _y = eventSetting["y"];
+            _z = eventSetting["z"];
+            _scale = eventSetting["r"];
+            RIPJO::Incident incident(_name, _indexDistricts, _influenceCost, _unrestGain, _x, _y, _z, _scale);
             districtObj->addIncident(incident);
             _indexDistricts.clear();
         }
@@ -88,7 +92,11 @@ void RIPJO::Parsing::parseSave(const std::string &nameDistrict, std::shared_ptr<
             _influenceCost = eventSetting["influenceCost"];
             _unrestGain = eventSetting["unrestGain"];
             _name = eventSetting["name"].c_str();
-            RIPJO::Incident incident(_name, _indexDistricts, _influenceCost, _unrestGain);
+            _x = eventSetting["x"];
+            _y = eventSetting["y"];
+            _z = eventSetting["z"];
+            _scale = eventSetting["radius"];
+            RIPJO::Incident incident(_name, _indexDistricts, _influenceCost, _unrestGain, _x, _y, _z, _scale);
             districtObj->addIncident(incident);
             _indexDistricts.clear();
         }

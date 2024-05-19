@@ -49,6 +49,7 @@ void RIPJO::Map::SetCircleLines(int _centerX, int _centerY, int _radius)
 void RIPJO::Map::computeLogic(std::size_t &currentScene)
 {
     float time = GetTime();
+    int unrest = _overview->getDistrict()[0]->getUnrest();
 
     _mousePos = GetMousePosition();
     _circle1 = sqrt(pow(_mousePos.x - GetScreenWidth() / 3.6, 2) + pow(_mousePos.y - 525, 2));
@@ -63,6 +64,12 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         _pauseMenu->computeLogic(currentScene);
         return;
     }
+    if (unrest < 10)
+        flameIntensity = 1;
+    else 
+        flameIntensity = 1 + ((unrest) / 10.);
+    if (unrest > 100)
+        flameIntensity = 0;
     SetShaderValue(_shaderFlame, _shaderArgEmplacement[IHEIGHT], &flameIntensity,
                    SHADER_UNIFORM_FLOAT);
     SetShaderValue(_shaderFlame, _shaderArgEmplacement[ITIME], &time,
@@ -95,6 +102,8 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
 
 void RIPJO::Map::displayElements()
 {
+    std::string unrest = TextFormat("%d", _overview->getDistrict()[0]->getUnrest());
+
     DrawTexture(_textureMap, 0, 0, WHITE);
     _backButton.Draw();
     SetCircleLines(GetScreenWidth() / 3.6, 525, 85);
@@ -102,6 +111,8 @@ void RIPJO::Map::displayElements()
     SetCircleLines(GetScreenWidth() / 1.8, 200, 85);
     SetCircleLines(GetScreenWidth() / 1.26, 430, 85);
     DrawTexture(_torch, GetScreenWidth() * 0.8925, GetScreenHeight() * 0.89, WHITE);
+    Utils::DrawOutlinedText(unrest.c_str(), (GetScreenWidth() / 3.6) - MeasureText(unrest.c_str(), 30) / 2.,
+                            525 - MeasureTextEx(GetFontDefault(), unrest.c_str(), 30, 0).y / 2., 30, WHITE, 2, BLACK);
     Utils::DrawOutlinedText(TextFormat("Influence : %d", _overview->getPlayersInfluence()), 5, 5, 40, WHITE, 2, BLACK);
 
     BeginShaderMode(_shaderFlame);
