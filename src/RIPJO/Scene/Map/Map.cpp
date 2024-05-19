@@ -11,7 +11,7 @@
 #include <math.h>
 
 RIPJO::Map::Map():
-    _states(false)
+    _states(false), _backButton("Back", "asset/Rectangle.png", (GetScreenWidth() / 2) + 670, (GetScreenHeight() / 2) + 450, 30, 300, 300)
 {
     _map = LoadImage("asset/Map_2D.png");
     ImageResize(&_map, GetScreenWidth(), GetScreenHeight());
@@ -45,7 +45,7 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         _states = !_states;
     }
     if (IsKeyPressed(KEY_B)) {
-        currentScene = 2;
+        currentScene = 0;
     }
     if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         currentScene = 3;
@@ -61,11 +61,17 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
     if (_circle4 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         std::cout << "OK 4" << std::endl;
     }
+    if (_backButton.IsButtonPressed()) {
+        currentScene = 0;
+    }
+    _backButton.Event();
 }
 
 void RIPJO::Map::displayElements()
 {
     DrawTexture(_textureMap, 0, 0, WHITE);
+    _backButton.Draw_Button();
+    _backButton.Draw_Text();
     SetCircleLines(GetScreenWidth() / 3.6, 525, 85);
     SetCircleLines(GetScreenWidth() / 1.82, 670, 85);
     SetCircleLines(GetScreenWidth() / 1.8, 200, 85);

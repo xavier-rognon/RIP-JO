@@ -11,6 +11,7 @@
 #include <iostream>
 #include <raylib.h>
 #include "../IScene.hh"
+#include "../../Button/Button.hh"
 
 namespace RIPJO {
     class Map : public IScene {
@@ -38,5 +39,7 @@ namespace RIPJO {
         float _circle3;
         float _circle4;
         int _radiusCircle;
+
+        Button _backButton;
     };
 }
