@@ -19,6 +19,8 @@ int RIPJO::Incident::executeIncident(std::mutex &pMutex, std::size_t &influence,
 {
     std::unique_lock<std::mutex> pLock(pMutex);
     std::unique_lock<std::mutex> dLock(dMutex);
+    if (influence - _influenceCost < 0)
+        return 1;
     influence -= _influenceCost;
     unrest += _unrestGain;
     return 0;

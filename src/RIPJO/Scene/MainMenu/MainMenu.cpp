@@ -51,10 +51,13 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
     _optionButton.Event();
     _creditButton.Event();
     _quitButton.Event();
-    if (saveFile.good()) {
+    saveFile.close();
+    /*if (saveFile.good()) {
         _loadButtonValid.Event();
     }
-    saveFile.close();
+    if (_laodButtonValid.IsButtonPressed()) {
+        
+    }*/
     if (_optionButton.IsButtonPressed()) {
         prevScene = SceneType::MAIN_MENU;
         currentScene = SceneType::OPTIONS_MENU;
@@ -80,9 +83,9 @@ void RIPJO::MainMenu::displayElements()
     _optionButton.Draw();
     _creditButton.Draw();
     _quitButton.Draw();
-    if (saveFile.good())
-        _loadButtonValid.Draw();
-    else
-        _loadButtonInvalid.Draw();
+    //if (saveFile.good())
+    //    _loadButtonValid.Draw();
+    //else
+    _loadButtonInvalid.Draw();
     saveFile.close();
 }
