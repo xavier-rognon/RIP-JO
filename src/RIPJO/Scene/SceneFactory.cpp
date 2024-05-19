@@ -31,3 +31,18 @@ std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createPause()
 {
     return std::unique_ptr<PauseMenu>(new PauseMenu);
 }
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutEiffel(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutEiffel>(new LayoutEiffel(overview));
+}
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutMetro(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutMetro>(new LayoutMetro(overview));
+}
+
+std::unique_ptr<RIPJO::IScene> RIPJO::SceneFactory::createLayoutSeine(std::shared_ptr<Overview> overview)
+{
+    return std::unique_ptr<LayoutSeine>(new LayoutSeine(overview));
+}

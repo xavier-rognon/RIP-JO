@@ -104,9 +104,9 @@ void RIPJO::Map::displayElements()
     DrawTexture(_torch, GetScreenWidth() * 0.8925, GetScreenHeight() * 0.89, WHITE);
     Utils::DrawOutlinedText(TextFormat("Influence : %d", _overview->getPlayersInfluence()), 5, 5, 40, WHITE, 2, BLACK);
 
-    BeginShaderMode(_shaderFlame);
-    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), WHITE);
-    EndShaderMode();
+    // BeginShaderMode(_shaderFlame);
+    // DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), WHITE);
+    // EndShaderMode();
 
     if (gamePaused == true)
         _pauseMenu->displayElements();

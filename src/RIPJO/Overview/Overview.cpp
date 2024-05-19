@@ -38,6 +38,16 @@ std::size_t RIPJO::Overview::getPlayersInfluence() const
     return _player.getInfluence();
 }
 
+std::size_t &RIPJO::Overview::getPlayersInfluence()
+{
+    return _player.getInfluence();
+}
+
+std::mutex &RIPJO::Overview::getPlayersMutex()
+{
+    return _player.getMutex();
+}
+
 std::shared_ptr<RIPJO::District> RIPJO::Overview::operator[](std::size_t index) const
 {
     return _districts[index];
