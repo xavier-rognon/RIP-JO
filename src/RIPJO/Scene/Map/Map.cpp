@@ -6,6 +6,8 @@
 */
 
 #include "Map.hh"
+#include "../../RIPJO.hh"
+
 #include <raylib.h>
 #include <unistd.h>
 #include <math.h>
@@ -45,7 +47,7 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         _states = !_states;
     }
     if (IsKeyPressed(KEY_B)) {
-        currentScene = 0;
+        currentScene = SceneType::MAIN_MENU;
     }
     if (_circle1 <= _radiusCircle && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
         currentScene = 3;
@@ -62,7 +64,7 @@ void RIPJO::Map::computeLogic(std::size_t &currentScene)
         std::cout << "OK 4" << std::endl;
     }
     if (_backButton.IsButtonPressed()) {
-        currentScene = 0;
+        currentScene = SceneType::MAIN_MENU;
     }
     _backButton.Event();
 }

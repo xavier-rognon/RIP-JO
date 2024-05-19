@@ -9,17 +9,7 @@
 #include "Button/Button.hh"
 #include "Overview/Overview.hh"
 #include "Scene/Map/Map.hh"
-#include <memory>
-
-std::unique_ptr<RIPJO::IScene> createMainMenu()
-{
-    return std::unique_ptr<RIPJO::MainMenu>(new RIPJO::MainMenu);
-}
-
-std::unique_ptr<RIPJO::IScene> createMap()
-{
-    return std::unique_ptr<RIPJO::Map>(new RIPJO::Map);
-}
+#include "Scene/SceneFactory.hh"
 
 RIPJO::RIPJO::RIPJO(std::shared_ptr<Overview> overview):
     _overview(overview), _currentScene(0)
@@ -62,10 +52,11 @@ void RIPJO::RIPJO::setWindow(void)
 
 void RIPJO::RIPJO::loadScenes(void)
 {
-    _scenes.push_back(createMainMenu());
-    _scenes.push_back(createMap());
+    _scenes.push_back(SceneFactory::createMainMenu());
+    _scenes.push_back(SceneFactory::createMap());
+    _scenes.push_back(SceneFactory::createCredit());
     for (auto district: _overview->getDistrict()) {
-        _scenes.push_back(std::unique_ptr<DistrictScene> (new DistrictScene(district)));
+        _scenes.push_back(std::unique_ptr<DistrictScene>(new DistrictScene(district)));
         _scenes.back()->loadModel();
     }
 }

@@ -25,6 +25,16 @@
 #include <raymath.h>
 
 namespace RIPJO {
+
+    enum SceneType {
+        MAIN_MENU,
+        ALL_DISTRICTS,
+        DISTRICT1,
+        DISTRICT2,
+        OPTIONS_MENU,
+        CREDITS_MENU
+    };
+
     class RIPJO {
 
     public:

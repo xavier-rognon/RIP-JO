@@ -6,6 +6,8 @@
 */
 
 #include "MainMenu.hh"
+#include "../../RIPJO.hh"
+
 #include <raylib.h>
 #include <fstream>
 
@@ -15,7 +17,7 @@ RIPJO::MainMenu::MainMenu():
     _loadButtonValid("Load save", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
         (GetScreenHeight() / 2.) + 60, 30, 300, 300),
     _loadButtonInvalid("Load save", "asset/Invalidate.png", (GetScreenWidth() / 2.) - 140,
-        (GetScreenHeight() / 2.) + 170, 30, 300, 300),
+        (GetScreenHeight() / 2.) + 60, 30, 300, 300),
     _optionButton("Option", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
         (GetScreenHeight() / 2.) + 170, 30, 300, 300),
     _creditButton("Credit", "asset/Rectangle.png", (GetScreenWidth() / 2.) - 140,
@@ -59,8 +61,12 @@ void RIPJO::MainMenu::computeLogic(std::size_t &currentScene)
     }
     saveFile.close();
     SetMusicVolume(_music, volume);
+    if (_quitButton.IsButtonPressed())
+        std::exit(0);
+    if (_creditButton.IsButtonPressed())
+        currentScene = SceneType::CREDITS_MENU;
     if (IsKeyPressed(KEY_E) || _playButton.IsButtonPressed())
-        currentScene = 1;
+        currentScene = SceneType::ALL_DISTRICTS;
     // UpdateMusicStream(_music);
 }
 
